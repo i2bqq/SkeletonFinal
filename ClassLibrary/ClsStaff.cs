@@ -127,17 +127,28 @@ namespace ClassLibrary
 
         public bool Find(int StaffID)
         {
-            mStaffID = 21;
-            mFirstName = "Test";
-            mLastName = "Test2";
-            mEmail = "Test";
-            mPhone = 123214364;
-            mRole = "Test";
-            mCountryCode = "UK";
-           mActive = true;
-            mHireDate = Convert.ToDateTime("23/05/2022");
-            mPasswordHash = "893324kd";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("StaffID", StaffID);
+            DB.Execute("sproc_Staff_FilterByStaffID");
+            if (DB.Count == 1)
+            {
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
+                mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
+                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mPhone = Convert.ToInt32(DB.DataTable.Rows[0]["Phone"]);
+                mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
+                mCountryCode = Convert.ToString(DB.DataTable.Rows[0]["CountryCode"]);
+                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mHireDate = Convert.ToDateTime(DB.DataTable.Rows[0]["HireDate"]);
+                mPasswordHash = Convert.ToString(DB.DataTable.Rows[0]["PasswordHash"]);
+                return true;
+
+            }
+           else
+            {
+                return false;
+            }
         }
     }
 }

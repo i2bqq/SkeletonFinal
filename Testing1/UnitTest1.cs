@@ -146,7 +146,7 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
 
             Boolean Found = false;
-            Int32 StaffID = 21;
+            Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
             Assert.IsTrue(Found);
 
@@ -157,9 +157,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 21;
+            Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.StaffID != 21)
+            if (AnStaff.StaffID != 19)
             {
                 OK = false;
             }

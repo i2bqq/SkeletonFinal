@@ -128,7 +128,7 @@ namespace ClassLibrary
         public bool Find(int StaffID)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("StaffID", StaffID);
+            DB.AddParameter("@StaffID", StaffID);
             DB.Execute("sproc_Staff_FilterByStaffID");
             if (DB.Count == 1)
             {

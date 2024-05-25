@@ -5,12 +5,70 @@ namespace ClassLibrary
     public class ClsStaff
     {
         private Int32 mStaffID;
-
-        public bool Active { get; set; }
-        public DateTime HireDate { get; set; }
-        public string CountryCode { get; set; }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
+        private Boolean mActive;
+        private DateTime mHireDate;
+        private string mCountryCode;
+        private String mFirstName;
+        private String mLastName;
+        private String mEmail;
+        private Int32 mPhone;
+        private String mRole;
+        private String mPasswordHash;
+        public bool Active
+        {
+            get
+            {
+                return mActive;
+            }
+            set
+            {
+                mActive = value;
+            }
+        }
+        public DateTime HireDate
+        {
+            get
+            {
+                return mHireDate;
+            }
+            set
+            {
+                mHireDate = value;
+            }
+        }
+        public string CountryCode
+        {
+            get
+            {
+                return mCountryCode;
+            }
+            set
+            {
+                mCountryCode = value;
+            }
+        }
+        public string FirstName
+        {
+            get
+            {
+                return mFirstName;
+            }
+            set
+            {
+                mFirstName = value;
+            }
+        }
+        public string LastName
+        {
+            get
+            {
+                return mLastName;
+            }
+            set
+            {
+                mLastName = value;
+            }
+        }
         public Int32 StaffID
         {
             get
@@ -22,14 +80,63 @@ namespace ClassLibrary
                 mStaffID = value;
             }
         }
-        public string Email { get; set; }
-        public string Phone { get; set; }
-        public string Role { get; set; }
-        public string PasswordHash { get; set; }
+        public string Email
+        {
+            get
+            {
+                return mEmail;
+            }
+            set
+            {
+                mEmail = value;
+            }
+        }
+        public Int32 Phone
+        {
+            get
+            {
+                return mPhone;
+            }
+            set
+            {
+                mPhone = value;
+            }
+        }
+        public string Role
+        {
+            get
+            {
+                return mRole;
+            }
+            set
+            {
+                mRole = value;
+            }
+        }
+        public string PasswordHash
+        {
+            get
+            {
+                return mPasswordHash;
+            }
+            set
+            {
+                mPasswordHash = value;
+            }
+        }
 
         public bool Find(int StaffID)
         {
             mStaffID = 21;
+            mFirstName = "Test";
+            mLastName = "Test2";
+            mEmail = "Test";
+            mPhone = 123214364;
+            mRole = "Test";
+            mCountryCode = "UK";
+           mActive = true;
+            mHireDate = Convert.ToDateTime("23/05/2022");
+            mPasswordHash = "893324kd";
             return true;
         }
     }

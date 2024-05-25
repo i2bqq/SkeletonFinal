@@ -18,7 +18,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         AnStaff.FirstName = txtFirstName.Text;
         AnStaff.LastName = txtLastName.Text;
         AnStaff.Email = txtEmail.Text;
-        AnStaff.Phone = txtPhone.Text;
+        AnStaff.Phone = Convert.ToInt32(txtPhone.Text);
         AnStaff.CountryCode = ddlCountryCode.Text;
         AnStaff.Role = txtRole.Text;
         AnStaff.HireDate = Convert.ToDateTime(DateTime.Now);

@@ -106,7 +106,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "071642972";
+            Int32 TestData = 071642972;
 
             AnStaff.Phone = TestData;
 

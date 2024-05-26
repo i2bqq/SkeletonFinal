@@ -9,6 +9,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
+            <asp:Label ID="lblStaffID" runat="server" Text="Staff ID"></asp:Label>
+            <asp:TextBox runat="server" ID="txtStaffID"></asp:TextBox><asp:Button runat="server" Text="Find" ID="btnFind" OnClick="btnFind_Click"></asp:Button>
+</div>
+<br />
+        <div>
             <asp:Label ID="lblFirstName" runat="server" Text="First Name"></asp:Label>
             <asp:TextBox runat="server" ID="txtFirstName"></asp:TextBox>
         </div>
@@ -29,8 +34,8 @@
         </div>
         <br />
         <div>
-            <asp:Label ID="lblCountryCode" runat="server" Text="Country Code:" AssociatedControlID="ddlCountryCode"></asp:Label>
-            <asp:DropDownList ID="ddlCountryCode" runat="server">
+            <asp:Label ID="lblCountryCode" runat="server" Text="Country Code:" AssociatedControlID="txtCountryCode"></asp:Label>
+            <asp:DropDownList ID="txtCountryCode" runat="server">
                 <asp:ListItem Text="US" Value="US"></asp:ListItem>
                 <asp:ListItem Text="UK" Value="UK"></asp:ListItem>
                 <asp:ListItem Text="AU" Value="AU"></asp:ListItem>
@@ -50,7 +55,7 @@
         </div>
         <br />
         <div>
-            <asp:CheckBox runat="server" ID="Active" Text="Active"></asp:CheckBox>
+            <asp:CheckBox runat="server" ID="txtActive" Text="Active"></asp:CheckBox>
         </div>
         <br />
         <div>

@@ -150,5 +150,58 @@ namespace ClassLibrary
                 return false;
             }
         }
+
+        public string Valid(String FirstName, String LastName, String Email, String Role, String PasswordHash)
+        {
+            string Error = "";
+
+            
+            
+            
+            if (FirstName.Length == 0)
+            {
+                Error = Error + "The First Name may not be blank : ";
+            }
+            if(FirstName.Length > 50) 
+            {
+                Error = Error + "The First Name must be less than 50 Characters : ";
+            }
+            if (LastName.Length == 0)
+            {
+                Error = Error + "The Last Name may not be blank : ";
+            }
+            if (LastName.Length > 50)
+            {
+                Error = Error + "The Last Name must be less than 50 Characters : ";
+            }
+            if (Email.Length == 0)
+            {
+                Error = Error + "The Email may not be blank : ";
+            }
+            if (Email.Length > 50)
+            {
+                Error = Error + "The Email must be less than 50 Characters : ";
+            }
+            if (Role.Length == 0)
+            {
+                Error = Error + "The Role may not be blank : ";
+            }
+            if (Role.Length > 50)
+            {
+                Error = Error + "The Role must be less than 50 Characters : ";
+            }
+            if (PasswordHash.Length == 0)
+            {
+                Error = Error + "The Password may not be blank : ";
+            }
+            if (PasswordHash.Length > 50)
+            {
+                Error = Error + "The Password must be less than 50 Characters : ";
+            }
+
+           
+
+            return Error;
+        }
     }
 }

@@ -66,6 +66,7 @@
         <div>
             <asp:Button ID="btnAdd" runat="server" Text="Add Staff" OnClick="BtnAdd_Click" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="BtnCancel_Click" />
+            <asp:Label ID="lblError" runat="server" Text="Error"></asp:Label>
         </div>
     </form>
 </body>

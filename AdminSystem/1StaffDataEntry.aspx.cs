@@ -15,18 +15,33 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void BtnAdd_Click(object sender, EventArgs e)
     {
         ClsStaff AnStaff = new ClsStaff();
-        AnStaff.StaffID = Convert.ToInt32(txtStaffID.Text);
-        AnStaff.FirstName = txtFirstName.Text;
-        AnStaff.LastName = txtLastName.Text;
-        AnStaff.Email = txtEmail.Text;
-        AnStaff.Phone = Convert.ToInt32(txtPhone.Text);
-        AnStaff.CountryCode = txtCountryCode.Text;
-        AnStaff.Role = txtRole.Text;
-        AnStaff.HireDate = Convert.ToDateTime(DateTime.Now);
-        AnStaff.Active = txtActive.Checked;
-        AnStaff.PasswordHash = txtPasswordHash.Text;
-        Session["AnStaff"] = AnStaff;
-        Response.Redirect("1StaffViewer.aspx");
+        string StaffID = txtStaffID.Text;   
+        string FirstName = txtFirstName.Text;
+        string LastName = txtLastName.Text;
+        string Email = txtEmail.Text;
+        string Phone = txtPhone.Text;
+        string HireDate = txtHireDate.Text;
+        string CountryCode = txtCountryCode.Text;
+        string Role = txtRole.Text;
+        string Active = txtActive.Text;
+        string PasswordHash = txtPasswordHash.Text;
+        string Error = "";
+        Error = AnStaff.Valid(FirstName, LastName, Email, Role, PasswordHash);
+        if (Error == "")
+        {
+            AnStaff.FirstName = FirstName;
+            AnStaff.LastName = LastName;
+            AnStaff.Email = Email;
+            AnStaff.Role = Role;
+            AnStaff.PasswordHash = PasswordHash;
+            Session["AnStaff"] = AnStaff;
+            Response.Redirect("1StaffViewer.aspx");
+
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
 
     protected void BtnCancel_Click(object sender, EventArgs e)

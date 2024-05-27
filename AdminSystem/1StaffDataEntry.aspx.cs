@@ -12,7 +12,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
     }
 
-    protected void BtnAdd_Click(object sender, EventArgs e)
+    protected void BtnOk_Click(object sender, EventArgs e)
     {
         ClsStaff AnStaff = new ClsStaff();
         string StaffID = txtStaffID.Text;   
@@ -26,13 +26,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
         string Active = txtActive.Text;
         string PasswordHash = txtPasswordHash.Text;
         string Error = "";
-        Error = AnStaff.Valid(FirstName, LastName, Email, Role, PasswordHash);
+        Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
         if (Error == "")
         {
             AnStaff.FirstName = FirstName;
             AnStaff.LastName = LastName;
             AnStaff.Email = Email;
             AnStaff.Role = Role;
+            AnStaff.HireDate = Convert.ToDateTime(HireDate);
             AnStaff.PasswordHash = PasswordHash;
             Session["AnStaff"] = AnStaff;
             Response.Redirect("1StaffViewer.aspx");

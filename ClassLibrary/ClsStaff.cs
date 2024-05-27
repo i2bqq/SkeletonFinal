@@ -151,10 +151,10 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(String FirstName, String LastName, String Email, String Role, String PasswordHash)
+        public string Valid(String FirstName, String LastName, String Email, String Role,String HireDate , String PasswordHash)
         {
             string Error = "";
-
+            DateTime  DateTemp;
             
             
             
@@ -184,22 +184,34 @@ namespace ClassLibrary
             }
             if (Role.Length == 0)
             {
-                Error = Error + "The Role may not be blank : ";
+                Error = Error + "The Role may not be blank ";
             }
             if (Role.Length > 50)
             {
-                Error = Error + "The Role must be less than 50 Characters : ";
+                Error = Error + "The Role must be less than 50 Characters ";
             }
             if (PasswordHash.Length == 0)
             {
-                Error = Error + "The Password may not be blank : ";
+                Error = Error + "The Password may not be blank ";
             }
             if (PasswordHash.Length > 50)
             {
-                Error = Error + "The Password must be less than 50 Characters : ";
+                Error = Error + "The Password must be less than 50 Characters ";
             }
+            DateTime DateComp = DateTime.Now.Date;
+            try
+            {
+                DateTemp = Convert.ToDateTime(HireDate);
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The Date cannot be in the futre ";
+                }
 
-           
+            }
+            catch 
+            {
+                Error = Error + "The Date is not a valid Date";
+            }
 
             return Error;
         }

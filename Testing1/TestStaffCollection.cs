@@ -26,6 +26,7 @@ namespace Testing1
             TestItem.FirstName = "Talal";
             TestItem.LastName = "Alotaibi";
             TestItem.Email = "dsjfh@gmail.com";
+            TestItem.HireDate = DateTime.Now;
             TestItem.Phone = 123412;
             TestItem.CountryCode = "UK";
             TestItem.PasswordHash = "543523";
@@ -33,14 +34,8 @@ namespace Testing1
             AllStaff.StaffList = TestList;
             Assert.AreEqual(AllStaff.StaffList, TestList);
         }
-        [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsStaffCollection AllStaff = new clsStaffCollection();
-            Int32 SomeCount = 0;
-            AllStaff.Count = SomeCount;
-            Assert.AreEqual(AllStaff.Count, SomeCount);
-        }
+
+
         [TestMethod]
         public void ThisStaffPropertyOk()
         {
@@ -52,6 +47,7 @@ namespace Testing1
             TestStaff.FirstName = "Talal";
             TestStaff.LastName = "Alotaibi";
             TestStaff.Email = "dsjfh@gmail.com";
+            TestStaff.HireDate= DateTime.Now;
             TestStaff.Phone = 123412;
             TestStaff.CountryCode = "UK";
             TestStaff.PasswordHash = "543523";
@@ -60,22 +56,43 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void StaffAndCountOK()
+        public void ListAndCountOK()
         {
             clsStaffCollection AllStaff = new clsStaffCollection();
             List<ClsStaff> TestList = new List<ClsStaff>();
             ClsStaff TestItem = new ClsStaff();
             TestItem.Active = true;
-            TestItem.StaffID = 1;
-            TestItem.FirstName = "Talal";
-            TestItem.LastName = "Alotaibi";
-            TestItem.Email = "dsjfh@gmail.com";
+            TestItem.StaffID = 2;
+            TestItem.FirstName = "Tafglal";
+            TestItem.LastName = "Alofgtaibi";
+            TestItem.Email = "dsjfhgh@gmail.com";
             TestItem.Phone = 123412;
             TestItem.CountryCode = "UK";
-            TestItem.PasswordHash = "543523";
+            TestItem.PasswordHash = "54f3523";
             TestList.Add(TestItem);
             AllStaff.StaffList = TestList;
-            Assert.AreEqual(AllStaff.StaffList, TestList);
+            Assert.AreEqual(AllStaff.Count, TestList.Count);
         }
+        [TestMethod]
+        public void AddMethod()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            ClsStaff TestItem = new ClsStaff();
+            Int32 PrimaryKey = 0;
+
+            TestItem.Active = true;
+            TestItem.StaffID = 2;
+            TestItem.FirstName = "Nivar";
+            TestItem.LastName = "Anwar";
+            TestItem.Email = "123asd@gmail.com";
+            TestItem.Phone = 324323112 ;
+            TestItem.CountryCode = "UK";
+            TestItem.Role = "Manager";
+            TestItem.PasswordHash = "hfdsjklsfdj";
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
+
     }
 }

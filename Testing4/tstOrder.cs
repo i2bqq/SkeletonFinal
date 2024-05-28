@@ -1,11 +1,12 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Security.Permissions;
 
 namespace Testing4
 {
     [TestClass]
-    public class TestOrder
+    public class TstOrder
     {
         [TestMethod]
         public void InstanceOk()
@@ -42,6 +43,14 @@ namespace Testing4
             Assert.AreEqual(AnOrder.OrderDate, TestData);
         }
         [TestMethod]
+        public void TotalAmountPropertyOK()
+        {
+            ClsOrder AnOrder = new ClsOrder();
+            decimal TestData = 100.00m;
+            AnOrder.TotalAmount = TestData;
+            Assert.AreEqual(AnOrder.TotalAmount, TestData);
+        }
+        [TestMethod]
         public void OrderStatusPropertyOK()
         {
             ClsOrder AnOrder = new ClsOrder();
@@ -49,13 +58,7 @@ namespace Testing4
             AnOrder.OrderStatus = TestData;
             Assert.AreEqual(AnOrder.OrderStatus, TestData);
         }
-        [TestMethod]
-        public void CreatedOnPropertyOK()
-        {
-            ClsOrder AnOrder = new ClsOrder();
-            DateTime TestData = DateTime.Now;
-            AnOrder.CreatedOn = TestData;
-            Assert.AreEqual(AnOrder.CreatedOn, TestData);
-        }
+
+       
     }
 }

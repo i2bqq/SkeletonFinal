@@ -25,7 +25,7 @@ namespace Testing3
             Assert.AreEqual(AnStock.ProductID, TestData);
         }
         [TestMethod]
-        public void ProductNamePropertyOK() 
+        public void ProductNamePropertyOK()
         {
             ClsStock AnStock = new ClsStock();
             String TestData = "test";
@@ -35,7 +35,7 @@ namespace Testing3
         [TestMethod]
         public void CategoryNamePropertyOK()
         {
-            ClsStock AnStock =new ClsStock();
+            ClsStock AnStock = new ClsStock();
             string TestData = "test";
             AnStock.CategoryName = TestData;
             Assert.AreEqual(AnStock.CategoryName, TestData);
@@ -44,7 +44,7 @@ namespace Testing3
         public void pricePropertyOK()
         {
             ClsStock AnStock = new ClsStock();
-            string TestData = "15.20";
+            decimal TestData = 123;
             AnStock.Price = TestData;
             Assert.AreEqual(AnStock.Price, TestData);
         }
@@ -64,12 +64,12 @@ namespace Testing3
             AnStock.CreatedOn = TestData;
             Assert.AreEqual(AnStock.CreatedOn, TestData);
         }
-        public void BrandPropertyOK()
+        public void InStockPropertyOk()
         {
             ClsStock AnStock = new ClsStock();
-            string TestData = "test";
-            AnStock.Brand = TestData;
-            Assert.AreEqual(AnStock.Brand, TestData);
+            Boolean TestData = true;
+            AnStock.InStock = TestData;
+            Assert.AreEqual(AnStock.InStock, TestData);
         }
     }
 }

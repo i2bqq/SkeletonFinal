@@ -47,7 +47,6 @@
     <Compile Include="ClsOrderItem.cs" />
     <Compile Include="ClsPayment.cs" />
     <Compile Include="ClsStaff.cs" />
-    <Compile Include="clsStaffCollection.cs" />
     <Compile Include="ClsStock.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

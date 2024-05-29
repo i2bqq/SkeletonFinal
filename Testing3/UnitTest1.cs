@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Net;
 
 namespace Testing3
 {
@@ -91,5 +92,90 @@ namespace Testing3
             Int32 ProductID = 21;
             Found = AnStock.Find(ProductID);
         }
+        [TestMethod]
+        public void TestProductNameFound()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AnStock.Find(ProductID);
+            if (AnStock.ProductName != "Make up")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCategoryNameFound()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 21;
+            Found = AnStock.Find(ProductId);
+            if (AnStock.CategoryName != "Face")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestPriceFound()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 21;
+            Found = AnStock.Find(ProductId);
+            if (AnStock.Price != 123)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestStockQuantityFound()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 21;
+            Found = AnStock.Find(ProductId);
+            if (AnStock.StockQuantity != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCreatedOnFound()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 21;
+            Found = AnStock.Find(ProductId);
+            if (AnStock.CreatedOn != Convert.ToDateTime("12/12/2012"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestInStockFound()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductId = 21;
+            Found = AnStock.Find(ProductId);
+            if (AnStock.InStock != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
     }
 }
+

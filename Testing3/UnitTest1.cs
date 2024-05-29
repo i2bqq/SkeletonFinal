@@ -64,6 +64,7 @@ namespace Testing3
             AnStock.CreatedOn = TestData;
             Assert.AreEqual(AnStock.CreatedOn, TestData);
         }
+        [TestMethod]
         public void InStockPropertyOk()
         {
             ClsStock AnStock = new ClsStock();

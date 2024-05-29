@@ -275,8 +275,8 @@ namespace Testing3
         {
             ClsStock AnStock = new ClsStock();
             String Error = "";
-            string ProductName = "";
-            ProductName = CategoryName.PadRight(49);
+            string CategoryName = "";
+            CategoryName = CategoryName.PadRight(49);
             Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
             Assert.AreEqual(Error, "");
         }
@@ -285,8 +285,8 @@ namespace Testing3
         {
             ClsStock AnStock = new ClsStock();
             String Error = "";
-            string ProductName = "";
-            ProductName = CategoryName.PadRight(50);
+            string CategoryName = "";
+            CategoryName = CategoryName.PadRight(50);
             Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
             Assert.AreEqual(Error, "");
         }
@@ -295,8 +295,8 @@ namespace Testing3
         {
             ClsStock AnStock = new ClsStock();
             String Error = "";
-            string ProductName = "";
-            ProductName = CategoryName.PadRight(25);
+            string CategoryName = "";
+            CategoryName = CategoryName.PadRight(25);
             Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
             Assert.AreEqual(Error, "");
         }
@@ -305,8 +305,8 @@ namespace Testing3
         {
             ClsStock AnStock = new ClsStock();
             String Error = "";
-            string ProductName = "";
-            ProductName = CategoryName.PadRight(500);
+            string CategoryName = "";
+            CategoryName = CategoryName.PadRight(500);
             Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
             Assert.AreNotEqual(Error, "");
         }

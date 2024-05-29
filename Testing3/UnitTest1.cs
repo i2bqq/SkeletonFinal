@@ -72,5 +72,24 @@ namespace Testing3
             AnStock.InStock = TestData;
             Assert.AreEqual(AnStock.InStock, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+
+            Int32 ProductID = 21;
+            Found = AnStock.Find(ProductID);
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestProductID()
+        {
+            ClsStock AnStock = new ClsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 ProductID = 21;
+            Found = AnStock.Find(ProductID);
+        }
     }
 }

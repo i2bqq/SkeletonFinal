@@ -94,16 +94,104 @@ namespace ClassLibrary
             }
         }
 
-        public bool Find(int staffID)
+        public bool Find(int ProductID)
         {
-            mProductID = 21;
-            mProductName = "Make up";
-            mCategoryName = "Face";
-            mPrice = 123;
-            mStockQuantity = 2;
-            mCreatedOn = Convert.ToDateTime("12/12/2012");
-            mInStock=true;
-            return true;
+            
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductID", ProductID);
+            DB.Execute("sproc_Stock_FilterByProductID");
+            if (DB.Count == 1)
+            {
+                mProductID = Convert.ToInt32(DB.DataTable.Rows[0]["ProductID"]);
+                mProductName = Convert.ToString(DB.DataTable.Rows[0]["ProductName"]);
+                mCategoryName = Convert.ToString(DB.DataTable.Rows[0]["CategoryName"]);
+                mPrice = Convert.ToDecimal(DB.DataTable.Rows[0]["Price"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["StockQuantity"]);
+                mCreatedOn = Convert.ToDateTime(DB.DataTable.Rows[0]["CreatedOn"]);
+                mInStock = Convert.ToBoolean(DB.DataTable.Rows[0]["InStock"]);
+                return true;
+            }
+            else 
+            { 
+                return false;
+            }
+        }
+
+        public string Valid(string productName, string categoryName, string price, string stockQuantity, string createdOn)
+        {
+            double PriceTemp;
+            Int32 QuantityTemp;
+
+            String Error = "";
+            if(productName.Length == 0)
+            {
+                Error = Error + "The Product Name Cannot be blank : ";
+            }
+            if(productName.Length > 50)
+            {
+                Error = Error + "The Product Name Cannot Be over 50 Characters";
+            }
+            if (categoryName.Length == 0)
+            {
+                Error = Error + "The Category Name Cannot be blank : ";
+            }
+            if (categoryName.Length > 50)
+            {
+                Error = Error + "The Category Name Cannot Be over 50 Characters";
+            }
+            if (price == null || price == "")
+            {
+                Error = Error + "Price cannot be left blank : ";
+            }
+            else
+            {
+                try
+                {
+                    PriceTemp = Convert.ToDouble(price);
+
+                    if (PriceTemp < 0.10)
+                    {
+                        Error = Error + "Price cannot be less than 0.1 : ";
+                    }
+
+                    if (PriceTemp > 10000.00)
+                    {
+                        Error = Error + "Price cannot be greater than 10,000";
+                    }
+                }
+                catch
+                {
+                    Error = Error + "The price was not valid : ";
+                }
+            }
+            if (stockQuantity == null || stockQuantity == "")
+            {
+                Error = Error + "Quantity cannot be left blank : ";
+            }
+            else
+            {
+                try
+                {
+                    QuantityTemp = Convert.ToInt32(stockQuantity);
+
+                    if (QuantityTemp < 0)
+                    {
+                        Error = Error + "The quantity cannot be less than 0 : ";
+                    }
+
+                    if (QuantityTemp > 200)
+                    {
+                        Error = Error + "The quantity cannot be greater than 200 : ";
+                    }
+
+
+                }
+                catch
+                {
+                    Error = Error + "The quantity was not valid : ";
+                }
+            }
+            return Error;
         }
     }
 }

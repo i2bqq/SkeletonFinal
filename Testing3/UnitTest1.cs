@@ -1,6 +1,8 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Collections.ObjectModel;
+using System.IO;
 using System.Net;
 
 namespace Testing3
@@ -8,6 +10,14 @@ namespace Testing3
     [TestClass]
     public class TestStock
     {
+        //Good Test Data
+        string ProductName = "Eye shadow";
+        string CategoryName = "Face";
+        string Price = "30.20";
+        string StockQuantity = "15";
+        string CreatedOn = DateTime.Now.ToShortDateString();
+
+
         [TestMethod]
         public void InstanceOk()
         {
@@ -79,7 +89,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
 
-            Int32 ProductID = 21;
+            Int32 ProductID = 1;
             Found = AnStock.Find(ProductID);
             Assert.IsTrue(Found);
         }
@@ -89,7 +99,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 1;
             Found = AnStock.Find(ProductID);
         }
         [TestMethod]
@@ -98,7 +108,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 21;
+            Int32 ProductID = 1;
             Found = AnStock.Find(ProductID);
             if (AnStock.ProductName != "Make up")
             {
@@ -112,7 +122,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 21;
+            Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
             if (AnStock.CategoryName != "Face")
             {
@@ -126,7 +136,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 21;
+            Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
             if (AnStock.Price != 123)
             {
@@ -140,7 +150,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 21;
+            Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
             if (AnStock.StockQuantity != 2)
             {
@@ -154,7 +164,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 21;
+            Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
             if (AnStock.CreatedOn != Convert.ToDateTime("12/12/2012"))
             {
@@ -168,7 +178,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 21;
+            Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
             if (AnStock.InStock != true)
             {
@@ -176,6 +186,520 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
+        [TestMethod]
+        public void ValidMethodOk()
+        {
+            ClsStock AnStock = new ClsStock();
+            string Error = "";
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameMinLessOne()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameMinPlusOne()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "aa"; 
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameMaxLessOne()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(49);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+         [TestMethod]
+        public void ProductNameMax()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(50);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameMid()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(25);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ProductNameExtremeMax()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = ProductName.PadRight(500);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CategoryNameMinLessOne()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string CategoryName = "";
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CategoryNameMinPlusOne()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string CategoryName = "aa";
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CategoryNameMaxLessOne()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = CategoryName.PadRight(49);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CategoryNameMax()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = CategoryName.PadRight(50);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CategoryNameMid()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = CategoryName.PadRight(25);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CategoryNameExtremeMax()
+        {
+            ClsStock AnStock = new ClsStock();
+            String Error = "";
+            string ProductName = "";
+            ProductName = CategoryName.PadRight(500);
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void PriceExtremeMin()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign extreme min value
+            TestPrice = -5000.99;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinLessOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = -0.9;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMin()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 0.10;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMinPlusOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 1.10;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxLessOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 9999.00;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMax()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 10000.00;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMaxPlusOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 10001.00;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceMid()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 5000.00;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceExtremeMax()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp price var
+            double TestPrice;
+            //assign a value to var
+            TestPrice = 100000000.00;
+            //add the temp var to test data
+            Price = TestPrice.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void PriceInvalidData()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            string Price = "Test Price";
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void QuantityExtremeMin()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign an extreme min value
+            TestInt = -999;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinLessOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign a value of min (0) -1 
+            TestInt = -1;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMin()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign the min value
+            TestInt = 0;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMinPlusOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign a value of min +1
+            TestInt = 1;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMaxLessOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign a value of max (200) -1
+            TestInt = 199;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMax()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign the max value
+            TestInt = 200;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+
+        [TestMethod]
+        public void QuantityMaxPlusOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign the max value +1
+            TestInt = 201;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityMid()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign the mid value 
+            TestInt = 100;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityExtremeMax()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create temp variable of type int
+            int TestInt;
+            //assign an extreme max value
+            TestInt = 999;
+            //convert to string
+            string StockQuantity = TestInt.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityInvalidData()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a test variable that is not of type int
+            double TestDouble;
+            //assign a non int value
+            TestDouble = 2.5;
+            //convert to string
+            string StockQuantity = TestDouble.ToString();
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void QuantityBlank()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //leave the variable blank
+            string StockQuantity = "";
+            //invoke method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
     }
 }
 

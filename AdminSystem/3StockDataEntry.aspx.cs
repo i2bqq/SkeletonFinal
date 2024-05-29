@@ -31,6 +31,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void btnFind_Click(object sender, EventArgs e)
     {
+        ClsStock AnStock = new ClsStock();
+        Int32 ProductID;
+        Boolean Found = false;
+        ProductID = Convert.ToInt32(txtProductID.Text);
+        Found = AnStock.Find(ProductID);
+        if (Found == true) 
+        {
+            txtProductName.Text = AnStock.ProductName;
+            txtCategoryName.Text = AnStock.CategoryName;
+            txtPrice.Text = AnStock.Price.ToString();
+            txtStockQuantity.Text = AnStock.StockQuantity.ToString();
+            txtCreatedOn.Text = AnStock.CreatedOn.ToString();
+            txtInStock.Checked = AnStock.InStock;
+
+        }
 
     }
 }

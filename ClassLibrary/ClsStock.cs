@@ -121,6 +121,8 @@ namespace ClassLibrary
         {
             double PriceTemp;
             Int32 QuantityTemp;
+            DateTime DateTemp;
+
 
             String Error = "";
             if(productName.Length == 0)
@@ -190,6 +192,31 @@ namespace ClassLibrary
                 {
                     Error = Error + "The quantity was not valid : ";
                 }
+                DateTime DateComp = DateTime.Now.Date;
+                try
+                {
+                    //copy the arrivedOn value to the DateTemp variable
+                    DateTemp = Convert.ToDateTime(createdOn);
+
+                    if (DateTemp < DateComp)//compare the dates
+                    {
+                        //record the error
+                        Error = Error + "The date cannot be in the past :";
+                    }
+
+                    if (DateTemp > DateComp)
+                    {
+                        //record the error
+                        Error = Error + "The date cannot be in the future :";
+                    }
+                }
+
+
+                catch
+                {
+                    Error = Error + "The date was not a valid date : ";
+                }
+            
             }
             return Error;
         }

@@ -699,6 +699,164 @@ namespace Testing3
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
+        [TestMethod]
+        public void CreatedOnExtremeMin()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //today's date minus 100 years
+            TestDate = TestDate.AddYears(-100);
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CreatedOnMinLessOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //today's date minus 1 day
+            TestDate = TestDate.AddDays(-1); //should cause error
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CreatedOnMin()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CreatedOnMinPlusOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //today's date add 1 day
+            TestDate = TestDate.AddDays(1); //should cause error
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CreatedOnMax()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CreatedOnMaxPlusOne()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //today's date plus 1 day
+            TestDate = TestDate.AddDays(1); //should cause error
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void CreatedOnExtremeMax()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //create a variable to store the test data
+            DateTime TestDate;
+            //set the date to today's date
+            TestDate = DateTime.Now.Date;
+            //today's date plus 100 years
+            TestDate = TestDate.AddYears(100); //should cause error
+            //convert the date variable to a string type
+            string CreatedOn = TestDate.ToString();
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void CreatedOnInvalidData()
+        {
+            //create instance
+            ClsStock AnStock = new ClsStock();
+            //string c=variable to store error message
+            String Error = "";
+            //set arrived on to a invalid data type
+            string CreatedOn = "Test";
+            //invoke the method
+            Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+
 
     }
 }

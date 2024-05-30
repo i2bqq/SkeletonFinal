@@ -12,5 +12,6 @@ namespace ClassLibrary
         public string CountryCode { get; set; }
         public string Address { get; set; }
         public bool Active { get; set; }
+        public DateTime CreatedOn { get; set; }
     }
 }

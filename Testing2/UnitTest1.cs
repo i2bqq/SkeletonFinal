@@ -117,5 +117,17 @@ namespace Testing2
 
             Assert.AreEqual(AnCustomer.Active, TestData);
         }
+        [TestMethod]
+        public void HireDateAddedPropertyOk()
+        {
+            ClsCustomer AnStaff = new ClsCustomer();
+
+            DateTime TestData = DateTime.Now.Date;
+
+            AnStaff.CreatedOn = TestData;
+
+            Assert.AreEqual(AnStaff.CreatedOn, TestData);
+
+        }
     }
 }

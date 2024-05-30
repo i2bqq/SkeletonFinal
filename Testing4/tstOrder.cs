@@ -66,7 +66,7 @@ namespace Testing4
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //test to see if the result is true
@@ -78,9 +78,9 @@ namespace Testing4
             ClsOrder AnOrder = new ClsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderID != 21)
+            if (AnOrder.OrderID != 2)
             {
                 OK = false;
             }
@@ -96,11 +96,11 @@ namespace Testing4
             //create a boolean variable to record if the data is ok
             Boolean OK = true;
             //create some test
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             //invoke the method
             Found = AnOrder.Find(OrderID);
             //check the order id property
-            if (AnOrder.CustomerID != 21)
+            if (AnOrder.CustomerID != 1)
             {
                 OK =false;
             }
@@ -113,9 +113,9 @@ namespace Testing4
             ClsOrder AnOrder = new ClsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderDate != Convert.ToDateTime("10/02/2002"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("12/02/2002"))
             {
                 OK = false;
             }
@@ -127,9 +127,9 @@ namespace Testing4
             ClsOrder AnOrder = new ClsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.TotalAmount != Convert.ToDecimal("100.00"))
+            if (AnOrder.TotalAmount != Convert.ToDecimal("20.00"))
             {
                 OK = false;
             }
@@ -141,7 +141,7 @@ namespace Testing4
             ClsOrder AnOrder = new ClsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 21;
+            Int32 OrderID = 2;
             Found = AnOrder.Find(OrderID);
             if (AnOrder.OrderStatus != true)
             {

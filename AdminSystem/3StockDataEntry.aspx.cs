@@ -16,14 +16,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void BtnOk_Click(object sender, EventArgs e)
     {
         ClsStock AnStock = new ClsStock();
-        AnStock.ProductName = txtProductName.Text;
-        AnStock.CategoryName = txtCategoryName.Text;
-        AnStock.Price = Convert.ToDecimal(txtPrice.Text);
-        AnStock.StockQuantity = Convert.ToInt32(txtStockQuantity.Text);
-        AnStock.CreatedOn = Convert.ToDateTime(txtCreatedOn.Text);
-        AnStock.InStock = txtInStock.Checked;
-        Session["AnStock"] = AnStock;
-        Response.Redirect("3StockViewer.aspx");
+        string ProductName = txtProductName.Text;
+        string CategoryName = txtCategoryName.Text;
+        string Price = txtPrice.Text;
+        string StockQuantity = txtStockQuantity.Text;
+        string CreatedOn = txtCreatedOn.Text;
+        string InStock = txtInStock.Text;
+        string Error = "";
+        Error = AnStock.Valid(ProductName, CategoryName, Price, StockQuantity, CreatedOn);
+
+        if (Error == "")
+        {
+            AnStock.ProductName = ProductName;
+            AnStock.CategoryName = CategoryName;
+            AnStock.Price = Convert.ToDecimal(Price);
+            AnStock.StockQuantity = Convert.ToInt32(StockQuantity);
+            AnStock.CreatedOn = Convert.ToDateTime(CreatedOn);
+            
+
+
+            Session["AnStock"] = AnStock;
+            Response.Redirect("3StockViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
     protected void BtnCancel_Click(object sender, EventArgs e)
     {

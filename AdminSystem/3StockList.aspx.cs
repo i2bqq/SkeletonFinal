@@ -44,4 +44,19 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = " Please select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 ProductID;
+        if (LstStockList.SelectedIndex != -1)
+        {
+            ProductID = Convert.ToInt32(LstStockList.SelectedValue);
+            Session["ProductID"] = ProductID;
+            Response.Redirect("3StockConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
 }

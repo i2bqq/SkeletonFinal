@@ -82,10 +82,26 @@ namespace ClassLibrary
             DB.AddParameter("@StockQuantity", ThisStock.StockQuantity);
             DB.AddParameter("@CreatedOn", ThisStock.CreatedOn);
             DB.AddParameter("@InStock", ThisStock.InStock);
-            return DB.Execute("sproc_Stock_FilterByProductID");
+            return DB.Execute("sproc_Stock_insert");
 
 
 
+
+
+
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB =new clsDataConnection();
+            DB.AddParameter("ProductID", mThisStock.ProductID);
+            DB.AddParameter("ProductName", mThisStock.ProductName);
+            DB.AddParameter("CategoryName", mThisStock.CategoryName);
+            DB.AddParameter("Price", mThisStock.Price);
+            DB.AddParameter("StockQuantity", mThisStock.StockQuantity);
+            DB.AddParameter("CreatedOn", mThisStock.CreatedOn);
+            DB.AddParameter("InStock", mThisStock.InStock);
+            DB.Execute("sproc_Stock_update");
 
 
 

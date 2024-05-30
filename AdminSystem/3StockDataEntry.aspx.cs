@@ -8,8 +8,32 @@ using System.Web.UI.WebControls;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 ProductID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        ProductID = Convert.ToInt32(Session["ProductID"]);
+        if (IsPostBack == false)
+        {
+            if (ProductID != -1)
+            {
+                DisplayStocks();
+            }
+        }
+    }
+    void DisplayStocks()
+    {
+        ClsStockCollection Stocks = new ClsStockCollection();
+        Stocks.ThisStock.Find(ProductID);
+        txtProductID.Text = Stocks.ThisStock.ProductID.ToString();
+        txtProductName.Text = Stocks.ThisStock.ProductName.ToString();
+        txtCategoryName.Text = Stocks.ThisStock.CategoryName.ToString();
+        txtPrice.Text = Stocks.ThisStock.Price.ToString();
+        txtStockQuantity.Text = Stocks.ThisStock.StockQuantity.ToString();
+        txtCreatedOn.Text = Stocks.ThisStock.CreatedOn.ToString();
+        txtInStock.Checked = Stocks.ThisStock.InStock;
+
+
+
 
     }
 
@@ -27,6 +51,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
+            AnStock.ProductID = ProductID;
             AnStock.ProductName = ProductName;
             AnStock.CategoryName = CategoryName;
             AnStock.Price = Convert.ToDecimal(Price);
@@ -34,11 +59,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.CreatedOn = Convert.ToDateTime(CreatedOn);
             AnStock.InStock = txtInStock.Checked;
             ClsStockCollection StockList = new ClsStockCollection();
-            StockList.ThisStock = AnStock;
+            if(ProductID == -1)
+            {
+                StockList.ThisStock = AnStock;
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(ProductID);
+                StockList.ThisStock = AnStock;
+                StockList.Update();
+            }
 
 
-
-            StockList.Add();
+            
             Response.Redirect("3StockList.aspx");
         }
         else

@@ -12,7 +12,9 @@
         </div>
         <asp:ListBox ID="LstStockList" runat="server" Height="363px" Width="309px"></asp:ListBox>
         <p>
-            <asp:Button ID="btnAdd" runat="server" EnableTheming="False" Height="25px" OnClick="BtnAdd_Click" style="margin-left: 25px" Text="Add" Width="102px" />
+            <asp:Button ID="btnAdd" runat="server" EnableTheming="False" Height="25px" OnClick="BtnAdd_Click" style="margin-left: 7px" Text="Add" Width="120px" />
+            <asp:Button ID="BtnEdit" runat="server" Text="Edit" Width="131px" OnClick="BtnEdit_Click" />
+            <asp:Label ID="lblError" runat="server" ></asp:Label>
         </p>
     </form>
 </body>

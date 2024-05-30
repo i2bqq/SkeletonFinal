@@ -88,6 +88,33 @@ namespace Testing3
             //test to see that the two values are the same
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            //create instance
+            ClsStockCollection AllStock = new ClsStockCollection();
+            ClsStock TestItem = new ClsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.ProductID = PrimaryKey;
+            TestItem.ProductName = "lipstick";
+            TestItem.CategoryName = "Face";
+            TestItem.Price = 12;
+            TestItem.StockQuantity = 45;
+            TestItem.CreatedOn = DateTime.Now;
+            TestItem.InStock = true;
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.ProductID = PrimaryKey;
+            TestItem.ProductName = "Shadow";
+            TestItem.CategoryName = "eyes";
+            TestItem.Price = 20;
+            TestItem.StockQuantity = 45;
+            TestItem.CreatedOn = DateTime.Now;
+            TestItem.InStock = true;
+            AllStock.Update();
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
 
 
     }

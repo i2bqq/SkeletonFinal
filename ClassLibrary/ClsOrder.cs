@@ -46,16 +46,16 @@ namespace ClassLibrary
                 mCustomerID = value;
             }
         }
-        private DateTime mDateTime;
+        private DateTime mOrderDate;
         public DateTime OrderDate
         {
             get
             {
-                return mDateTime;
+                return mOrderDate;
             }
             set
             {
-                mDateTime = value;
+                mOrderDate = value;
             }
         }
         private Decimal mTotalAmount;
@@ -70,16 +70,34 @@ namespace ClassLibrary
                 mTotalAmount = value;
             }
         }
-        public bool Find(Int32 OrderID)
+
+        //FIND METHOD
+        public bool Find(int OrderID)
         {
-            //set the private data members to the test data value
-            mOrderID = 21;
-            mOrderStatus = true;
-            mCustomerID = 21;
-            mDateTime = Convert.ToDateTime("10/02/2002");
-            mTotalAmount = Convert.ToDecimal("100.00");
-            //always return true
-            return true;
+            //create a instance of the data connection 
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter for the adress id to search for
+            DB.AddParameter("@OrderID", OrderID);
+            //execute the stored procedure
+            DB.Execute("Sproc_tblOrder_FilterByOrderID");
+            if(DB.Count == 1)
+            {
+                //set the private data members to the test data value
+                mOrderID = Convert.ToInt32(DB.DataTable.Rows[0]["OrderID"]);
+                mOrderStatus = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderStatus"]);
+                mCustomerID = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerID"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mTotalAmount = Convert.ToDecimal(DB.DataTable.Rows[0]["TotalAmount"]);
+                //always return true
+                return true;
+            }
+            //if record was not found
+            else
+            {
+                //return false indicating there is a problem
+                return false;
+            }
         }
     }
 }
+

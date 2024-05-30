@@ -33,6 +33,7 @@ namespace ClassLibrary
         }
         
         List<ClsStock> mStockList = new List<ClsStock>();
+        ClsStock mThisStock = new ClsStock();
         public List<ClsStock> StockList
         {
             get
@@ -59,7 +60,35 @@ namespace ClassLibrary
                 //////
             }
         }
-        public ClsStock ThisStock { get; set; }
-        
+        public ClsStock ThisStock
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+
+                mThisStock = value;
+            }
+        }
+
+        public int Add()
+        {
+           clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@ProductName", ThisStock.ProductName);
+            DB.AddParameter("@CategoryName", ThisStock.CategoryName);
+            DB.AddParameter("@Price", ThisStock.Price);
+            DB.AddParameter("@StockQuantity", ThisStock.StockQuantity);
+            DB.AddParameter("@CreatedOn", ThisStock.CreatedOn);
+            DB.AddParameter("@InStock", ThisStock.InStock);
+            return DB.Execute("sproc_Stock_FilterByProductID");
+
+
+
+
+
+
+        }
     }
 }

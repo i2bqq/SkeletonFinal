@@ -32,11 +32,14 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.Price = Convert.ToDecimal(Price);
             AnStock.StockQuantity = Convert.ToInt32(StockQuantity);
             AnStock.CreatedOn = Convert.ToDateTime(CreatedOn);
-            
+            AnStock.InStock = txtInStock.Checked;
+            ClsStockCollection StockList = new ClsStockCollection();
+            StockList.ThisStock = AnStock;
 
 
-            Session["AnStock"] = AnStock;
-            Response.Redirect("3StockViewer.aspx");
+
+            StockList.Add();
+            Response.Redirect("3StockList.aspx");
         }
         else
         {

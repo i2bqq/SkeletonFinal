@@ -1,4 +1,4 @@
-Page Language="C#" AutoEventWireup="true" CodeFile="2CustomerDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="2CustomerDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
 
 <!DOCTYPE html>
 
@@ -8,6 +8,8 @@ Page Language="C#" AutoEventWireup="true" CodeFile="2CustomerDataEntry.aspx.cs" 
 </head>
 <body>
     <form id="form1" runat="server">
+        <div>
+        </div>
     </form>
 </body>
 </html>

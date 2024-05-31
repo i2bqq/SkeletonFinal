@@ -8,14 +8,16 @@ namespace Testing1
     [TestClass]
     public class TestStaff
     {
+        int StaffID = 1;
         String FirstName = "Talal";
         String LastName = "Alotaibi";
         String Email = "1234f@gmail.com";
-        String Phone = "20849172";
-        String CountryCode = "US";
-        String Role = "dsada";
+        int Phone = 1237654874;
+        int CountryCode = 45;
+        String Role = "StockManager";
         String HireDate = "02/05/2022";
         string PasswordHash = "safsaf";
+        Boolean IsActive = true;
 
 
         [TestMethod]
@@ -28,7 +30,7 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void ActiveStaffPropertyOk()
+        public void StafIsActivePropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
 
@@ -38,7 +40,7 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void HireDateAddedPropertyOk()
+        public void HireDatePropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
 
@@ -54,7 +56,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "US";
+            Int32 TestData = 45;
 
             AnStaff.CountryCode = TestData;
 
@@ -67,7 +69,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "harry";
+            string TestData = "talal";
 
             AnStaff.FirstName = TestData;
 
@@ -105,7 +107,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "asdqewfds@gmail.com";
+            string TestData = "1234f@gmail.com";
 
             AnStaff.Email = TestData;
 
@@ -118,7 +120,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            Int32 TestData = 071642972;
+            Int32 TestData = 1237654874;
 
             AnStaff.Phone = TestData;
 
@@ -131,7 +133,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "Manager";
+            string TestData = "StockManager";
 
             AnStaff.Role = TestData;
 
@@ -241,7 +243,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.CountryCode != "US")
+            if (AnStaff.CountryCode != 45)
             {
                 OK = false;
             }

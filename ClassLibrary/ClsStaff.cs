@@ -7,7 +7,7 @@ namespace ClassLibrary
         private Int32 mStaffID;
         private Boolean mActive;
         private DateTime mHireDate;
-        private string mCountryCode;
+        private Int32 mCountryCode;
         private String mFirstName;
         private String mLastName;
         private String mEmail;
@@ -36,7 +36,7 @@ namespace ClassLibrary
                 mHireDate = value;
             }
         }
-        public string CountryCode
+        public Int32 CountryCode
         {
             get
             {
@@ -138,7 +138,7 @@ namespace ClassLibrary
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
                 mPhone = Convert.ToInt32(DB.DataTable.Rows[0]["Phone"]);
                 mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
-                mCountryCode = Convert.ToString(DB.DataTable.Rows[0]["CountryCode"]);
+                mCountryCode = Convert.ToInt32(DB.DataTable.Rows[0]["CountryCode"]);
                 mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 mHireDate = Convert.ToDateTime(DB.DataTable.Rows[0]["HireDate"]);
                 mPasswordHash = Convert.ToString(DB.DataTable.Rows[0]["PasswordHash"]);

@@ -31,5 +31,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
 
-    
+
+
+    protected void BtnFind_Click(object sender, EventArgs e)
+    {
+        ClsCustomer AnCustomer = new ClsCustomer();
+        Int32 CustomerID;
+        Boolean Found = false;
+        CustomerID = Convert.ToInt32(txtCustomerID.Text);
+        Found = AnCustomer.Find(CustomerID);
+        if (Found == true)
+        {
+
+            txtFirstNameId.Text = AnCustomer.FirstName;
+            txtLastNameId.Text = AnCustomer.LastName;
+            txtEmailId.Text = AnCustomer.Email;
+            txtPhoneId.Text = AnCustomer.Phone;
+            txtAddressId.Text = AnCustomer.Address;
+            txtCountryCodeId.Text = AnCustomer.CountryCode;
+            txtActive.Checked = AnCustomer.IsActive;
+            txtCreatedOnId.Text = AnCustomer.CreatedOn.ToString();
+            txtPasswordId.Text = AnCustomer.Password;
+
+        }
+
+    }
 }

@@ -1,4 +1,4 @@
-﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="2CustomerDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="2CustomerDataEntry.aspx.cs" Inherits="_1_DataEntry" %>
 
 <!DOCTYPE html>
 
@@ -11,6 +11,7 @@
         <div>
             <asp:Label ID="lblCustomerID" runat="server" Text="Customer ID"></asp:Label>
             <asp:TextBox ID="txtCustomerID" runat="server" ></asp:TextBox>
+            <asp:Button ID="BtnFind" runat="server" OnClick="BtnFind_Click" Text="Find" />
             <div>
                 <asp:Label ID="lbFirstNameId" runat="server" Text="First Name"></asp:Label>
     <asp:TextBox runat="server" ID="txtFirstNameId"></asp:TextBox>

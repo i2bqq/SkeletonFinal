@@ -21,8 +21,9 @@ namespace Testing1
         [TestMethod]
         public void InstanceOk()
         {
+            // create an instance of a class we want to create
             ClsStaff AnStaff = new ClsStaff();
-
+            //test to see if that exists
             Assert.IsNotNull(AnStaff);
 
         }

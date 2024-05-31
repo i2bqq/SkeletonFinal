@@ -153,7 +153,7 @@ namespace ClassLibrary
 
         public string Valid(String FirstName, 
                             String LastName,
-                            String Email, 
+                            String EmailID, 
                             String Role,
                             String HireDate , 
                             String Password)
@@ -179,11 +179,11 @@ namespace ClassLibrary
             {
                 Error = Error + "The Last Name must be less than 50 Characters : ";
             }
-            if (Email.Length == 0)
+            if (EmailID.Length == 0)
             {
                 Error = Error + "The Email may not be blank : ";
             }
-            if (Email.Length > 50)
+            if (EmailID.Length > 50)
             {
                 Error = Error + "The Email must be less than 50 Characters : ";
             }
@@ -219,6 +219,11 @@ namespace ClassLibrary
             }
 
             return Error;
+        }
+
+        public string Valid(object firstName, object lastName, object hireDate, object emailID, object password, object role)
+        {
+            throw new NotImplementedException();
         }
     }
 }

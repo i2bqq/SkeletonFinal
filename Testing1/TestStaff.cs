@@ -470,7 +470,7 @@ namespace Testing1
             //this should pass
             string LastName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password  );
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -921,13 +921,13 @@ namespace Testing1
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
-        
+
         [TestMethod]
         public void HireDateExtremeMax()
         {
             ClsStaff AnStaff = new ClsStaff();
-            String  Error = "";
-            DateTime  TestDate;
+            String Error = "";
+            DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string HireDate = TestDate.ToString();
@@ -1026,12 +1026,7 @@ namespace Testing1
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
+
         }
-
-
-
-
-
     }
-
 }

@@ -8,28 +8,12 @@ namespace ClassLibrary
 
             public ClsStockCollection() 
         {
-            Int32 Index = 0;
-            Int32 RecordCount = 0;
+            
+            
             clsDataConnection DB = new clsDataConnection();
             DB.Execute("sproc_Stock_SelelctAll");
-            RecordCount = DB.Count;
-            while (Index < RecordCount)
-            {
-                ClsStock AnStock = new ClsStock();
-                AnStock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
-                AnStock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
-                AnStock.CategoryName = Convert.ToString(DB.DataTable.Rows[Index]["CategoryName"]);
-                AnStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
-                AnStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
-                AnStock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
-                AnStock.CreatedOn = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedOn"]);
-                mStockList.Add(AnStock);
-                Index++;
-
-
-
-
-            }
+            PopulateArray(DB);
+            
         }
         
         List<ClsStock> mStockList = new List<ClsStock>();
@@ -112,6 +96,34 @@ namespace ClassLibrary
             clsDataConnection DB =new clsDataConnection();
             DB.AddParameter("@ProductID", mThisStock.ProductID);
             DB.Execute("sproc_stock_delete");
+        }
+
+        public void ReportByCategoryName(string CategoryName)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CategoryName", CategoryName);
+            DB.Execute("sproc_reportbycategoryname");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mStockList = new List<ClsStock>();
+            while (Index < RecordCount)
+            {
+                ClsStock AnStock = new ClsStock();
+                AnStock.ProductID = Convert.ToInt32(DB.DataTable.Rows[Index]["ProductID"]);
+                AnStock.ProductName = Convert.ToString(DB.DataTable.Rows[Index]["ProductName"]);
+                AnStock.CategoryName = Convert.ToString(DB.DataTable.Rows[Index]["CategoryName"]);
+                AnStock.Price = Convert.ToDecimal(DB.DataTable.Rows[Index]["Price"]);
+                AnStock.StockQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["StockQuantity"]);
+                AnStock.InStock = Convert.ToBoolean(DB.DataTable.Rows[Index]["InStock"]);
+                AnStock.CreatedOn = Convert.ToDateTime(DB.DataTable.Rows[Index]["CreatedOn"]);
+                mStockList.Add(AnStock);
+                Index++;
+            }
         }
     }
 }

@@ -135,6 +135,22 @@ namespace Testing3
             Assert.IsFalse( Found );
 
         }
+        [TestMethod]
+        public void ReportByCategoryNameMethodOk()
+        {
+            ClsStockCollection AllStock = new ClsStockCollection();
+            ClsStockCollection FilterStock = new ClsStockCollection();
+            FilterStock.ReportByCategoryName("");
+            Assert.AreEqual(AllStock.Count, FilterStock.Count);
+        }
+        [TestMethod]
+        public void ReportByCategoryNameNoneFound()
+        {
+            ClsStockCollection Filterstock = new ClsStockCollection();
+            Filterstock.ReportByCategoryName("None");
+            Assert.AreEqual(0, Filterstock.Count);
+        }
+        
 
 
     }

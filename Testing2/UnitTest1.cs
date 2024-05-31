@@ -10,9 +10,9 @@ namespace Testing2
         [TestMethod]
         public void InstanceOk()
         {
-            // create an instance of a class we want to create 
+
             ClsCustomer AnCustomer = new ClsCustomer();
-            //test to see if that exists 
+             
             Assert.IsNotNull(AnCustomer);
         }
         [TestMethod]

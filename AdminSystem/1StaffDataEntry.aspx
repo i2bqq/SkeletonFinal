@@ -50,7 +50,7 @@
         <div>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 131px; top: 400px; position: absolute; width: 184px"></asp:Label>
         </div>
-        <asp:Button ID="btnOK" runat="server" OnClick="Button1_Click" style="z-index: 1; top: 428px; position: absolute; right: 916px" Text="OK" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 428px; position: absolute; right: 916px" Text="OK" />
         <br />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 426px; position: absolute; left: 202px" Text="Cancel" />
         <div>

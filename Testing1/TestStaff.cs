@@ -35,8 +35,8 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
 
             Boolean TestData = true;
-            AnStaff.Active = TestData;
-            Assert.AreEqual(AnStaff.Active, TestData);
+            AnStaff.IsActive = TestData;
+            Assert.AreEqual(AnStaff.IsActive, TestData);
 
         }
         [TestMethod]
@@ -122,10 +122,10 @@ namespace Testing1
 
             Int32 TestData = 1237654874;
 
-            AnStaff.Phone = TestData;
+            AnStaff.Contact = TestData;
 
 
-            Assert.AreEqual(AnStaff.Phone, TestData);
+            Assert.AreEqual(AnStaff.Contact, TestData);
 
         }
         [TestMethod]
@@ -148,10 +148,10 @@ namespace Testing1
 
             string TestData = "13281635";
 
-            AnStaff.PasswordHash = TestData;
+            AnStaff.Password = TestData;
 
 
-            Assert.AreEqual(AnStaff.PasswordHash, TestData);
+            Assert.AreEqual(AnStaff.Password, TestData);
 
         }
         [TestMethod]
@@ -229,7 +229,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Phone != 20849172)
+            if (AnStaff.Contact != 20849172)
             {
                 OK = false;
             }
@@ -285,7 +285,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Active != true)
+            if (AnStaff.IsActive != true)
             {
                 OK = false;
             }
@@ -299,7 +299,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.PasswordHash != "safsaf")
+            if (AnStaff.Password != "safsaf")
             {
                 OK = false;
             }

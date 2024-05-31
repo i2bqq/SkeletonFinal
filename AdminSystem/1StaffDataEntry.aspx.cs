@@ -15,62 +15,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void BtnOk_Click(object sender, EventArgs e)
     {
         ClsStaff AnStaff = new ClsStaff();
-        string StaffID = txtStaffID.Text;   
-        string FirstName = txtFirstName.Text;
-        string LastName = txtLastName.Text;
-        string Email = txtEmail.Text;
-        string Phone = txtPhone.Text;
-        string HireDate = txtHireDate.Text;
-        string CountryCode = txtCountryCode.Text;
-        string Role = txtRole.Text;
-        string Active = txtActive.Text;
-        string PasswordHash = txtPasswordHash.Text;
-        string Error = "";
-        Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
-        if (Error == "")
-        {
-            AnStaff.FirstName = FirstName;
-            AnStaff.LastName = LastName;
-            AnStaff.Email = Email;
-            AnStaff.Role = Role;
-            AnStaff.HireDate = Convert.ToDateTime(HireDate);
-            AnStaff.PasswordHash = PasswordHash;
-            Session["AnStaff"] = AnStaff;
-            Response.Redirect("1StaffViewer.aspx");
-
-        }
-        else
-        {
-            lblError.Text = Error;
-        }
-    }
-
-    protected void BtnCancel_Click(object sender, EventArgs e)
-    {
-
-    }
-
-    protected void btnFind_Click(object sender, EventArgs e)
-    {
-        ClsStaff AnStaff = new ClsStaff();
-        Int32 StaffID;
-        Boolean Found = false;
-        StaffID = Convert.ToInt32(txtStaffID.Text);
-        Found = AnStaff.Find(StaffID);
-        if (Found == true)
-        {
-            txtFirstName.Text = AnStaff.FirstName;
-            txtLastName.Text = AnStaff.LastName;
-            txtFirstName.Text = AnStaff.FirstName;
-            txtEmail.Text = AnStaff.Email;
-            txtPhone.Text = AnStaff.Phone.ToString();
-            txtCountryCode.Text = AnStaff.CountryCode;
-            txtActive.Checked = AnStaff.Active;
-            txtHireDate.Text = AnStaff.HireDate.ToString();
-            txtRole.Text = AnStaff.Role;
-            txtPasswordHash.Text = AnStaff.PasswordHash;
-
-
-        }
+        AnStaff.StaffID = Convert.ToInt32(lblStaffID.Text);
+        Session["AnStaff"] = AnStaff;
+        AnStaff.FirstName = lblFirstName.Text;
+        AnStaff.LastName = lblLastName.Text;
+        AnStaff.Email = lblEmailID.Text;
+        AnStaff.CountryCode = Convert.ToInt32(lblCountryCode.Text);
+        AnStaff.Contact = Convert.ToInt32(lblContactNumber.Text);
+        AnStaff.HireDate = Convert.ToDateTime(DateTime.Now);
+        AnStaff.IsActive = chkActive.Checked;
+        AnStaff.Role = lblRole.Text;
+        AnStaff.Password = lblPassowrd.Text;
+        //navigate to the view page
+        Response.Redirect("Staffviewer.aspx");
     }
 }

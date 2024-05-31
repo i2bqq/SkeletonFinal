@@ -15,7 +15,7 @@ public partial class _1Viewer : System.Web.UI.Page
             AnStaff = (ClsStaff)Session["AnStaff"];
             Response.Write(AnStaff.FirstName);
         Response.Write(AnStaff.LastName);
-        Response.Write(AnStaff.Email);
+        Response.Write(AnStaff.EmailID);
         Response.Write(AnStaff.CountryCode);
         Response.Write(AnStaff.Contact);
         Response.Write(AnStaff.Role);

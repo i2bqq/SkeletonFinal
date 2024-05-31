@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.IO;
+using System.Net;
 
 namespace Testing1
 {
@@ -11,12 +12,12 @@ namespace Testing1
         int StaffID = 1;
         String FirstName = "Talal";
         String LastName = "Alotaibi";
-        String Email = "1234f@gmail.com";
-        int Phone = 1237654874;
+        String EmailID = "1234f@gmail.com";
+        int Contact = 1237654874;
         int CountryCode = 45;
         String Role = "StockManager";
-        String HireDate = "02/05/2022";
-        string PasswordHash = "safsaf";
+        String HireDate = DateTime.Now.ToShortDateString();
+        string Password = "safsaf";
         Boolean IsActive = true;
 
 
@@ -91,7 +92,7 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void StaffIdPropertyOK()
+        public void StaffIDPropertyOK()
         {
 
             ClsStaff AnStaff = new ClsStaff();
@@ -103,20 +104,20 @@ namespace Testing1
             Assert.AreEqual(AnStaff.StaffID, TestData);
         }
         [TestMethod]
-        public void EmailPropertyOk()
+        public void EmailIDPropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
 
             string TestData = "1234f@gmail.com";
 
-            AnStaff.Email = TestData;
+            AnStaff.EmailID = TestData;
 
 
-            Assert.AreEqual(AnStaff.Email, TestData);
+            Assert.AreEqual(AnStaff.EmailID, TestData);
 
         }
         [TestMethod]
-        public void PhonePropertyOk()
+        public void ContactPropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
 
@@ -142,7 +143,7 @@ namespace Testing1
 
         }
         [TestMethod]
-        public void PasswordHashPropertyOk()
+        public void PasswordPropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
 
@@ -208,21 +209,21 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestEmailFound()
+        public void TestEmaiIDlFound()
         {
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
             Int32 StaffID = 19;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Email != "1234f@gmail.com")
+            if (AnStaff.EmailID != "1234f@gmail.com")
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestPhoneFound()
+        public void TestContactFound()
         {
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
@@ -278,7 +279,7 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestActiveFound()
+        public void TestIsActiveFound()
         {
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
@@ -292,7 +293,7 @@ namespace Testing1
             Assert.IsTrue(OK);
         }
         [TestMethod]
-        public void TestPasswordHashFound()
+        public void TestPasswordFound()
         {
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
@@ -310,7 +311,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
             string Error = "";
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             Assert.AreEqual(Error, "");
 
         }
@@ -324,7 +325,7 @@ namespace Testing1
             //this should fail
             string LastName = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -338,7 +339,7 @@ namespace Testing1
             //this should pass
             string LastName = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -352,7 +353,7 @@ namespace Testing1
             //this should pass
             string LastName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -367,7 +368,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -382,7 +383,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -397,7 +398,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -412,7 +413,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -427,7 +428,7 @@ namespace Testing1
             string FirstName = "";
             FirstName = FirstName.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -441,7 +442,7 @@ namespace Testing1
             //this should fail
             string LastName = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -455,7 +456,7 @@ namespace Testing1
             //this should pass
             string LastName = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -469,7 +470,7 @@ namespace Testing1
             //this should pass
             string LastName = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password  );
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -484,7 +485,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -499,7 +500,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -514,7 +515,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -529,7 +530,7 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -544,132 +545,132 @@ namespace Testing1
             string LastName = "";
             LastName = LastName.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void EmailMinLessOne()
+        public void EmaiIDlMinLessOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string Email = "";
+            string EmailID = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMin()
+        public void EmailIDMin()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Email = "a";
+            string EmailID = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMinPlusOne()
+        public void EmailIDMinPlusOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Email = "aa";
+            string EmailID = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMaxLessOne()
+        public void EmailIDMaxLessOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Email = "";
-            Email = Email.PadRight(49, 'a');
+            string EmailID = "";
+            EmailID = EmailID.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMax()
+        public void EmailIDMax()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Email = "";
-            Email = Email.PadRight(50, 'a');
+            string EmailID = "";
+            EmailID = EmailID.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMaxPlusOne()
+        public void EmailIDMaxPlusOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string Email = "";
-            Email = Email.PadRight(51, 'a');
+            string EmailID = "";
+            EmailID = EmailID.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMid()
+        public void EmailIDMid()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string Email = "";
-            Email = Email.PadRight(25, 'a');
+            string EmailID = "";
+            EmailID = EmailID.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void EmailMax500()
+        public void EmailIDMax500()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string Email = "";
-            Email = Email.PadRight(500, 'a');
+            string EmailID = "";
+            EmailID = EmailID.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
-            //test to see that the result is correct
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
+            //test to see that the result is correct    
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -682,7 +683,7 @@ namespace Testing1
             //this should fail
             string Role = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -697,7 +698,7 @@ namespace Testing1
             //this should pass
             string Role = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -712,7 +713,7 @@ namespace Testing1
             //this should pass
             string Role = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -728,7 +729,7 @@ namespace Testing1
             string Role = "";
             Role = Role.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -744,7 +745,7 @@ namespace Testing1
             string Role = "";
             Role = Role.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -760,7 +761,7 @@ namespace Testing1
             string Role = "";
             Role = Role.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -776,7 +777,7 @@ namespace Testing1
             string Role = "";
             Role = Role.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
@@ -792,131 +793,131 @@ namespace Testing1
             string Role = "";
             Role = Role.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
-        public void PasswordHashMinLessOne()
+        public void PasswordMinLessOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string PasswordHash = "";
+            string Password = "";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMin()
+        public void PasswordMin()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string PasswordHash = "a";
+            string Password = "a";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMinPlusOne()
+        public void PasswordMinPlusOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string PasswordHash = "aa";
+            string Password = "aa";
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMaxLessOne()
+        public void PasswordMaxLessOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string PasswordHash = "";
-            PasswordHash = PasswordHash.PadRight(49, 'a');
+            string Password = "";
+            Password = Password.PadRight(49, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMax()
+        public void PasswordMax()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string PasswordHash = "";
-            PasswordHash = PasswordHash.PadRight(50, 'a');
+            string Password = "";
+            Password = Password.PadRight(50, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMaxPlusOne()
+        public void PasswordMaxPlusOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string PasswordHash = "";
-            PasswordHash = PasswordHash.PadRight(51, 'a');
+            string Password = "";
+            Password = Password.PadRight(51, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMid()
+        public void PasswordMid()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string PasswordHash = "";
-            PasswordHash = PasswordHash.PadRight(25, 'a');
+            string Password = "";
+            Password = Password.PadRight(25, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
-        public void PasswordHashMax500()
+        public void PasswordMax500()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();
             //string variable to store any error message
             String Error = "";
             //this should fail
-            string PasswordHash = "";
-            PasswordHash = PasswordHash.PadRight(500, 'a');
+            string Password = "";
+            Password = Password.PadRight(500, 'a');
             //invoke the method
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
             Assert.AreNotEqual(Error, "");
         }
@@ -930,7 +931,7 @@ namespace Testing1
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(100);
             string HireDate = TestDate.ToString();
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -942,7 +943,7 @@ namespace Testing1
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
             string HireDate = TestDate.ToString();
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
@@ -951,9 +952,80 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             String Error = "";
             string HireDate = "This is not A date !";
-            Error = AnStaff.Valid(FirstName, LastName, Email, Role, HireDate, PasswordHash);
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void HireDateExtremeMin()
+        {
+            ClsStaff AnStaff = new ClsStaff();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string HireDate = TestDate.ToString();
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void HireDateMin()
+        {
+            //create an instance of the class we want to create
+            ClsStaff AnStaff = new ClsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //convert the date variable to a string variable
+            string HireDate = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
 
+        [TestMethod]
+        public void HireDateMinPlusOne()
+        {
+            //create an instance of the class we want to create
+            ClsStaff AnStaff = new ClsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is plus 1 day
+            TestDate = TestDate.AddDays(1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateAddedMinLessOne()
+        {
+            //create an instance of the class we want to create
+            ClsStaff AnStaff = new ClsStaff();
+            //string variable to store any error message
+            String Error = "";
+            //create a variable to store the test date data
+            DateTime TestDate;
+            //set the date totodays date
+            TestDate = DateTime.Now.Date;
+            //change the date to whatever the date is less 1 day
+            TestDate = TestDate.AddDays(-1);
+            //convert the date variable to a string variable
+            string DateAdded = TestDate.ToString();
+            //invoke the method
+            Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
         }
 
 

@@ -19,7 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnStaff"] = AnStaff;
         AnStaff.FirstName = lblFirstName.Text;
         AnStaff.LastName = lblLastName.Text;
-        AnStaff.Email = lblEmailID.Text;
+        AnStaff.EmailID = lblEmailID.Text;
         AnStaff.CountryCode = Convert.ToInt32(lblCountryCode.Text);
         AnStaff.Contact = Convert.ToInt32(lblContactNumber.Text);
         AnStaff.HireDate = Convert.ToDateTime(DateTime.Now);

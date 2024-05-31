@@ -10,7 +10,7 @@ namespace ClassLibrary
         private Int32 mCountryCode;
         private String mFirstName;
         private String mLastName;
-        private String mEmail;
+        private String mEmailID;
         private Int32 mContact;
         private String mRole;
         private String mPassword;
@@ -80,15 +80,15 @@ namespace ClassLibrary
                 mStaffID = value;
             }
         }
-        public string Email
+        public string EmailID
         {
             get
             {
-                return mEmail;
+                return mEmailID;
             }
             set
             {
-                mEmail = value;
+                mEmailID = value;
             }
         }
         public Int32 Contact
@@ -135,13 +135,13 @@ namespace ClassLibrary
                 mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
                 mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
                 mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
-                mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
+                mEmailID = Convert.ToString(DB.DataTable.Rows[0]["EmailID"]);
                 mContact = Convert.ToInt32(DB.DataTable.Rows[0]["Phone"]);
                 mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
                 mCountryCode = Convert.ToInt32(DB.DataTable.Rows[0]["CountryCode"]);
-                mIsActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mIsActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsActive"]);
                 mHireDate = Convert.ToDateTime(DB.DataTable.Rows[0]["HireDate"]);
-                mPassword = Convert.ToString(DB.DataTable.Rows[0]["PasswordHash"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["Password"]);
                 return true;
 
             }
@@ -151,7 +151,12 @@ namespace ClassLibrary
             }
         }
 
-        public string Valid(String FirstName, String LastName, String Email, String Role,String HireDate , String PasswordHash)
+        public string Valid(String FirstName, 
+                            String LastName,
+                            String Email, 
+                            String Role,
+                            String HireDate , 
+                            String Password)
         {
             string Error = "";
             DateTime  DateTemp;
@@ -190,11 +195,11 @@ namespace ClassLibrary
             {
                 Error = Error + "The Role must be less than 50 Characters ";
             }
-            if (PasswordHash.Length == 0)
+            if (Password.Length == 0)
             {
                 Error = Error + "The Password may not be blank ";
             }
-            if (PasswordHash.Length > 50)
+            if (Password.Length > 50)
             {
                 Error = Error + "The Password must be less than 50 Characters ";
             }
@@ -202,7 +207,7 @@ namespace ClassLibrary
             try
             {
                 DateTemp = Convert.ToDateTime(HireDate);
-                if (DateTemp > DateComp)
+                if (DateTemp > DateTime.Now.Date)
                 {
                     Error = Error + "The Date cannot be in the futre ";
                 }

@@ -110,7 +110,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductID = 1;
             Found = AnStock.Find(ProductID);
-            if (AnStock.ProductName != "Make up")
+            if (AnStock.ProductName != "Shadow")
             {
                 OK = false;
             }
@@ -124,7 +124,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CategoryName != "Face")
+            if (AnStock.CategoryName != "eyes")
             {
                 OK = false;
             }
@@ -138,7 +138,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.Price != 123)
+            if (AnStock.Price != 20)
             {
                 OK = false;
             }
@@ -152,7 +152,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.StockQuantity != 2)
+            if (AnStock.StockQuantity != 45)
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CreatedOn != Convert.ToDateTime("12/12/2012"))
+            if (AnStock.CreatedOn != Convert.ToDateTime("31/05/2024"))
             {
                 OK = false;
             }

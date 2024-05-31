@@ -15,6 +15,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayStocks();
         }
+        ClsStockUser AnUser = new ClsStockUser();
+        AnUser = (ClsStockUser)Session["AnUser"];
+        Response.Write("Logged in as :" + AnUser.UserName);
     }
     void DisplayStocks()
     {
@@ -58,5 +61,27 @@ public partial class _1_List : System.Web.UI.Page
         {
             lblError.Text = "Please select a record from the list to delete";
         }
+    }
+
+    protected void btnApply_Click(object sender, EventArgs e)
+    {
+        ClsStockCollection AnStock = new ClsStockCollection();
+        AnStock.ReportByCategoryName(txtFilter.Text);
+        LstStockList.DataSource = AnStock.StockList;
+        LstStockList.DataTextField = "ProductID";
+        LstStockList.DataTextField = "CategoryName";
+        LstStockList.DataBind();
+    }
+
+    protected void btnClear_Click(object sender, EventArgs e)
+    {
+        ClsStockCollection AnStock = new ClsStockCollection();
+        AnStock.ReportByCategoryName("");
+        txtFilter.Text = "";
+        LstStockList.DataSource= AnStock.StockList;
+        LstStockList.DataTextField = "ProductID";
+        LstStockList.DataTextField = "CategoryName";
+        LstStockList.DataBind();
+
     }
 }

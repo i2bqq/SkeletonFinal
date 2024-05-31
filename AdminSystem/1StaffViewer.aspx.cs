@@ -16,12 +16,12 @@ public partial class _1Viewer : System.Web.UI.Page
             Response.Write(AnStaff.FirstName);
         Response.Write(AnStaff.LastName);
         Response.Write(AnStaff.Email);
-        Response.Write(AnStaff.Phone);
         Response.Write(AnStaff.CountryCode);
+        Response.Write(AnStaff.Contact);
         Response.Write(AnStaff.Role);
         Response.Write(AnStaff.HireDate);
-        Response.Write(AnStaff.Active);
-        Response.Write(AnStaff.PasswordHash);
+        Response.Write(AnStaff.IsActive);
+        Response.Write(AnStaff.Password);
 
 
     }

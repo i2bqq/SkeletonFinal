@@ -5,24 +5,24 @@ namespace ClassLibrary
     public class ClsStaff
     {
         private Int32 mStaffID;
-        private Boolean mActive;
+        private Boolean mIsActive;
         private DateTime mHireDate;
         private Int32 mCountryCode;
         private String mFirstName;
         private String mLastName;
         private String mEmail;
-        private Int32 mPhone;
+        private Int32 mContact;
         private String mRole;
-        private String mPasswordHash;
-        public bool Active
+        private String mPassword;
+        public bool IsActive
         {
             get
             {
-                return mActive;
+                return mIsActive;
             }
             set
             {
-                mActive = value;
+                mIsActive = value;
             }
         }
         public DateTime HireDate
@@ -91,15 +91,15 @@ namespace ClassLibrary
                 mEmail = value;
             }
         }
-        public Int32 Phone
+        public Int32 Contact
         {
             get
             {
-                return mPhone;
+                return mContact;
             }
             set
             {
-                mPhone = value;
+                mContact = value;
             }
         }
         public string Role
@@ -113,15 +113,15 @@ namespace ClassLibrary
                 mRole = value;
             }
         }
-        public string PasswordHash
+        public string Password
         {
             get
             {
-                return mPasswordHash;
+                return mPassword;
             }
             set
             {
-                mPasswordHash = value;
+                mPassword = value;
             }
         }
 
@@ -136,12 +136,12 @@ namespace ClassLibrary
                 mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
                 mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
                 mEmail = Convert.ToString(DB.DataTable.Rows[0]["Email"]);
-                mPhone = Convert.ToInt32(DB.DataTable.Rows[0]["Phone"]);
+                mContact = Convert.ToInt32(DB.DataTable.Rows[0]["Phone"]);
                 mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
                 mCountryCode = Convert.ToInt32(DB.DataTable.Rows[0]["CountryCode"]);
-                mActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
+                mIsActive = Convert.ToBoolean(DB.DataTable.Rows[0]["Active"]);
                 mHireDate = Convert.ToDateTime(DB.DataTable.Rows[0]["HireDate"]);
-                mPasswordHash = Convert.ToString(DB.DataTable.Rows[0]["PasswordHash"]);
+                mPassword = Convert.ToString(DB.DataTable.Rows[0]["PasswordHash"]);
                 return true;
 
             }

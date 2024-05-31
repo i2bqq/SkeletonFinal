@@ -22,7 +22,5 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write(AnStaff.HireDate);
         Response.Write(AnStaff.IsActive);
         Response.Write(AnStaff.Password);
-
-
     }
 }

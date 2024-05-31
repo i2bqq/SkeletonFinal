@@ -12,7 +12,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
     }
 
-    protected void BtnOk_Click(object sender, EventArgs e)
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         ClsStaff AnStaff = new ClsStaff();
         AnStaff.StaffID = Convert.ToInt32(lblStaffID.Text);

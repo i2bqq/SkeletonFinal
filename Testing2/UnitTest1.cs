@@ -7,12 +7,14 @@ namespace Testing2
     [TestClass]
     public class TestCustomer
     {
+        public object AnCustomer { get; private set; }
+
         [TestMethod]
         public void InstanceOk()
         {
 
             ClsCustomer AnCustomer = new ClsCustomer();
-             
+
             Assert.IsNotNull(AnCustomer);
         }
         [TestMethod]
@@ -97,14 +99,14 @@ namespace Testing2
         [TestMethod]
         public void ActiveCustomerPropertyOK()
         {
-            
+
             ClsCustomer AnCustomer = new ClsCustomer();
-            
+
             Boolean TestData = true;
-            
-            AnCustomer.Active = TestData;
-            
-            Assert.AreEqual(AnCustomer.Active, TestData);
+
+            AnCustomer.IsActive = TestData;
+
+            Assert.AreEqual(AnCustomer.IsActive, TestData);
         }
         [TestMethod]
         public void PassowrdHashPropertyOK()
@@ -114,9 +116,9 @@ namespace Testing2
 
             Boolean TestData = true;
 
-            AnCustomer.Active = TestData;
+            AnCustomer.IsActive = TestData;
 
-            Assert.AreEqual(AnCustomer.Active, TestData);
+            Assert.AreEqual(AnCustomer.IsActive, TestData);
         }
         [TestMethod]
         public void HireDateAddedPropertyOk()
@@ -130,5 +132,168 @@ namespace Testing2
             Assert.AreEqual(AnStaff.CreatedOn, TestData);
 
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            Assert.IsTrue(Found);
+
+        }
+
+        [TestMethod]
+        public void CustomerIdFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.CustomerID != 21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void FirstNameFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.FirstName != "Test Saumya")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        public void LastNameFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.LastName != "Test Bhakri")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        public void EmailFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Email != "Test veda1@gmail.com")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        public void PhoneFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Phone != "Test 07345876302")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        public void CountryCodeFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.CountryCode != "Test UK")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        public void AddressFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Address != "14 Blue Lane")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
+        public void IsActiveFound()
+        {
+
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 AddressId = 21;
+            Found = AnCustomer.Find(AddressId);
+            if (AnCustomer.IsActive != true)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+        public void CreatedOnFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.CreatedOn != Convert.ToDateTime("16/11/2023"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        public void PasswordFound()
+        {
+            ClsCustomer AnCustomer = new ClsCustomer();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 CustomerID = 21;
+            Found = AnCustomer.Find(CustomerID);
+            if (AnCustomer.Password != "TRGTERYTER2637")
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
     }
 }
+
+
+
+
+
+
+
+
+  
+       

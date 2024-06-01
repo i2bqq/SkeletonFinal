@@ -70,7 +70,7 @@
                 <label for="txtPassword">Password</label>
                 <asp:TextBox ID="txtPassword" runat="server" TextMode="Password"></asp:TextBox>
             </div>
-            <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
+            <asp:Label ID="lblError" runat="server" CssClass="error" ForeColor="Red"></asp:Label>
             <div class="form-actions">
                 <asp:Button ID="BtnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="cancel" />

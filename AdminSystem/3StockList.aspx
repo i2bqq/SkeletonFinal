@@ -84,7 +84,7 @@
                 <asp:Button ID="BtnEdit" runat="server" Text="Edit" OnClick="BtnEdit_Click" CssClass="edit" />
                 <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" CssClass="delete" />
             </div>
-            <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
+            <asp:Label ID="lblError" runat="server" CssClass="error" ForeColor="Red"></asp:Label>
         </div>
     </form>
 </body>

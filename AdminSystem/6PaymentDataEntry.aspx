@@ -21,7 +21,7 @@
             margin-bottom: 5px;
             font-weight: bold;
         }
-        .form-group input {
+        .form-group input, .form-group .checkbox-label {
             width: 100%;
             padding: 8px;
             box-sizing: border-box;
@@ -42,6 +42,11 @@
             padding: 10px 20px;
             margin: 0 10px;
         }
+        .error {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -52,7 +57,7 @@
         </div>
         <div class="form-group">
             <label for="txtOrderID">Order ID</label>
-            <asp:TextBox ID="txtOrderID" runat="server" ></asp:TextBox>
+            <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
         </div>
         <div class="form-group">
             <label for="txtPaymentDate">Payment Date</label>
@@ -67,8 +72,8 @@
             <asp:TextBox ID="txtAmount" runat="server"></asp:TextBox>
         </div>
         <div class="form-group">
-            <label for="txtStatus">Status</label>
-            <asp:TextBox ID="txtStatus" runat="server"></asp:TextBox>
+            <label for="chkStatus">Refund</label>
+            <asp:CheckBox ID="chkStatus" runat="server" />
         </div>
         <div class="form-group">
             <label for="txtCreatedOn">Created On</label>
@@ -77,6 +82,10 @@
         <div class="buttons">
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
+        </div>
+        <div class="error">
+            <asp:Label ID="lblError" runat="server" Visible="false"></asp:Label>
         </div>
     </form>
 </body>

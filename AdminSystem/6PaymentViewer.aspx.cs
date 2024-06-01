@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
-using System.Web.UI.WebControls;
 using ClassLibrary;
 
-public partial class _1Viewer : System.Web.UI.Page
+public partial class _1Viewer : Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-        ClsPayment aPayment = new ClsPayment();
-        aPayment = (ClsPayment)Session["aPayment"];
-        Response.Write(aPayment.OrderID);
-        Response.Write(aPayment.PaymentDate);
-        Response.Write(aPayment.PaymentMethod);
-        Response.Write(aPayment.Amount);
-        Response.Write(aPayment.Status);
-        Response.Write(aPayment.CreatedOn);
+        ClsPayment aPayment = (ClsPayment)Session["aPayment"];
+        Response.Write("Order ID: " + aPayment.OrderID + "<br>");
+        Response.Write("Payment Date: " + aPayment.PaymentDate.ToString("dd/MM/yyyy") + "<br>");
+        Response.Write("Payment Method: " + aPayment.PaymentMethod + "<br>");
+        Response.Write("Amount: " + aPayment.Amount + "<br>");
+        Response.Write("Status: " + (aPayment.Status ? "True" : "False") + "<br>");
+        Response.Write("Created On: " + aPayment.CreatedOn.ToString("dd/MM/yyyy") + "<br>");
     }
 }

@@ -34,12 +34,12 @@
                     <asp:Label runat="server" Text="Address" ID="lblAddressId"></asp:Label>
 <asp:TextBox runat="server" ID="txtAddressId"></asp:TextBox>                       
 </div>
-            <asp:CheckBox runat="server" ID="txtActive" Text="Is Active"></asp:CheckBox>
+            <asp:CheckBox runat="server" ID="chkActive" Text="Is Active"></asp:CheckBox>
 
 
 </div>
     </div>
-            <asp:Label runat="server" Text="Created On " ID="Label5"></asp:Label>
+            <asp:Label runat="server" Text="Created On " ID="lblCreatedOn"></asp:Label>
 <asp:TextBox runat="server" ID="txtCreatedOnId"></asp:TextBox>
 </div>
                                       <asp:Label runat="server" Text="Password " ID="lblPasswordId"></asp:Label>

@@ -179,8 +179,10 @@ namespace ClassLibrary
 
         public string Valid(string firstName, string lastName, string email, string phone, string createdOn, string address, string password)
         {
-            string Error = "";
-            DateTime DateTemp;
+            String Error = "";
+            
+            
+            
             if (firstName.Length == 0)
             {
                 Error = Error + "The first name must not be blank";
@@ -213,29 +215,12 @@ namespace ClassLibrary
             {
                 Error = Error + "The first name must be not less than 20 numbers";
             }
-            DateTime DateComp = DateTime.Now.Date;
-            try
-            {
-                DateTemp = Convert.ToDateTime(createdOn);
-
-                if (DateTemp < DateComp)
-                {
-                    Error = Error + "The date cannot be in the past : ";
-                }
-                if (DateTemp > DateComp)
-                {
-                    Error = Error + "The date cannot be in the future :";
-                }
-            }
-            catch
-            {
-                Error = Error + "The date was not a valid date :";
-            }
+            
             if (address.Length == 0)
             {
                 Error = Error + "The address must not be blank";
             }
-            if (address.Length > 50)
+            if (address.Length > 255)
             {
                 Error = Error + "The address must be not less than 255 characters";
 
@@ -248,7 +233,9 @@ namespace ClassLibrary
             {
                 Error = Error + "The password must be not less than 50 characters";
             }
-            return Error;
+           
+
+                return Error;
         }
     }
 }

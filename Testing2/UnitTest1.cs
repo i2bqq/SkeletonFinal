@@ -329,6 +329,9 @@ namespace Testing2
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
+        /// <summary>
+        /// /////////////////////////////////////////////////////////////////
+        /// </summary>
         [TestMethod]
         public void FirstNameMinLessOne()
         {
@@ -342,7 +345,7 @@ namespace Testing2
         public void FirstNameMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string FirstName = "a";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -351,7 +354,7 @@ namespace Testing2
         public void FirstNameMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string FirstName = "aa";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -360,7 +363,7 @@ namespace Testing2
         public void FirstNameMaxLessOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string FirstName = "";
             FirstName = FirstName.PadRight(49, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
@@ -370,7 +373,7 @@ namespace Testing2
         public void FirstNameMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string FirstName = "";
             FirstName = FirstName.PadRight(50, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
@@ -411,16 +414,16 @@ namespace Testing2
         public void LastNameMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string LastName = "";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void LastNameMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string LastName = "aa";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -429,9 +432,9 @@ namespace Testing2
         public void LastNameMaxLessOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string LastName = "";
-            FirstName = FirstName.PadRight(49, 'a');
+            LastName = LastName.PadRight(49, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -439,9 +442,9 @@ namespace Testing2
         public void LastNameMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string LastName = "";
-            FirstName = FirstName.PadRight(50, 'a');
+            LastName = LastName.PadRight(50, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -459,9 +462,9 @@ namespace Testing2
         public void LastNameMid()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string LastName = "";
-            FirstName = FirstName.PadRight(25, 'a');
+            LastName = LastName.PadRight(25, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -480,7 +483,7 @@ namespace Testing2
         public void EmailNameMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Email = "a";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -489,7 +492,7 @@ namespace Testing2
         public void EmailMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Email = "aa";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -498,9 +501,9 @@ namespace Testing2
         public void EmailMaxLessOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Email = "";
-            FirstName = FirstName.PadRight(99, 'a');
+            Email = Email.PadRight(99, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -508,9 +511,9 @@ namespace Testing2
         public void EmailMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Email = "";
-            FirstName = FirstName.PadRight(100, 'a');
+            Email = Email.PadRight(100, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -518,19 +521,19 @@ namespace Testing2
         public void EmailMaxPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Email = "";
-            FirstName = FirstName.PadRight(101, 'a');
+            Email = Email.PadRight(101, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
         public void EmailMid()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Email = "";
-            FirstName = FirstName.PadRight(50, 'a');
+            Email = Email.PadRight(50, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -558,7 +561,7 @@ namespace Testing2
         public void PhoneMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Phone = "aa";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -567,19 +570,19 @@ namespace Testing2
         public void PhoneMaxLessOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Phone = "";
-            FirstName = FirstName.PadRight(19, 'a');
+            Phone = Phone.PadRight(19, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
         [TestMethod]
-        public void PhonelMax()
+        public void PhoneMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Phone = "";
-            FirstName = FirstName.PadRight(20, 'a');
+            Phone = Phone.PadRight(20, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -587,9 +590,9 @@ namespace Testing2
         public void PhoneMaxPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Phone = "";
-            FirstName = FirstName.PadRight(21, 'a');
+            Phone = Phone.PadRight(21, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreNotEqual(Error, "");
         }
@@ -597,9 +600,9 @@ namespace Testing2
         public void PhoneMid()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Phone = "";
-            FirstName = FirstName.PadRight(10, 'a');
+            Phone = Phone.PadRight(10, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
 
@@ -610,64 +613,64 @@ namespace Testing2
         public void CreatedOnExtremeMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddYears(-100);
             string CreatedOn = TestDate.ToString();
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
 
         public void CreatedOnExtremeMinLessOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(-1);
             string CreatedOn = TestDate.ToString();
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
 
-        public void CreatedOnEMin()
+        public void CreatedOnMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             string CreatedOn = TestDate.ToString();
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
 
         public void CreatedOnMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(1);
             string CreatedOn = TestDate.ToString();
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         [TestMethod]
 
         public void CreatedOnExtremeMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             DateTime TestDate;
             TestDate = DateTime.Now.Date;
             TestDate = TestDate.AddDays(100);
             string CreatedOn = TestDate.ToString();
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
         ////////////////////////////////////////////////////////////////////////////////////////////
         [TestMethod]
@@ -683,7 +686,7 @@ namespace Testing2
         public void AddressMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Address = "a";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -692,7 +695,7 @@ namespace Testing2
         public void AddressMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Address = "aa";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
@@ -703,17 +706,17 @@ namespace Testing2
             ClsCustomer AnCustomer = new ClsCustomer();
             string Error = "";
             string Address = "";
-            FirstName = FirstName.PadRight(99, 'a');
+            FirstName = FirstName.PadRight(254, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void AddressMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Address = "";
-            FirstName = FirstName.PadRight(100, 'a');
+            Address = Address.PadRight(255, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -723,7 +726,7 @@ namespace Testing2
             ClsCustomer AnCustomer = new ClsCustomer();
             string Error = "";
             string Address = "";
-            FirstName = FirstName.PadRight(101, 'a');
+            Address = Address.PadRight(256, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreNotEqual(Error, "");
         }
@@ -733,7 +736,7 @@ namespace Testing2
             ClsCustomer AnCustomer = new ClsCustomer();
             string Error = "";
             string Address = "";
-            FirstName = FirstName.PadRight(50, 'a');
+            Address = Address.PadRight(127, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -743,7 +746,7 @@ namespace Testing2
         {
             ClsCustomer AnCustomer = new ClsCustomer();
             string Error = "";
-            string Address = "";
+            string Password = "";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreNotEqual(Error, "");
         }
@@ -751,8 +754,8 @@ namespace Testing2
         public void PasswordMin()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
-            string Address = "a";
+            String Error = "";
+            string Password = "a";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -760,8 +763,8 @@ namespace Testing2
         public void PasswordMinPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
-            string Address = "aa";
+            String Error = "";
+            string Password = "aa";
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }
@@ -769,29 +772,29 @@ namespace Testing2
         public void PasswordMaxLessOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Password = "";
-            FirstName = FirstName.PadRight(99, 'a');
+            Password = Password.PadRight(99, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void PasswordMax()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Password = "";
-            FirstName = FirstName.PadRight(100, 'a');
+            Password = Password.PadRight(100, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
-            Assert.AreEqual(Error, "");
+            Assert.AreNotEqual(Error, "");
         }
         [TestMethod]
         public void PasswordMaxPlusOne()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Password = "";
-            FirstName = FirstName.PadRight(101, 'a');
+            Password = Password.PadRight(101, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreNotEqual(Error, "");
         }
@@ -799,9 +802,9 @@ namespace Testing2
         public void PasswordMid()
         {
             ClsCustomer AnCustomer = new ClsCustomer();
-            string Error = "";
+            String Error = "";
             string Password = "";
-            FirstName = FirstName.PadRight(50, 'a');
+            Password = Password.PadRight(50, 'a');
             Error = AnCustomer.Valid(FirstName, LastName, Email, Phone, CreatedOn, Address, Password);
             Assert.AreEqual(Error, "");
         }

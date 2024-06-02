@@ -14,21 +14,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
-    {
-        
-        //create a new instance of clsOrder
+    {  
         ClsOrder AnOrder = new ClsOrder();
-        //capture the order ID
-        AnOrder.CustomerID = Convert.ToInt32(txtCustomerID.Text);
-        AnOrder.OrderDate = Convert.ToDateTime(txtOrderDate.Text);
-        AnOrder.TotalAmount = Convert.ToDecimal(txtTotalAmount.Text);
-        AnOrder.OrderStatus = Convert.ToBoolean(chkOrderStatus.Checked);
-
-
-        //store the orderID in the session object
-        Session["AnOrder"] = AnOrder;
-        //navigate to the view page
-        Response.Redirect("4OrderViewer.aspx");
+        string CustomerID = txtCustomerID.Text;
+        string OrderDate = txtOrderDate.Text;
+        string TotalAmount = txtTotalAmount.Text;
+        string OrderStatus = chkOrderStatus.Text;
+        string Error = "";
+        Error = AnOrder.Valid(OrderDate, TotalAmount);
+        if (Error == "")
+        {
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+            AnOrder.TotalAmount = Convert.ToDecimal(TotalAmount);
+            //store the orderID in the session object
+            Session["AnOrder"] = AnOrder;
+            //navigate to the view page
+            Response.Redirect("4OrderViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

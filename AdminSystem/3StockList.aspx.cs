@@ -24,6 +24,7 @@ public partial class _1_List : System.Web.UI.Page
         ClsStockCollection Stocks = new ClsStockCollection();
         LstStockList.DataSource= Stocks.StockList;
         LstStockList.DataValueField = "ProductID";
+        LstStockList.DataTextField = "ProductName";
         LstStockList.DataBind();
     }
 

@@ -58,18 +58,22 @@
         <div class="form-group">
             <label for="txtOrderID">Order ID</label>
             <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
+            <asp:Label ID="lblOrderIDError" runat="server" CssClass="error" Visible="false"></asp:Label>
         </div>
         <div class="form-group">
             <label for="txtPaymentDate">Payment Date</label>
             <asp:TextBox ID="txtPaymentDate" runat="server" placeholder="dd/mm/yyyy"></asp:TextBox>
+            <asp:Label ID="lblPaymentDateError" runat="server" CssClass="error" Visible="false"></asp:Label>
         </div>
         <div class="form-group">
             <label for="txtPaymentMethod">Payment Method</label>
             <asp:TextBox ID="txtPaymentMethod" runat="server"></asp:TextBox>
+            <asp:Label ID="lblPaymentMethodError" runat="server" CssClass="error" Visible="false"></asp:Label>
         </div>
         <div class="form-group">
             <label for="txtAmount">Amount</label>
             <asp:TextBox ID="txtAmount" runat="server"></asp:TextBox>
+            <asp:Label ID="lblAmountError" runat="server" CssClass="error" Visible="false"></asp:Label>
         </div>
         <div class="form-group">
             <label for="chkStatus">Refund</label>
@@ -78,6 +82,7 @@
         <div class="form-group">
             <label for="txtCreatedOn">Created On</label>
             <asp:TextBox ID="txtCreatedOn" runat="server"></asp:TextBox>
+            <asp:Label ID="lblCreatedOnError" runat="server" CssClass="error" Visible="false"></asp:Label>
         </div>
         <div class="buttons">
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Diagnostics;
 
 namespace ClassLibrary
 {
@@ -97,6 +98,68 @@ namespace ClassLibrary
                 //return false indicating there is a problem
                 return false;
             }
+        }
+
+        public string Valid(object orderDate, object totalAmount)
+        {
+            //create a string variable to store the error
+            String Error = "";
+            DateTime DateTemp;
+            double PriceTemp;
+            if (totalAmount == null || totalAmount == "")
+            {
+                Error = Error + "Total Amount cannot be left blank : ";
+            }
+            else
+            {
+                try
+                {
+                    PriceTemp = Convert.ToDouble(totalAmount);
+
+                    if (PriceTemp < 0.10)
+                    {
+                        Error = Error + "total Amount cannot be less than 0.1 : ";
+                    }
+
+                    if (PriceTemp > 10000.00)
+                    {
+                        Error = Error + "total Amount cannot be greater than 10,000";
+                    }
+                }
+                catch
+                {
+                    Error = Error + "The totalAmount was not valid : ";
+                }
+                DateTime DateComp = DateTime.Now.Date;
+                try
+                {
+                    //copy the arrivedOn value to the DateTemp variable
+                    DateTemp = Convert.ToDateTime(orderDate);
+
+                    if (DateTemp < DateComp)//compare the dates
+                    {
+                        //record the error
+                        Error = Error + "The date cannot be in the past :";
+                    }
+
+                    if (DateTemp > DateComp)
+                    {
+                        //record the error
+                        Error = Error + "The date cannot be in the future :";
+                    }
+                }
+
+
+                catch
+                {
+                    Error = Error + "The date was not a valid date : ";
+                }
+
+
+
+            }
+            return Error;
+
         }
     }
 }

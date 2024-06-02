@@ -18,7 +18,7 @@ namespace Testing6
         public void PaymentIDPropertyOK()
         {
             ClsPayment aPayment = new ClsPayment();
-            int testData = 3; // Ensure this ID exists in your database
+            int testData = 3;
             aPayment.PaymentID = testData;
             Assert.AreEqual(aPayment.PaymentID, testData);
         }
@@ -27,7 +27,7 @@ namespace Testing6
         public void OrderIDPropertyOK()
         {
             ClsPayment aPayment = new ClsPayment();
-            int testData = 2; // Ensure this ID exists in your database
+            int testData = 2;
             aPayment.OrderID = testData;
             Assert.AreEqual(aPayment.OrderID, testData);
         }
@@ -81,7 +81,7 @@ namespace Testing6
         public void FindMethodOK()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
             Assert.IsTrue(found);
         }
 
@@ -89,7 +89,8 @@ namespace Testing6
         public void TestOrderIDFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.OrderID, 2);
         }
 
@@ -97,7 +98,8 @@ namespace Testing6
         public void TestPaymentDateFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.PaymentDate, Convert.ToDateTime("01/06/2023"));
         }
 
@@ -105,7 +107,8 @@ namespace Testing6
         public void TestPaymentMethodFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.PaymentMethod, "Card");
         }
 
@@ -113,7 +116,8 @@ namespace Testing6
         public void TestAmountFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.Amount, 10.00m);
         }
 
@@ -121,7 +125,8 @@ namespace Testing6
         public void TestStatusFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.Status, true);
         }
 
@@ -129,7 +134,8 @@ namespace Testing6
         public void TestCreatedOnFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(2); // Ensure this OrderID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.CreatedOn, Convert.ToDateTime("01/06/2023"));
         }
 
@@ -137,23 +143,24 @@ namespace Testing6
         public void FindByPaymentIDMethodOK()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
             Assert.IsTrue(found);
         }
 
         [TestMethod]
-        public void TestPaymentIDFound()
+        public void TestPaymentIDNotFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
-            Assert.AreEqual(aPayment.PaymentID, 3);
+            bool found = aPayment.Find(9999); // Ensure this PaymentID does NOT exist in your database
+            Assert.IsFalse(found);
         }
 
         [TestMethod]
         public void TestOrderIDFoundByPaymentID()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.OrderID, 2);
         }
 
@@ -161,7 +168,8 @@ namespace Testing6
         public void TestPaymentDateFoundByPaymentID()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.PaymentDate, Convert.ToDateTime("01/06/2023"));
         }
 
@@ -169,7 +177,8 @@ namespace Testing6
         public void TestPaymentMethodFoundByPaymentID()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.PaymentMethod, "Card");
         }
 
@@ -177,7 +186,8 @@ namespace Testing6
         public void TestAmountFoundByPaymentID()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.Amount, 10.00m);
         }
 
@@ -185,7 +195,8 @@ namespace Testing6
         public void TestStatusFoundByPaymentID()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.Status, true);
         }
 
@@ -193,7 +204,8 @@ namespace Testing6
         public void TestCreatedOnFoundByPaymentID()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.FindByPaymentID(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3);
+            Assert.IsTrue(found);
             Assert.AreEqual(aPayment.CreatedOn, Convert.ToDateTime("01/06/2023"));
         }
     }

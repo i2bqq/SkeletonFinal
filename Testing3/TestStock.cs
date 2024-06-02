@@ -166,7 +166,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CreatedOn != Convert.ToDateTime("31/05/2024"))
+            if (AnStock.CreatedOn != Convert.ToDateTime("02/06/2024"))
             {
                 OK = false;
             }

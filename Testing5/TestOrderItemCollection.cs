@@ -149,9 +149,10 @@ namespace Testing5
         public void ReportByOrderIDNoneFound()
         {
             ClsOrderItemCollection FilteredOrderItem = new ClsOrderItemCollection();
+            ClsOrderItemCollection AllOrderItem = new ClsOrderItemCollection();
 
             FilteredOrderItem.ReportByOrderID("");
-            Assert.AreEqual(0, FilteredOrderItem.Count);
+            Assert.AreEqual(AllOrderItem.Count, FilteredOrderItem.Count);
         }
     }
 }

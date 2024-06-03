@@ -34,7 +34,8 @@
 </div>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
         <asp:Button ID="BtnCancel" runat="server" OnClick="btnCancel_Click" Text="Cancel" />
-        <asp:Label ID="lblError" runat="server" style="z-index: 1; top: 182px; position: absolute; left: 103px"></asp:Label>
+        <asp:Label ID="lblError" runat="server" style="z-index: 1; top: 174px; position: absolute; left: 117px"></asp:Label>
+        <asp:Button ID="BtnFind" runat="server" OnClick="BtnFind_Click" style="z-index: 1; left: 247px; top: 16px; position: absolute" Text="Find" />
     </form>
 </body>
 </html>

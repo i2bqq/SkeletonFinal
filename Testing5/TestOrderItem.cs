@@ -80,9 +80,9 @@ namespace Testing5
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
-            if (AnOrderItem.OrderItemID != 3)
+            if (AnOrderItem.OrderItemID != 21)
             {
                 OK = false;
             }
@@ -94,7 +94,7 @@ namespace Testing5
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
             if (AnOrderItem.OrderID != 21)
             {
@@ -108,7 +108,7 @@ namespace Testing5
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
             if (AnOrderItem.ProductID != 21)
             {
@@ -122,7 +122,7 @@ namespace Testing5
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
             if (AnOrderItem.Quantity != 21)
             {
@@ -136,7 +136,7 @@ namespace Testing5
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
             if (AnOrderItem.UnitPrice != 21)
             {
@@ -150,7 +150,7 @@ namespace Testing5
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
             if (AnOrderItem.TotalPrice != 21)
             {

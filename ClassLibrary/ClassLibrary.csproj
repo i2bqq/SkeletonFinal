@@ -51,6 +51,7 @@
     <Compile Include="clsPaymentCollection.cs" />
     <Compile Include="clsPaymentUser.cs" />
     <Compile Include="ClsStaff.cs" />
+    <Compile Include="clsStaffCollection.cs" />
     <Compile Include="ClsStock.cs" />
     <Compile Include="ClsStockCollection.cs" />
     <Compile Include="ClsStockUser.cs" />

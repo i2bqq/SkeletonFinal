@@ -16,28 +16,28 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         ClsStaff AnStaff = new ClsStaff();
-        AnStaff.StaffID = Convert.ToInt32(lblStaffID.Text);
+        AnStaff.StaffID = Convert.ToInt32(txtStaffID.Text);
         Session["AnStaff"] = AnStaff;
-        AnStaff.FirstName = lblFirstName.Text;
-        AnStaff.LastName = lblLastName.Text;
-        AnStaff.EmailID = lblEmailID.Text;
-        AnStaff.CountryCode = Convert.ToInt32(lblCountryCode.Text);
-        AnStaff.Contact = Convert.ToInt32(lblContactNumber.Text);
+        AnStaff.FirstName = txtFirstName.Text;
+        AnStaff.LastName = txtLastName.Text;
+        AnStaff.EmailID = txtEmailID.Text;
+        AnStaff.CountryCode = Convert.ToInt32(txtCountryCode.Text);
+        AnStaff.Contact = Convert.ToInt32(txtContact.Text);
         AnStaff.HireDate = Convert.ToDateTime(DateTime.Now);
-        AnStaff.Role = lblRole.Text;
-        AnStaff.Password = lblPassowrd.Text;
+        AnStaff.Role = txtRole.Text;
+        AnStaff.Password = txtPassword.Text;
         //variable to store an error
         string Error = "";
         //validate the data
-        Error = AnStaff.Valid(lblFirstName, lblLastName, lblHireDate, lblEmailID, lblPassowrd, lblRole);
+        Error = AnStaff.Valid(txtFirstName, txtLastName, txtHireDate, txtEmailID, txtPassword, txtRole);
         if (Error == "")
         {
-            AnStaff.FirstName = lblFirstName.Text;
-            AnStaff.LastName = lblLastName.Text;
+            AnStaff.FirstName = txtFirstName.Text;
+            AnStaff.LastName = txtLastName.Text;
             AnStaff.HireDate = Convert.ToDateTime(DateTime.Now);
-            AnStaff.EmailID = lblEmailID.Text;
-            AnStaff.Password = lblPassowrd.Text;
-            AnStaff.Role = lblRole.Text;
+            AnStaff.EmailID = txtEmailID.Text;
+            AnStaff.Password = txtPassword.Text;
+            AnStaff.Role = txtRole.Text;
             //navigate to the view page
             Response.Redirect("Staffviewer.aspx");
             AnStaff.IsActive = chkActive.Checked;

@@ -24,12 +24,18 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnOrder.Valid(OrderDate, TotalAmount);
         if (Error == "")
         {
+            AnOrder.CustomerID = Convert.ToInt32(CustomerID);
             AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
             AnOrder.TotalAmount = Convert.ToDecimal(TotalAmount);
-            //store the orderID in the session object
-            Session["AnOrder"] = AnOrder;
-            //navigate to the view page
-            Response.Redirect("4OrderViewer.aspx");
+            AnOrder.OrderStatus = chkOrderStatus.Checked;
+            //create a new instance of the address collection
+            clsOrderCollection OrderList = new clsOrderCollection();
+            //set the ThisOrder property
+            OrderList.ThisOrder = AnOrder;
+            //add the new record
+            OrderList.Add();
+            //redirect back to the list page
+            Response.Redirect("4OrderList.aspx");
         }
         else
         {

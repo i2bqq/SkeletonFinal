@@ -20,6 +20,12 @@ public partial class PaymentList : Page
         gvPayments.DataBind();
     }
 
+    protected void gvPayments_PageIndexChanging(object sender, GridViewPageEventArgs e)
+    {
+        gvPayments.PageIndex = e.NewPageIndex;
+        DisplayPayments();
+    }
+
     protected void gvPayments_RowCommand(object sender, GridViewCommandEventArgs e)
     {
         if (e.CommandName == "EditPayment")
@@ -37,23 +43,9 @@ public partial class PaymentList : Page
         Response.Redirect("6PaymentDataEntry.aspx");
     }
 
-    protected void btnDelete_Click(object sender, EventArgs e)
-    {
-        if (gvPayments.SelectedIndex != -1)
-        {
-            int PaymentID = Convert.ToInt32(gvPayments.SelectedValue);
-            Session["PaymentID"] = PaymentID;
-            Response.Redirect("6PaymentConfirmDelete.aspx");
-        }
-        else
-        {
-            lblError.Text = "Please select a payment to delete.";
-            lblError.Visible = true;
-        }
-    }
-
     protected void btnDeleteSelected_Click(object sender, EventArgs e)
     {
+        bool selected = false;
         foreach (GridViewRow row in gvPayments.Rows)
         {
             CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
@@ -61,19 +53,36 @@ public partial class PaymentList : Page
             {
                 int paymentID = Convert.ToInt32(row.Cells[1].Text); // Adjust index to account for CheckBox column
                 DeletePayment(paymentID);
+                selected = true;
             }
         }
-        DisplayPayments();
+        if (!selected)
+        {
+            lblError.Text = "Please select at least one payment to delete.";
+            lblError.Visible = true;
+        }
+        else
+        {
+            lblError.Visible = false;
+            DisplayPayments();
+        }
     }
 
     private void DeletePayment(int paymentID)
     {
         clsPaymentCollection Payments = new clsPaymentCollection();
-        Payments.ThisPayment.FindByPaymentID(paymentID);
-        Payments.Delete();
+        if (Payments.ThisPayment.FindByPaymentID(paymentID))
+        {
+            Payments.Delete();
+        }
+        else
+        {
+            lblError.Text = "Error deleting payment with ID " + paymentID;
+            lblError.Visible = true;
+        }
     }
 
-    protected void btnApply_Click(object sender, EventArgs e)
+    protected void txtFilter_TextChanged(object sender, EventArgs e)
     {
         clsPaymentCollection Payments = new clsPaymentCollection();
         Payments.ReportByPaymentMethod(txtFilter.Text);
@@ -83,10 +92,8 @@ public partial class PaymentList : Page
 
     protected void btnClear_Click(object sender, EventArgs e)
     {
-        clsPaymentCollection Payments = new clsPaymentCollection();
-        gvPayments.DataSource = Payments.PaymentList;
-        gvPayments.DataBind();
         txtFilter.Text = "";
+        DisplayPayments();
     }
 
     protected void btnReturnToMainMenu_Click(object sender, EventArgs e)

@@ -51,9 +51,10 @@
 </head>
 <body>
     <form id="form1" runat="server" class="container">
+        <asp:HiddenField ID="hfPaymentID" runat="server" />
         <div class="form-group">
             <label for="txtPaymentID">Payment ID</label>
-            <asp:TextBox ID="txtPaymentID" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtPaymentID" runat="server" ReadOnly="True"></asp:TextBox>
         </div>
         <div class="form-group">
             <label for="txtOrderID">Order ID</label>
@@ -88,8 +89,7 @@
             <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
             <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
             <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
-        </div>
-        <div class="error">
+            <asp:Button ID="btnReturnToPaymentList" runat="server" Text="Return to Payment List" OnClick="btnReturnToPaymentList_Click" />
             <asp:Label ID="lblError" runat="server" Visible="false"></asp:Label>
         </div>
     </form>

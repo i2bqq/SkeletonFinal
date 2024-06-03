@@ -1,38 +1,49 @@
 ﻿using System;
+using System.Data.SqlClient;
 using System.Web.UI;
 using ClassLibrary;
 
 public partial class _1_DataEntry : Page
 {
-    Int32 PaymentID;
-
     protected void Page_Load(object sender, EventArgs e)
     {
-        PaymentID = Convert.ToInt32(Session["PaymentID"]);
         if (!IsPostBack)
         {
-            if (PaymentID != -1)
+            if (Request.QueryString["PaymentID"] != null)
             {
-                DisplayPayment();
+                int paymentID;
+                if (int.TryParse(Request.QueryString["PaymentID"], out paymentID))
+                {
+                    LoadPayment(paymentID);
+                }
             }
         }
     }
 
-    void DisplayPayment()
+    private void LoadPayment(int paymentID)
     {
         ClsPayment aPayment = new ClsPayment();
-        aPayment.Find(PaymentID);
-        txtPaymentID.Text = aPayment.PaymentID.ToString();
-        txtOrderID.Text = aPayment.OrderID.ToString();
-        txtPaymentDate.Text = aPayment.PaymentDate.ToString("dd/MM/yyyy");
-        txtPaymentMethod.Text = aPayment.PaymentMethod;
-        txtAmount.Text = aPayment.Amount.ToString();
-        chkStatus.Checked = aPayment.Status;
-        txtCreatedOn.Text = aPayment.CreatedOn.ToString("dd/MM/yyyy");
+        if (aPayment.FindByPaymentID(paymentID))
+        {
+            hfPaymentID.Value = paymentID.ToString();
+            txtPaymentID.Text = paymentID.ToString();
+            txtOrderID.Text = aPayment.OrderID.ToString();
+            txtPaymentDate.Text = aPayment.PaymentDate.ToString("dd/MM/yyyy");
+            txtPaymentMethod.Text = aPayment.PaymentMethod;
+            txtAmount.Text = aPayment.Amount.ToString();
+            chkStatus.Checked = aPayment.Status;
+            txtCreatedOn.Text = aPayment.CreatedOn.ToString("dd/MM/yyyy");
+        }
+        else
+        {
+            lblError.Text = "Payment not found.";
+            lblError.Visible = true;
+        }
     }
 
     protected void btnOK_Click(object sender, EventArgs e)
     {
+        // Capture the input data
         string orderID = txtOrderID.Text;
         string paymentDate = txtPaymentDate.Text;
         string paymentMethod = txtPaymentMethod.Text;
@@ -40,11 +51,16 @@ public partial class _1_DataEntry : Page
         string status = chkStatus.Checked.ToString();
         string createdOn = txtCreatedOn.Text;
 
+        // Create an instance of ClsPayment
         ClsPayment aPayment = new ClsPayment();
+
+        // Call the validation method
         string error = aPayment.Valid(orderID, paymentDate, paymentMethod, amount, status, createdOn);
 
+        // If there are errors, display them
         if (error != "")
         {
+            // Display error messages for each field
             lblOrderIDError.Text = error.Contains("order ID") ? "The order ID must be a valid integer and not blank." : "";
             lblOrderIDError.Visible = lblOrderIDError.Text != "";
 
@@ -60,33 +76,33 @@ public partial class _1_DataEntry : Page
             lblCreatedOnError.Text = error.Contains("created on date") ? "The created on date must be valid and not in the future." : "";
             lblCreatedOnError.Visible = lblCreatedOnError.Text != "";
 
+            // Display a general error message
             lblError.Text = "There were errors in your input.";
             lblError.Visible = true;
         }
         else
         {
+            // No errors, proceed with processing
+            aPayment.PaymentID = string.IsNullOrEmpty(hfPaymentID.Value) ? 0 : Convert.ToInt32(hfPaymentID.Value);
             aPayment.OrderID = Convert.ToInt32(orderID);
             aPayment.PaymentDate = Convert.ToDateTime(paymentDate);
             aPayment.PaymentMethod = paymentMethod;
             aPayment.Amount = Convert.ToDecimal(amount);
             aPayment.Status = chkStatus.Checked;
             aPayment.CreatedOn = Convert.ToDateTime(createdOn);
-            clsPaymentCollection PaymentList = new clsPaymentCollection();
-
-            if (PaymentID == -1)
-            {
-                PaymentList.ThisPayment = aPayment;
-                PaymentID = PaymentList.Add();
-            }
-            else
-            {
-                PaymentList.ThisPayment.Find(PaymentID);
-                PaymentList.ThisPayment = aPayment;
-                PaymentList.Update();
-            }
-
-            Response.Redirect("6PaymentList.aspx");
+            Session["aPayment"] = aPayment;
+            Response.Redirect("6PaymentViewer.aspx");
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("6PaymentList.aspx");
+    }
+
+    protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 
     protected void btnFind_Click(object sender, EventArgs e)
@@ -94,7 +110,7 @@ public partial class _1_DataEntry : Page
         ClsPayment aPayment = new ClsPayment();
         int PaymentID;
         bool success = int.TryParse(txtPaymentID.Text, out PaymentID);
-        if (success && aPayment.Find(PaymentID))
+        if (success && aPayment.FindByPaymentID(PaymentID))
         {
             // Clear any previous error message
             lblError.Visible = false;
@@ -113,15 +129,11 @@ public partial class _1_DataEntry : Page
             // Display an error message
             lblError.Text = "Payment not found or invalid Payment ID.";
             lblError.Visible = true;
-
-            // Clear the form fields
-            txtOrderID.Text = "";
-            txtPaymentDate.Text = "";
-            txtPaymentMethod.Text = "";
-            txtAmount.Text = "";
-            chkStatus.Checked = false;
-            txtCreatedOn.Text = "";
         }
     }
 
+    protected void btnReturnToPaymentList_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("6PaymentList.aspx");
+    }
 }

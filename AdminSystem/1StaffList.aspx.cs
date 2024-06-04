@@ -22,10 +22,32 @@ public partial class _1_List : System.Web.UI.Page
         lstStaffList.DataSource = Staff.StaffList;
         lstStaffList.DataValueField = "StaffID";
         lstStaffList.DataTextField = "FirstName";
+        lstStaffList.DataBind();
     }
 
     protected void LstStaffList_SelectedIndexChanged(object sender, EventArgs e)
     {
 
+    }
+
+    protected void btnAdd_Click(object sender, EventArgs e)
+    {
+        Session["StaffID"] = -1;
+        Response.Redirect("1StaffDataEntry.aspx");
+    }
+
+    protected void btnEdit_Click(object sender, EventArgs e)
+    {
+        Int32 StaffID;
+        if (lstStaffList.SelectedIndex != -1)
+        {
+            StaffID = Convert.ToInt32(lstStaffList.SelectedValue);
+            Session["StaffID"] = StaffID;
+            Response.Redirect("1StaffDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = " Please select a record from the list to edit";
+        }
     }
 }

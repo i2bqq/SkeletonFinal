@@ -45,14 +45,14 @@
         <asp:TextBox ID="txtHireDate" runat="server" style="z-index: 1; left: 170px; top: 260px; position: absolute"></asp:TextBox>
         <asp:Label ID="lblPassowrd" runat="server" style="z-index: 1; left: 58px; top: 329px; position: absolute" Text="PASSWORD"></asp:Label>
         <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 167px; top: 329px; position: absolute"></asp:TextBox>
-        <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 167px; top: 368px; position: absolute" Text="IS ACTIVE" />
+        <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 167px; top: 368px; position: absolute" Text="IS ACTIVE" OnCheckedChanged="chkActive_CheckedChanged" />
         <br />
         <div>
             <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 131px; top: 400px; position: absolute; width: 184px"></asp:Label>
         </div>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 428px; position: absolute; right: 916px" Text="OK" />
+        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 428px; position: absolute; right: 916px; height: 26px;" Text="OK" />
         <br />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 426px; position: absolute; left: 202px" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 426px; position: absolute; left: 202px" Text="Cancel" OnClick="btnCancel_Click" />
         <div>
         </div>
     </form>

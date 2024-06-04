@@ -59,7 +59,7 @@
         <div class="container">
             <div class="form-group">
                 <label for="txtProductID">Product ID</label>
-                <asp:TextBox runat="server" ID="txtProductID"></asp:TextBox>
+                <asp:TextBox runat="server" ID="txtProductID" OnTextChanged="txtProductID_TextChanged"></asp:TextBox>
                 <asp:Button runat="server" Text="Find" ID="btnFind" OnClick="btnFind_Click"></asp:Button>
             </div>
             <div class="form-group">

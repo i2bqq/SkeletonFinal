@@ -13,7 +13,11 @@
         
         </div>
         <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" /><asp:Button runat="server" Text="Edit" ID="btnEdit" OnClick="btnEdit_Click"></asp:Button><asp:Label runat="server" ID="lblError"></asp:Label>
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" /><asp:Button runat="server" Text="Edit" ID="btnEdit" OnClick="btnEdit_Click"></asp:Button>
+            <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="Delete" />
+        </p>
+        <p>
+            <asp:Label runat="server" ID="lblError"></asp:Label>
         </p>
     </form>
 </body>

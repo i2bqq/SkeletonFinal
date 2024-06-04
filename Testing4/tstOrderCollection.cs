@@ -138,6 +138,32 @@ namespace Testing4
             //test to see if ThisOrder matches the data
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create he item for the test data
+            ClsOrder TestItem = new ClsOrder();
+            //variable o store the primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderID = 2;
+            TestItem.CustomerID = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderStatus = true;
+            TestItem.TotalAmount = 20;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add record
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderID = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            // now find the record
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
 
     }
 }

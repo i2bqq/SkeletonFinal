@@ -70,7 +70,7 @@ namespace Testing5
         {
             ClsOrderItem AnOrderItem = new ClsOrderItem();
             Boolean Found = false;
-            Int32 OrderItemID = 3;
+            Int32 OrderItemID = 21;
             Found = AnOrderItem.Find(OrderItemID);
             Assert.IsTrue(Found);
         }

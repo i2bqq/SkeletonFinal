@@ -85,4 +85,9 @@ public partial class _1_List : System.Web.UI.Page
         LstStockList.DataBind();
 
     }
+
+    protected void BtnMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

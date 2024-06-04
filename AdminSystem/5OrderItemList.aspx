@@ -72,6 +72,7 @@
                 <asp:Button ID="BtnAdd" runat="server" OnClick="BtnAdd_Click" Text="Add" />
                 <asp:Button ID="BtnEdit" runat="server" OnClick="BtnEdit_Click" Text="Edit" />
                 <asp:Button ID="BtnDelete" runat="server" OnClick="BtnDelete_Click" Text="Delete" />
+                <asp:Button ID="Btnmenu" runat="server" OnClick="Btnmenu_Click" Text="Return to main menu" />
             </div>
             <div class="form-group">
                 <asp:Label ID="lblFilter" runat="server" Text="Enter an Order ID"></asp:Label>

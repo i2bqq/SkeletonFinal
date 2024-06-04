@@ -15,7 +15,7 @@ public partial class TeamMainMenu : Page
 
     protected void btnStock_Click(object sender, EventArgs e)
     {
-        Response.Redirect("StockLogIn.aspx");
+        Response.Redirect("3StockLoginPage.aspx");
     }
 
 
@@ -23,5 +23,11 @@ public partial class TeamMainMenu : Page
     protected void Button1_Click(object sender, EventArgs e)
     {
         Response.Redirect("1StaffLogInPage");
+    }
+
+    protected void btnOrderItem_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("5OrderItemLoginPage.aspx");
+
     }
 }

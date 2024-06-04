@@ -78,6 +78,7 @@
             <div class="form-actions">
                 <asp:Button ID="btnApply" runat="server" OnClick="btnApply_Click" Text="Apply Filter" CssClass="apply" />
                 <asp:Button ID="btnClear" runat="server" OnClick="btnClear_Click" Text="Clear Filter" CssClass="clear" />
+                <asp:Button ID="BtnMenu" runat="server" OnClick="BtnMenu_Click" Text="Return to main menu" />
             </div>
             <div class="form-actions">
                 <asp:Button ID="btnAdd" runat="server" EnableTheming="False" OnClick="BtnAdd_Click" Text="Add" CssClass="add" />

@@ -9,10 +9,11 @@
 <body>
     <form id="form1" runat="server">
         <div>
-            <asp:ListBox ID="lstOrderList" runat="server" Height="526px" Width="864px"></asp:ListBox>
+            <asp:ListBox ID="lstOrderList" runat="server" Height="526px" Width="864px" ></asp:ListBox>
+        
         </div>
         <p>
-            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" /><asp:Button runat="server" Text="Edit" ID="btnEdit" OnClick="btnEdit_Click"></asp:Button><asp:Label runat="server" ID="lblError"></asp:Label>
         </p>
     </form>
 </body>

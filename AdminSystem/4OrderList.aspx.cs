@@ -11,9 +11,9 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
-        if (IsPostBack == false)
+        if(IsPostBack == false)
         {
-            //updete the list box
+            //update the list box
             DisplayOrders();
         }
     }
@@ -26,7 +26,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstOrderList.DataValueField = "OrderID";
         //set the data field to display
-        lstOrderList.DataTextField = "CustomerID";
+        lstOrderList.DataTextField = "OrderID";
         //bind the data to the list
         lstOrderList.DataBind();
     }
@@ -39,8 +39,23 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("4OrderDataEntry.aspx");
     }
 
-    protected void btn_Add(object sender, EventArgs e)
+    protected void btnEdit_Click(object sender, EventArgs e)
     {
-
+        //variable to store the primary key value of the record to be edited
+        Int32 OrderID;
+        //if a record has been selected from the list
+        if (lstOrderList.SelectedIndex != -1)
+        {
+            //get the primart key value of the record t edit
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            //store the data in the seesion object
+            Session["OrderID"] = OrderID;
+            //redirect to the edit page
+            Response.Redirect("4OrderDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
     }
 }

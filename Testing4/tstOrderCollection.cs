@@ -164,6 +164,53 @@ namespace Testing4
             //test to see that the record was not found
             Assert.IsFalse(Found);
         }
+        [TestMethod]
+        public void ReportByCustomerIDMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //aply a bblank string to return all records
+            FilteredOrders.ReportByCustomerID("");
+            //test to see if its the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByCustomerIDNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //aply a code that doesnt exist
+            FilteredOrders.ReportByCustomerID("234433");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByCustomerIDTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //doesnt exist
+            FilteredOrders.ReportByCustomerID("3");
+            //check if the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                //first record is 4
+                if (FilteredOrders.OrderList[0].OrderID != 4)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderList[1].OrderID != 39)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
 
     }
 }

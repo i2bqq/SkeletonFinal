@@ -76,4 +76,34 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list t delete";
         }
     }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        //retrieve te value of customer id from the presentation layer
+        AnOrder.ReportByCustomerID(txtEnterCustomerID.Text);
+        //set the data source from the list of orders in colection
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerID";
+        //blind the data to the list
+        lstOrderList.DataBind();
+
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        //set an empty string
+        AnOrder.ReportByCustomerID("");
+        //clear any ecisting filter
+        txtEnterCustomerID.Text = "";
+        //set the data source
+        lstOrderList.DataSource= AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerID";
+        //bind the data to the list
+        lstOrderList.DataBind();
+    }
 }

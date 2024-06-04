@@ -5,6 +5,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>STAFF DATA ENTRY</title>
+    <style type="text/css">
+        #form1 {
+            height: 600px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -53,7 +58,17 @@
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 428px; position: absolute; right: 916px; height: 26px;" Text="OK" />
         <br />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 426px; position: absolute; left: 202px" Text="Cancel" OnClick="btnCancel_Click" />
-        <div>
+        <div style="height: 217px">
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+            <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <asp:Button ID="Button2" runat="server" Text="RETURN TO MAIN MENU" OnClick="Button2_Click" />
         </div>
     </form>
 </body>

@@ -98,4 +98,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         Response.Redirect("1StaffList.aspx");
     }
+
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu");
+    }
 }

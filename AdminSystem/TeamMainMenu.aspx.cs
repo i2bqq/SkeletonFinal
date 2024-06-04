@@ -18,5 +18,10 @@ public partial class TeamMainMenu : Page
         Response.Redirect("StockLogIn.aspx");
     }
 
-    
+
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("1StaffLogInPage");
+    }
 }

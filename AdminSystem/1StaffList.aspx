@@ -20,7 +20,7 @@
         <br />
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="ADD" />
         &nbsp;&nbsp;
-        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="EDIT" />
+        <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="EDIT" style="height: 26px" />
         &nbsp;&nbsp;
         <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="DELETE" />
         <br />
@@ -34,6 +34,10 @@
         <asp:Button ID="btnApplyFilter" runat="server" CssClass="apply" OnClick="btnApplyFilter_Click" Text="APPLY FILTER" />
 &nbsp;&nbsp;
         <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="CLEAR FILTER" />
+        <br />
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="btnMainMenu" runat="server" OnClick="btnMainMenu_Click" Text="RETURN TO MAIN MENU" />
         <br />
     </form>
 </body>

@@ -57,24 +57,7 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             //execute the stored procedure
             DB.Execute("sproc_Order_SelectAll");
-            //get the count of records
-            RecordCount = DB.Count;
-            //while there are records to process
-            while (Index < RecordCount)
-            {
-                //create a blank order
-                ClsOrder AnOrder = new ClsOrder();
-                //read in the fields from the current record
-                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
-                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
-                AnOrder.TotalAmount = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalAmount"]);
-                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
-                AnOrder.OrderStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderStatus"]);
-                //add the record to the private data member
-                mOrderList.Add(AnOrder);
-                //point at the next record
-                Index++;
-            }
+            PopulateArray(DB);
         }
 
         public int Add()
@@ -92,7 +75,59 @@ namespace ClassLibrary
 
         public void Update()
         {
-            throw new NotImplementedException();
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderID", mThisOrder.OrderID);
+            DB.AddParameter("@CustomerID", mThisOrder.CustomerID);
+            DB.AddParameter("@OrderDate", mThisOrder.OrderDate);
+            DB.AddParameter("@TotalAmount", mThisOrder.TotalAmount);
+            DB.AddParameter("@OrderStatus", mThisOrder.OrderStatus);
+            //execute the stored procedure
+            DB.Execute("sproc_tblOrder_Update");
+        }
+
+        public void Delete()
+        {
+            //deletes the record pointed to by thisOrder
+            //conect to database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters fo the stored procedure
+            DB.AddParameter("@OrderID",mThisOrder.OrderID);
+            //execute the sp
+            DB.Execute("sproc_tblOrder_Delete");
+        }
+
+        public void ReportByCustomerID(string CustomerID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            //send the customerID parameer to the database
+            DB.AddParameter("@CustomerID", CustomerID);
+            DB.Execute("sproc_tblOrder_FilterByCustomerID");
+            PopulateArray(DB);
+        }
+        void PopulateArray(clsDataConnection DB)
+        {
+            //variabe for index
+            Int32 Index = 0;
+            //variable to store the count
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            //clear the private array list
+            mOrderList = new List<ClsOrder>();
+            //while there are records to process
+            while (Index < RecordCount)
+            {
+                ClsOrder AnOrder = new ClsOrder();
+                //read in the fields from the current record
+                AnOrder.OrderID = Convert.ToInt32(DB.DataTable.Rows[Index]["OrderID"]);
+                AnOrder.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
+                AnOrder.OrderDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["OrderDate"]);
+                AnOrder.TotalAmount = Convert.ToDecimal(DB.DataTable.Rows[Index]["TotalAmount"]);
+                AnOrder.OrderStatus = Convert.ToBoolean(DB.DataTable.Rows[Index]["OrderStatus"]);
+                //add he record to the private data server
+                mOrderList.Add(AnOrder);
+                //point at the next record
+                Index ++;
+            }
         }
     }
 }

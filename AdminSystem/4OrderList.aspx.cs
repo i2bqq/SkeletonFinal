@@ -11,9 +11,9 @@ public partial class _1_List : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         //if this is the first time the page is displayed
-        if (IsPostBack == false)
+        if(IsPostBack == false)
         {
-            //updete the list box
+            //update the list box
             DisplayOrders();
         }
     }
@@ -26,7 +26,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstOrderList.DataValueField = "OrderID";
         //set the data field to display
-        lstOrderList.DataTextField = "CustomerID";
+        lstOrderList.DataTextField = "OrderID";
         //bind the data to the list
         lstOrderList.DataBind();
     }
@@ -39,8 +39,71 @@ public partial class _1_List : System.Web.UI.Page
         Response.Redirect("4OrderDataEntry.aspx");
     }
 
-    protected void btn_Add(object sender, EventArgs e)
+    protected void btnEdit_Click(object sender, EventArgs e)
     {
+        //variable to store the primary key value of the record to be edited
+        Int32 OrderID;
+        //if a record has been selected from the list
+        if (lstOrderList.SelectedIndex != -1)
+        {
+            //get the primart key value of the record t edit
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            //store the data in the seesion object
+            Session["OrderID"] = OrderID;
+            //redirect to the edit page
+            Response.Redirect("4OrderDataEntry.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list to edit";
+        }
+    }
 
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 OrderID;
+        //if the record is selected
+        if (lstOrderList.SelectedIndex != -1)
+        {
+            //get the primary key
+            OrderID = Convert.ToInt32(lstOrderList.SelectedValue);
+            //store the data
+            Session["OrderID"] = OrderID;
+            Response.Redirect("4OrderConfirmDelete.aspx");
+        }
+        else
+        {
+            lblError.Text = "Please select a record from the list t delete";
+        }
+    }
+
+    protected void btnApplyFilter_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        //retrieve te value of customer id from the presentation layer
+        AnOrder.ReportByCustomerID(txtEnterCustomerID.Text);
+        //set the data source from the list of orders in colection
+        lstOrderList.DataSource = AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerID";
+        //blind the data to the list
+        lstOrderList.DataBind();
+
+
+    }
+
+    protected void btnClearFilter_Click(object sender, EventArgs e)
+    {
+        clsOrderCollection AnOrder = new clsOrderCollection();
+        //set an empty string
+        AnOrder.ReportByCustomerID("");
+        //clear any ecisting filter
+        txtEnterCustomerID.Text = "";
+        //set the data source
+        lstOrderList.DataSource= AnOrder.OrderList;
+        lstOrderList.DataValueField = "OrderID";
+        lstOrderList.DataTextField = "CustomerID";
+        //bind the data to the list
+        lstOrderList.DataBind();
     }
 }

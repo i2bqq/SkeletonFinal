@@ -138,6 +138,79 @@ namespace Testing4
             //test to see if ThisOrder matches the data
             Assert.AreEqual(AllOrders.ThisOrder, TestItem);
         }
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create he item for the test data
+            ClsOrder TestItem = new ClsOrder();
+            //variable o store the primary key
+            Int32 PrimaryKey = 0;
+            //set properties
+            TestItem.OrderID = 2;
+            TestItem.CustomerID = 1;
+            TestItem.OrderDate = DateTime.Now;
+            TestItem.OrderStatus = true;
+            TestItem.TotalAmount = 20;
+            //set ThisOrder to the test data
+            AllOrders.ThisOrder = TestItem;
+            //add record
+            PrimaryKey = AllOrders.Add();
+            TestItem.OrderID = PrimaryKey;
+            AllOrders.ThisOrder.Find(PrimaryKey);
+            AllOrders.Delete();
+            // now find the record
+            Boolean Found = AllOrders.ThisOrder.Find(PrimaryKey);
+            //test to see that the record was not found
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByCustomerIDMethodOK()
+        {
+            clsOrderCollection AllOrders = new clsOrderCollection();
+            //create an instance of the filtered data
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //aply a bblank string to return all records
+            FilteredOrders.ReportByCustomerID("");
+            //test to see if its the same
+            Assert.AreEqual(AllOrders.Count, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByCustomerIDNoneFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //aply a code that doesnt exist
+            FilteredOrders.ReportByCustomerID("234433");
+            Assert.AreEqual(0, FilteredOrders.Count);
+        }
+        [TestMethod]
+        public void ReportByCustomerIDTestDataFound()
+        {
+            clsOrderCollection FilteredOrders = new clsOrderCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //doesnt exist
+            FilteredOrders.ReportByCustomerID("3");
+            //check if the correct number of records are found
+            if (FilteredOrders.Count == 2)
+            {
+                //first record is 4
+                if (FilteredOrders.OrderList[0].OrderID != 4)
+                {
+                    OK = false;
+                }
+                if (FilteredOrders.OrderList[1].OrderID != 39)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
+        }
 
     }
 }

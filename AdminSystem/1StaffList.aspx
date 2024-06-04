@@ -21,10 +21,19 @@
         <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="ADD" />
         &nbsp;&nbsp;
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" Text="EDIT" />
+        &nbsp;&nbsp;
+        <asp:Button ID="btnDelete" runat="server" OnClick="btnDelete_Click" Text="DELETE" />
         <br />
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <asp:Label ID="lblError" runat="server"></asp:Label>
         <br />
+        <asp:Label ID="lblEnterStaffID" runat="server" Text="ENTER STAFFID"></asp:Label>
+&nbsp;
+        <asp:TextBox ID="txtEnterStaffID" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="btnApplyFilter" runat="server" CssClass="apply" OnClick="btnApplyFilter_Click" Text="APPLY FILTER" />
+&nbsp;&nbsp;
+        <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" Text="CLEAR FILTER" />
         <br />
     </form>
 </body>

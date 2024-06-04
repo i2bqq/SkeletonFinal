@@ -12,7 +12,7 @@ namespace ClassLibrary
             
             
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("");
+            DB.Execute("sproc_Staff_SelelctAll");
             PopulateArray(DB);
             
         }
@@ -101,6 +101,14 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StaffID", StaffID);
             DB.Execute("sproc_Staff_FilterByStaffID");
+            PopulateArray(DB);
+        }
+
+        public void ReportByStaffID(string StaffID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID" , StaffID);
+            DB.Execute("sproc_reportbycategoryname");
             PopulateArray(DB);
         }
         void PopulateArray(clsDataConnection DB)

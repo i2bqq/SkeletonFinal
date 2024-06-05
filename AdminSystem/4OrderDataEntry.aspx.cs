@@ -103,4 +103,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
         txtTotalAmount.Text = OrderBook.ThisOrder.TotalAmount.ToString();
         chkOrderStatus.Checked = OrderBook.ThisOrder.OrderStatus;
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("4OrderList.aspx");
+    }
 }

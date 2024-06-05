@@ -30,4 +30,9 @@ public partial class TeamMainMenu : Page
         Response.Redirect("5OrderItemLoginPage.aspx");
 
     }
+
+    protected void btnOrder_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("4OrderLoginPage.aspx");
+    }
 }

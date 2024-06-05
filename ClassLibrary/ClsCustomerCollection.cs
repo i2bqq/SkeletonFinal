@@ -8,6 +8,7 @@ namespace ClassLibrary
     {
 
         List<ClsCustomer> mCustomerList = new List<ClsCustomer>();
+        ClsCustomer mThisCustomer = new ClsCustomer();
         public List<ClsCustomer> CustomerList
         {
 
@@ -32,7 +33,18 @@ namespace ClassLibrary
             }
         }
 
-        public ClsCustomer ThisCustomer { get; set; }
+        public ClsCustomer ThisCustomer
+        {
+
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
         public ClsCustomerCollection()
         {
             Int32 Index = 0;
@@ -45,6 +57,7 @@ namespace ClassLibrary
             {
 
                 ClsCustomer AnCustomer = new ClsCustomer();
+                AnCustomer.CustomerID = Convert.ToInt32(DB.DataTable.Rows[Index]["CustomerID"]);
                 AnCustomer.FirstName = Convert.ToString(DB.DataTable.Rows[Index]["FirstName"]);
                 AnCustomer.LastName = Convert.ToString(DB.DataTable.Rows[Index]["LastName"]);
                 AnCustomer.Phone = Convert.ToString(DB.DataTable.Rows[Index]["Phone"]);
@@ -57,6 +70,37 @@ namespace ClassLibrary
                 Index++;
 
             }
+        }
+
+        public int Add()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@FirstName", mThisCustomer.FirstName);
+            DB.AddParameter("@LastName", mThisCustomer.LastName);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@Phone", mThisCustomer.Phone);
+            DB.AddParameter("@CountryCode", mThisCustomer.CountryCode);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@Password", mThisCustomer.Password);
+            DB.AddParameter("@CreatedOn", mThisCustomer.CreatedOn);
+            DB.AddParameter("@IsActive", mThisCustomer.IsActive);
+            return DB.Execute("sproc_Customer_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@CustomerID", mThisCustomer.CustomerID);
+            DB.AddParameter("@FirstName", mThisCustomer.FirstName);
+            DB.AddParameter("@LastName", mThisCustomer.LastName);
+            DB.AddParameter("@Email", mThisCustomer.Email);
+            DB.AddParameter("@Phone", mThisCustomer.Phone);
+            DB.AddParameter("@CountryCode", mThisCustomer.CountryCode);
+            DB.AddParameter("@Address", mThisCustomer.Address);
+            DB.AddParameter("@Password", mThisCustomer.Password);
+            DB.AddParameter("@CreatedOn", mThisCustomer.CreatedOn);
+            DB.AddParameter("@IsActive", mThisCustomer.IsActive);
+            DB.Execute("sproc_Customer_Update");
         }
     }
 }

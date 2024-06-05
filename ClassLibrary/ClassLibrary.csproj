@@ -49,6 +49,7 @@
     <Compile Include="ClsOrderItem.cs" />
     <Compile Include="ClsOrderItemCollection.cs" />
     <Compile Include="ClsOrderitemUser.cs" />
+    <Compile Include="clsOrderUser.cs" />
     <Compile Include="ClsPayment.cs" />
     <Compile Include="clsPaymentCollection.cs" />
     <Compile Include="clsPaymentUser.cs" />

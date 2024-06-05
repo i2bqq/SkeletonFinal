@@ -51,7 +51,7 @@ namespace Testing1
         public void DepartmentPropertyOK()
         {
             ClsStaffUser AnUser = new ClsStaffUser();
-            string TestData = "Stock";
+            string TestData = "Staff";
             AnUser.Department = TestData;
             Assert.AreEqual(AnUser.Department, TestData);
         }
@@ -73,7 +73,7 @@ namespace Testing1
             Boolean Found = false;
             Boolean Ok = true;
             string UserName = "meet";
-            string Password = "1234567895";
+            string Password = "meet123";
             Found = AnUser.FindUser(UserName, Password);
             if (AnUser.UserName != UserName && AnUser.Password != Password)
             {

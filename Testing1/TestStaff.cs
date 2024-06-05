@@ -10,14 +10,14 @@ namespace Testing1
     public class TestStaff
     {
         int StaffID = 1;
-        String FirstName = "Talal";
-        String LastName = "Alotaibi";
-        String EmailID = "1234f@gmail.com";
-        int Contact = 1237654874;
-        int CountryCode = 45;
-        String Role = "StockManager";
+        String FirstName = "meet";
+        String LastName = "patel";
+        String EmailID = "meet030405@gmail.com";
+        int Contact = 1234567896;
+        int CountryCode = 44;
+        String Role = "HR";
         String HireDate = DateTime.Now.ToShortDateString();
-        string Password = "safsaf";
+        string Password = "meet123";
         Boolean IsActive = true;
 
 
@@ -70,7 +70,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "talal";
+            string TestData = "meet";
 
             AnStaff.FirstName = TestData;
 
@@ -83,7 +83,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "Alotaibi";
+            string TestData = "patel";
 
             AnStaff.LastName = TestData;
 
@@ -108,7 +108,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "1234f@gmail.com";
+            string TestData = "meet030405@gmail.com";
 
             AnStaff.EmailID = TestData;
 
@@ -121,7 +121,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            Int32 TestData = 1237654874;
+            Int32 TestData = 1234567896;
 
             AnStaff.Contact = TestData;
 
@@ -134,7 +134,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "StockManager";
+            string TestData = "HR";
 
             AnStaff.Role = TestData;
 
@@ -147,7 +147,7 @@ namespace Testing1
         {
             ClsStaff AnStaff = new ClsStaff();
 
-            string TestData = "13281635";
+            string TestData = "1234567896";
 
             AnStaff.Password = TestData;
 
@@ -186,9 +186,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.FirstName != "Talal")
+            if (AnStaff.FirstName != "meet")
             {
                 OK = false;
             }
@@ -200,9 +200,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.LastName != "Alotaibi")
+            if (AnStaff.LastName != "patel")
             {
                 OK = false;
             }
@@ -214,9 +214,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.EmailID != "1234f@gmail.com")
+            if (AnStaff.EmailID != "meet030405@gmail.com")
             {
                 OK = false;
             }
@@ -228,9 +228,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Contact != 20849172)
+            if (AnStaff.Contact != 1234567896)
             {
                 OK = false;
             }
@@ -242,9 +242,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.CountryCode != 45)
+            if (AnStaff.CountryCode != 44)
             {
                 OK = false;
             }
@@ -256,9 +256,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Role != "dsada")
+            if (AnStaff.Role != "HR")
             {
                 OK = false;
             }
@@ -270,9 +270,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.HireDate != Convert.ToDateTime("02/05/2022"))
+            if (AnStaff.HireDate != Convert.ToDateTime("05/03/2020 12:00:00"))
             {
                 OK = false;
             }
@@ -284,7 +284,7 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
             if (AnStaff.IsActive != true)
             {
@@ -298,9 +298,9 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffID = 19;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Password != "safsaf")
+            if (AnStaff.Password != "meet123")
             {
                 OK = false;
             }

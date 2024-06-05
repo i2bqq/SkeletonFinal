@@ -73,7 +73,7 @@
             <asp:Label ID="lblError" runat="server" CssClass="error" ForeColor="Red"></asp:Label>
             <div class="form-actions">
                 <asp:Button ID="BtnLogin" runat="server" Text="Login" OnClick="BtnLogin_Click" />
-                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="cancel" />
+                <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="cancel" OnClick="btnCancel_Click" />
             </div>
         </div>
     </form>

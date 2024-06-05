@@ -20,6 +20,7 @@ namespace ClassLibrary
                 mCustomerID = value;
             }
         }
+        private string mFirstName;
         public string FirstName
         {
             get
@@ -33,7 +34,7 @@ namespace ClassLibrary
                 mFirstName = value;
             }
         }
-        private string mFirstName;
+        private string mLastName;
         public string LastName
         {
             get
@@ -47,7 +48,7 @@ namespace ClassLibrary
                 mLastName = value;
             }
         }
-        private string mLastName;
+        
         public string Email
         {
             get

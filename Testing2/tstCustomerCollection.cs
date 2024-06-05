@@ -136,10 +136,61 @@ namespace Testing2
             AllCustomers.ThisCustomer.Find(PrimaryKey);
             Assert.AreEqual(AllCustomers.ThisCustomer, TestItem);
         }
-        
-      
-    } 
+        [TestMethod]
+        public void DeleteMethodOk()
+        {
+            ClsCustomerCollection AllCustomer = new ClsCustomerCollection();
+            ClsCustomer TestItem = new ClsCustomer();
+            Int32 PrimaryKey = 0;
+            TestItem.CustomerID = 6;
+            TestItem.FirstName = "Sally";
+            TestItem.LastName = "brown";
+            TestItem.Email = "sbrown@gmail.com";
+            TestItem.Phone = "071112222333";
+            TestItem.CountryCode = "US";
+            TestItem.Address = "13 Tree Lane";
+            TestItem.IsActive = true;
+            TestItem.CreatedOn = DateTime.Now;
+            TestItem.Password = "oiuyts";
+            AllCustomer.ThisCustomer = TestItem;
+            PrimaryKey = AllCustomer.Add();
+            AllCustomer.ThisCustomer.Find(PrimaryKey);
+            AllCustomer.Delete();
+            Boolean Found = AllCustomer.ThisCustomer.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+        }
+        [TestMethod]
+        public void ReportByFirstNameMethodOk()
+        {
+            ClsCustomerCollection AllCustomer = new ClsCustomerCollection();
+            ClsCustomerCollection FiltererdCustomer = new ClsCustomerCollection();
+            FiltererdCustomer.ReportByFirstName("");
+            Assert.AreEqual(AllCustomer.Count, FiltererdCustomer.Count);
+
+        }
+        [TestMethod]
+        public void ReportByFirstNameNoneFound()
+        {
+            ClsCustomerCollection FilteredCustomer = new ClsCustomerCollection();
+            Boolean Ok = true;
+            FilteredCustomer.ReportByFirstName("");
+            if (FilteredCustomer.Count == 2)
+            {
+                if (FilteredCustomer.CustomerList[0].CustomerID != 25)
+                {
+                    Ok = false;
+                }
+            }
+            else
+            {
+                Ok = false;
+            }
+
+            Assert.IsTrue(Ok);
+        }
+    }
 }
+
 
 
 

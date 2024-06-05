@@ -161,7 +161,7 @@ namespace Testing1
             ClsStaff AnStaff = new ClsStaff();
 
             Boolean Found = false;
-            Int32 StaffID = 2;
+            Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
             Assert.IsTrue(Found);
 
@@ -272,7 +272,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.HireDate != Convert.ToDateTime("05/03/2020 12:00:00"))
+            if (AnStaff.HireDate != Convert.ToDateTime("05/03/2020"))
             {
                 OK = false;
             }
@@ -366,7 +366,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string LastName = "";
-            LastName = LastName.PadRight(49, 'a');
+            LastName = LastName.PadRight(13, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -381,7 +381,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string FirstName = "";
-            FirstName = FirstName.PadRight(50, 'a');
+            FirstName = FirstName.PadRight(14, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -396,7 +396,7 @@ namespace Testing1
             String Error = "";
             //this shold fail
             string FirstName = "";
-            FirstName = FirstName.PadRight(51, 'a');
+            FirstName = FirstName.PadRight(15, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -411,7 +411,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string FirstName = "";
-            FirstName = FirstName.PadRight(25, 'a');
+            FirstName = FirstName.PadRight(7, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -483,7 +483,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string LastName = "";
-            LastName = LastName.PadRight(49, 'a');
+            LastName = LastName.PadRight(13, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -498,7 +498,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string LastName = "";
-            LastName = LastName.PadRight(50, 'a');
+            LastName = LastName.PadRight(14, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -513,7 +513,7 @@ namespace Testing1
             String Error = "";
             //this shold fail
             string LastName = "";
-            LastName = LastName.PadRight(51, 'a');
+            LastName = LastName.PadRight(15, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -528,7 +528,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string LastName = "";
-            LastName = LastName.PadRight(25, 'a');
+            LastName = LastName.PadRight(7, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -602,8 +602,8 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string EmailID = "";
-            EmailID = EmailID.PadRight(49, 'a');
+            string EmailID = "meet030405@gmail.com";
+            EmailID = EmailID.PadRight(23, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -619,7 +619,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string EmailID = "";
-            EmailID = EmailID.PadRight(50, 'a');
+            EmailID = EmailID.PadRight(24, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -635,7 +635,7 @@ namespace Testing1
             String Error = "";
             //this should fail
             string EmailID = "";
-            EmailID = EmailID.PadRight(51, 'a');
+            EmailID = EmailID.PadRight(25, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -651,7 +651,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string EmailID = "";
-            EmailID = EmailID.PadRight(25, 'a');
+            EmailID = EmailID.PadRight(12, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -727,7 +727,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string Role = "";
-            Role = Role.PadRight(49, 'a');
+            Role = Role.PadRight(13, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -743,7 +743,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string Role = "";
-            Role = Role.PadRight(50, 'a');
+            Role = Role.PadRight(14, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -759,7 +759,7 @@ namespace Testing1
             String Error = "";
             //this should fail
             string Role = "";
-            Role = Role.PadRight(51, 'a');
+            Role = Role.PadRight(15, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -775,7 +775,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string Role = "";
-            Role = Role.PadRight(25, 'a');
+            Role = Role.PadRight(7, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -851,7 +851,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string Password = "";
-            Password = Password.PadRight(49, 'a');
+            Password = Password.PadRight(17, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -867,7 +867,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string Password = "";
-            Password = Password.PadRight(50, 'a');
+            Password = Password.PadRight(18, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -883,7 +883,7 @@ namespace Testing1
             String Error = "";
             //this should fail
             string Password = "";
-            Password = Password.PadRight(51, 'a');
+            Password = Password.PadRight(19, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -899,7 +899,7 @@ namespace Testing1
             String Error = "";
             //this should pass
             string Password = "";
-            Password = Password.PadRight(25, 'a');
+            Password = Password.PadRight(9, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);
             //test to see that the result is correct
@@ -1008,7 +1008,7 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void DateAddedMinLessOne()
+        public void HireDateMinLessOne()
         {
             //create an instance of the class we want to create
             ClsStaff AnStaff = new ClsStaff();

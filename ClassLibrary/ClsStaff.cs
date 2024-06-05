@@ -159,7 +159,7 @@ namespace ClassLibrary
                             String LastName,
                             String EmailID, 
                             String Role,
-                            String HireDate , 
+                            DateTime HireDate, 
                             String Password)
         {
             string Error = "";
@@ -171,7 +171,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The First Name may not be blank : ";
             }
-            if(FirstName.Length > 13) 
+            if(FirstName.Length > 14) 
             {
                 Error = Error + "The First Name must be less than 13 Characters : ";
             }
@@ -179,7 +179,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The Last Name may not be blank : ";
             }
-            if (LastName.Length > 13)
+            if (LastName.Length > 14)
             {
                 Error = Error + "The Last Name must be less than 13 Characters : ";
             }
@@ -187,7 +187,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The Email may not be blank : ";
             }
-            if (EmailID.Length > 25)
+            if (EmailID.Length > 24)
             {
                 Error = Error + "The Email must be less than 25 Characters : ";
             }
@@ -195,7 +195,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The Role may not be blank ";
             }
-            if (Role.Length > 15)
+            if (Role.Length > 14)
             {
                 Error = Error + "The Role must be less than 15 Characters ";
             }
@@ -214,6 +214,11 @@ namespace ClassLibrary
                 if (DateTemp > DateTime.Now.Date)
                 {
                     Error = Error + "The Date cannot be in the futre ";
+                }
+
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The Date cannot be in the past ";
                 }
 
             }

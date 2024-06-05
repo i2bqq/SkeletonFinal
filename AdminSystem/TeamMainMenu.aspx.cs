@@ -20,9 +20,9 @@ public partial class TeamMainMenu : Page
 
 
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnClick(object sender, EventArgs e)
     {
-        Response.Redirect("1StaffLogInPage");
+        Response.Redirect("1StaffLogInPage.aspx");
     }
 
     protected void btnOrderItem_Click(object sender, EventArgs e)

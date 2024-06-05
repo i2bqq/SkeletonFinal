@@ -6,70 +6,118 @@
 <head runat="server">
     <title>STAFF DATA ENTRY</title>
     <style type="text/css">
-        #form1 {
-            height: 600px;
-        }
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+.container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+.form-group {
+    margin-bottom: 15px;
+}
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+.form-group input, .form-group select {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+.form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.form-actions button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+.form-actions button.cancel {
+    background-color: #6c757d;
+}
+.form-group .error {
+    color: red;
+}
     </style>
 </head>
 <body>
     <form id="form1" runat="server">
-        <asp:TextBox ID="txtStaffID" runat="server" style="z-index: 1; left: 168px; top: 30px; position: absolute; right: 734px"></asp:TextBox>
-<br />
-        <asp:Label ID="lblStaffID" runat="server" style="z-index: 1; left: 83px; top: 31px; position: absolute; width: 70px; right: 877px;" Text="STAFF ID"></asp:Label>
-        <br />
-        <div>
-        </div>
-        <asp:Label ID="lblFirstName" runat="server" style="z-index: 1; top: 73px; position: absolute; left: 57px" Text=" FIRST NAME"></asp:Label>
-        <asp:TextBox ID="txtFirstName" runat="server" style="z-index: 1; left: 168px; top: 73px; position: absolute; bottom: 449px"></asp:TextBox>
-        <br />
-        <div>
-        </div>
-        <br />
-        <div>
-            <asp:Label ID="lblLastName" runat="server" style="z-index: 1; left: 56px; position: absolute; top: 114px" Text="LAST NAME"></asp:Label>
-        </div>
-        <asp:TextBox ID="txtLastName" runat="server" style="z-index: 1; left: 167px; top: 113px; position: absolute"></asp:TextBox>
-        <br />
-        <asp:Label ID="lblContactNumber" runat="server" style="z-index: 1; left: 65px; top: 225px; position: absolute" Text="CONTACT"></asp:Label>
-        <div>
-        </div>
-        <asp:Label ID="lblCountryCode" runat="server" style="z-index: 1; left: 20px; top: 189px; position: absolute" Text="COUNTRY CODE"></asp:Label>
-        <br />
-        <div>
-            <asp:Label ID="lblEmailID" runat="server" style="z-index: 1; left: 75px; top: 153px; position: absolute" Text="EMAILID"></asp:Label>
-            <asp:TextBox ID="txtEmailID" runat="server" style="z-index: 1; left: 167px; top: 152px; position: absolute"></asp:TextBox>
-            <asp:TextBox ID="txtRole" runat="server" style="z-index: 1; left: 170px; top: 293px; position: absolute"></asp:TextBox>
-            <asp:Label ID="lblRole" runat="server" style="z-index: 1; left: 91px; top: 296px; position: absolute" Text="ROLE"></asp:Label>
-        </div>
-        <asp:TextBox ID="txtCountryCode" runat="server" style="z-index: 1; left: 169px; top: 188px; position: absolute"></asp:TextBox>
-        <asp:TextBox ID="txtContact" runat="server" style="z-index: 1; top: 223px; position: absolute; left: 169px"></asp:TextBox>
-        <br />
-        <div>
-            <asp:Label ID="lblHireDate" runat="server" style="z-index: 1; left: 59px; top: 260px; position: absolute" Text="HIRE DATE"></asp:Label>
-        </div>
-        <asp:TextBox ID="txtHireDate" runat="server" style="z-index: 1; left: 170px; top: 260px; position: absolute"></asp:TextBox>
-        <asp:Label ID="lblPassowrd" runat="server" style="z-index: 1; left: 58px; top: 329px; position: absolute" Text="PASSWORD"></asp:Label>
-        <asp:TextBox ID="txtPassword" runat="server" style="z-index: 1; left: 167px; top: 329px; position: absolute"></asp:TextBox>
-        <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 167px; top: 368px; position: absolute" Text="IS ACTIVE" OnCheckedChanged="chkActive_CheckedChanged" />
-        <br />
-        <div>
-            <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 131px; top: 400px; position: absolute; width: 184px"></asp:Label>
-        </div>
-        <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" style="z-index: 1; top: 428px; position: absolute; right: 916px; height: 26px;" Text="OK" />
-        <br />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; top: 426px; position: absolute; left: 202px" Text="Cancel" OnClick="btnCancel_Click" />
-        <div style="height: 217px">
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-            <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <asp:Button ID="Button2" runat="server" Text="RETURN TO MAIN MENU" OnClick="Button2_Click" />
-        </div>
+         <div class="container">
+              <div class="form-group">
+                  <div>
+                      <asp:Label ID="lblStaffID" runat="server" Text="STAFF ID"></asp:Label>
+                      <asp:TextBox ID="txtStaffID" runat="server"></asp:TextBox>
+                      <asp:Button runat="server" Text="Find" ID="btnFind" OnClick="btnFind_Click"></asp:Button>
+                  </div>
+                  
+                  <div class="form-group">
+                      <asp:Label ID="lblFirstName" runat="server" Text=" FIRST NAME"></asp:Label>
+                      <asp:TextBox ID="txtFirstName" runat="server"></asp:TextBox>
+                  </div>
+                  
+                  <div class="form-group">
+                      <asp:Label ID="lblLastName" runat="server" Text="LAST NAME"></asp:Label>
+                      <asp:TextBox ID="txtLastName" runat="server"></asp:TextBox>
+                  </div>
+                  
+                  <div class="form-group">
+                      <asp:Label ID="lblContactNumber" runat="server" Text="CONTACT"></asp:Label>
+                      <asp:TextBox ID="txtContact" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="form-group">
+                      <asp:Label ID="lblCountryCode" runat="server" Text="COUNTRY CODE"></asp:Label>
+                      <asp:TextBox ID="txtCountryCode" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="form-group">
+                      <asp:Label ID="lblEmailID" runat="server" Text="EMAILID"></asp:Label>
+                      <asp:TextBox ID="txtEmailID" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="form-group">
+                      <asp:TextBox ID="txtRole" runat="server"></asp:TextBox>
+                      <asp:Label ID="lblRole" runat="server" Text="ROLE"></asp:Label>
+                  </div>
+
+                  <div class="form-group">
+                      <asp:Label ID="lblHireDate" runat="server" Text="HIRE DATE"></asp:Label>
+                      <asp:TextBox ID="txtHireDate" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="form-group">                  
+                      <asp:Label ID="lblPassowrd" runat="server" Text="PASSWORD"></asp:Label>
+                      <asp:TextBox ID="txtPassword" runat="server"></asp:TextBox>
+                  </div>
+
+                  <div class="form-group"> 
+                      <asp:CheckBox ID="chkActive" runat="server" Text="IS ACTIVE" />
+                  </div>
+
+                  <div>
+                      <asp:Label ID="lblError" runat="server"></asp:Label>
+                  </div>
+
+                  <div class="form-group">
+                      <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
+                      <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="btnCancel_Click" />
+                      <asp:Button ID="Button2" runat="server" Text="RETURN TO MAIN MENU" OnClick="Button2_Click" />
+                  </div>
     </form>
 </body>
 </html>

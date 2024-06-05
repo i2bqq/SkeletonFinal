@@ -4,16 +4,20 @@ namespace ClassLibrary
 {
     public class ClsStaff
     {
-        private Int32 mStaffID;
-        private Boolean mIsActive;
+        private bool mIsActive;
         private DateTime mHireDate;
-        private Int32 mCountryCode;
-        private String mFirstName;
-        private String mLastName;
-        private String mEmailID;
-        private Int32 mContact;
-        private String mRole;
-        private String mPassword;
+        private int mCountryCode;
+        private string mFirstName;
+        private string mLastName;
+        private int mStaffID;
+        private string mEmailID;
+        private int mContact;
+        private string mRole;
+        private string mPassword;
+
+        public ClsStaff()
+        {
+        }
         public bool IsActive
         {
             get

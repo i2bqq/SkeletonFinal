@@ -79,7 +79,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             }
  
             //navigate to the view page
-            Response.Redirect("1Staffviewer.aspx");
+            Response.Redirect("1StaffViewer.aspx");
         }
         else
         {
@@ -101,6 +101,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     protected void Button2_Click(object sender, EventArgs e)
     {
-        Response.Redirect("TeamMainMenu");
+        Response.Redirect("TeamMainMenu.aspx");
+    }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        ClsStaff AnStaff = new ClsStaff();
+        Int32 StaffID;
+        Boolean Found = false;
+        StaffID = Convert.ToInt32(txtStaffID.Text);
+        Found = AnStaff.Find(StaffID);
+        if (Found == true)
+        {
+            txtFirstName.Text = AnStaff.FirstName;
+            txtLastName.Text = AnStaff.LastName;
+            txtEmailID.Text = AnStaff.EmailID;
+            txtContact.Text = AnStaff.Contact.ToString();
+            txtCountryCode.Text = AnStaff.CountryCode.ToString();
+            txtHireDate.Text = AnStaff.HireDate.ToString();
+            chkActive.Checked = AnStaff.IsActive;
+            txtRole.Text = AnStaff.Role.ToString();
+            txtPassword.Text = AnStaff.Password.ToString();
+        }
     }
 }

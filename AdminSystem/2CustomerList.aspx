@@ -24,7 +24,8 @@
         </p>
         <p>
             <asp:Label ID="LblFirstName" runat="server" Text="Enter a First Name "></asp:Label>
-            <asp:TextBox ID="txtFilter" runat="server" style="margin-left: 11px" Width="134px"></asp:TextBox>
+            <asp:TextBox ID="txtFilter" runat="server" style="margin-left: 11px" Width="143px" Height="20px"></asp:TextBox>
+            <asp:Button ID="btnMainMenu" runat="server" Height="27px" OnClick="Button1_Click" style="margin-left: 45px" Text="Return To Main Menu" Width="140px" />
         </p>
         <p>
             <asp:Button ID="btnFilter" runat="server" OnClick="btnApplyFilter_Click" Text="Apply Filter " Width="78px" />

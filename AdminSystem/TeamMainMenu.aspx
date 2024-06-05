@@ -30,6 +30,7 @@
             <asp:Label ID="lblTitle" runat="server" Text="Team Main Menu" Font-Size="24px" Font-Bold="True"></asp:Label>
         </div>
         <div class="buttons">
+            <asp:Button ID="BtnCustomer" runat="server" OnClick="BtnCustomer_Click" Text="Customer" />
             <asp:Button ID="btnStaff" runat="server" OnClick="btnClick" Text="STAFF" />
             <asp:Button ID="btnPayment" runat="server" Text="Payment" OnClick="btnPayment_Click" />
             <asp:Button ID="btnStock" runat="server" Text="Stock" OnClick="btnStock_Click" />

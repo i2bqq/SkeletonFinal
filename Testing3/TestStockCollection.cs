@@ -20,7 +20,7 @@ namespace Testing3
             ClsStockCollection AllStock = new ClsStockCollection();
             List<ClsStock> TestList = new List<ClsStock>();
             ClsStock TestItem = new ClsStock();
-            TestItem.ProductID = 2;
+            TestItem.ProductID = 511;
             TestItem.ProductName = "lipstick";
             TestItem.CategoryName = "Face";
             TestItem.Price = 12;
@@ -37,7 +37,7 @@ namespace Testing3
         {
             ClsStockCollection AllStock = new ClsStockCollection();
             ClsStock TestStock = new ClsStock();
-            TestStock.ProductID = 2;
+            TestStock.ProductID = 511;
             TestStock.ProductName = "lipstick";
             TestStock.CategoryName = "Face";
             TestStock.Price = 12;
@@ -54,7 +54,7 @@ namespace Testing3
             ClsStockCollection AllStock = new ClsStockCollection();
             List<ClsStock> TestList = new List<ClsStock>();
             ClsStock TestItem = new ClsStock();
-            TestItem.ProductID = 2;
+            TestItem.ProductID = 511;
             TestItem.ProductName = "lipstick";
             TestItem.CategoryName = "Face";
             TestItem.Price = 12;
@@ -73,7 +73,7 @@ namespace Testing3
             //create the item of test data
             ClsStock TestItem = new ClsStock();
             //variable to store primary key
-            Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 511;
             TestItem.ProductID = 2;
             TestItem.ProductName = "lipstick";
             TestItem.CategoryName = "Face";
@@ -94,7 +94,7 @@ namespace Testing3
             //create instance
             ClsStockCollection AllStock = new ClsStockCollection();
             ClsStock TestItem = new ClsStock();
-            Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 511;
             TestItem.ProductID = PrimaryKey;
             TestItem.ProductName = "lipstick";
             TestItem.CategoryName = "Face";
@@ -120,7 +120,7 @@ namespace Testing3
         {
             ClsStockCollection AllStock = new ClsStockCollection();
             ClsStock TestItem = new ClsStock();
-            Int32 PrimaryKey = 0;
+            Int32 PrimaryKey = 511;
             TestItem.ProductName = "Shadow";
             TestItem.CategoryName = "eyes";
             TestItem.Price = 20;

@@ -70,7 +70,7 @@ public partial class _1_List : System.Web.UI.Page
         AnStock.ReportByCategoryName(txtFilter.Text);
         LstStockList.DataSource = AnStock.StockList;
         LstStockList.DataTextField = "ProductID";
-        LstStockList.DataTextField = "CategoryName";
+        LstStockList.DataTextField = "ProductName";
         LstStockList.DataBind();
     }
 

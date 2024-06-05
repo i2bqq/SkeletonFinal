@@ -110,7 +110,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductID = 1;
             Found = AnStock.Find(ProductID);
-            if (AnStock.ProductName != "Shadow")
+            if (AnStock.ProductName != "Revlon ColorStay Foundation")
             {
                 OK = false;
             }
@@ -124,7 +124,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CategoryName != "eyes")
+            if (AnStock.CategoryName != "Foundation")
             {
                 OK = false;
             }
@@ -138,7 +138,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.Price != 20)
+            if (AnStock.Price != 11.99m)
             {
                 OK = false;
             }
@@ -152,7 +152,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.StockQuantity != 45)
+            if (AnStock.StockQuantity != 20)
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CreatedOn != Convert.ToDateTime("02/06/2024"))
+            if (AnStock.CreatedOn != Convert.ToDateTime("12/04/2021"))
             {
                 OK = false;
             }

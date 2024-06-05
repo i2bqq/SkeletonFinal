@@ -171,41 +171,41 @@ namespace ClassLibrary
             {
                 Error = Error + "The First Name may not be blank : ";
             }
-            if(FirstName.Length > 50) 
+            if(FirstName.Length > 13) 
             {
-                Error = Error + "The First Name must be less than 50 Characters : ";
+                Error = Error + "The First Name must be less than 13 Characters : ";
             }
             if (LastName.Length == 0)
             {
                 Error = Error + "The Last Name may not be blank : ";
             }
-            if (LastName.Length > 50)
+            if (LastName.Length > 13)
             {
-                Error = Error + "The Last Name must be less than 50 Characters : ";
+                Error = Error + "The Last Name must be less than 13 Characters : ";
             }
             if (EmailID.Length == 0)
             {
                 Error = Error + "The Email may not be blank : ";
             }
-            if (EmailID.Length > 50)
+            if (EmailID.Length > 25)
             {
-                Error = Error + "The Email must be less than 50 Characters : ";
+                Error = Error + "The Email must be less than 25 Characters : ";
             }
             if (Role.Length == 0)
             {
                 Error = Error + "The Role may not be blank ";
             }
-            if (Role.Length > 50)
+            if (Role.Length > 15)
             {
-                Error = Error + "The Role must be less than 50 Characters ";
+                Error = Error + "The Role must be less than 15 Characters ";
             }
             if (Password.Length == 0)
             {
                 Error = Error + "The Password may not be blank ";
             }
-            if (Password.Length > 50)
+            if (Password.Length > 18)
             {
-                Error = Error + "The Password must be less than 50 Characters ";
+                Error = Error + "The Password must be less than 18 Characters ";
             }
             DateTime DateComp = DateTime.Now.Date;
             try

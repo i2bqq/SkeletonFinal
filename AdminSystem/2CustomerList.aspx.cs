@@ -17,6 +17,9 @@ public partial class _1_List : System.Web.UI.Page
 
             DisplayCustomer();
         }
+        ClsCustomerUser AnUser = new ClsCustomerUser();
+        AnUser = (ClsCustomerUser)Session["AnUser"];
+        Response.Write("Logged in as :" + AnUser.UserName);
     }
     void DisplayCustomer()
     {
@@ -92,6 +95,11 @@ public partial class _1_List : System.Web.UI.Page
         lstCustomerList.DataTextField = "FirstName";
         lstCustomerList.DataBind();
 
+    }
+
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("2CustomerLogin.aspx");
     }
 }
 

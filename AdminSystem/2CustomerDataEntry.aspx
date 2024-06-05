@@ -44,11 +44,18 @@
 </div>
                                       <asp:Label runat="server" Text="Password " ID="lblPasswordId"></asp:Label>
         <asp:TextBox runat="server" ID="txtPasswordId"></asp:TextBox> 
-<div>
-    <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="BtnOk_Click" />
-    <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="BtnCancel_Click" />
-    <asp:Label ID="lblError" runat="server" Text="Error"></asp:Label>
+<div style="height: 172px">
+    <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="BtnOk_Click" Height="31px" Width="71px" />
+   <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="BtnCancel_Click" Height="31px" style="margin-left: 43px" Width="85px" />
+
+    <asp:Button ID="BntMainMenu" runat="server" Height="31px" OnClick="Button1_Click" style="margin-left: 55px" Text="Return To Main Menu" Width="130px" />
+
 </div>
+        <p>
+
+    <asp:Label ID="lblError" runat="server" Text="Error"></asp:Label>
+
+        </p>
     </form>
 </body>
 </html>

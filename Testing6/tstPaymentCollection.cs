@@ -168,7 +168,7 @@ namespace Testing6
         public void FindMethodOK()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(3); // Ensure this PaymentID exists in your database
+            bool found = aPayment.Find(3); 
             Assert.IsTrue(found);
         }
 
@@ -176,7 +176,7 @@ namespace Testing6
         public void TestPaymentIDNotFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(9999); // Ensure this PaymentID does NOT exist in your database
+            bool found = aPayment.Find(9999); 
             Assert.IsFalse(found);
         }
     }

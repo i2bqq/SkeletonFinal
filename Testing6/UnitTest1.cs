@@ -151,7 +151,7 @@ namespace Testing6
         public void TestPaymentIDNotFound()
         {
             ClsPayment aPayment = new ClsPayment();
-            bool found = aPayment.Find(9999); // Ensure this PaymentID does NOT exist in your database
+            bool found = aPayment.Find(9999); 
             Assert.IsFalse(found);
         }
 

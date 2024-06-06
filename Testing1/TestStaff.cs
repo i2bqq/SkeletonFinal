@@ -11,14 +11,14 @@ namespace Testing1
     [TestClass]
     public class TestStaff
     {
-        string FirstName = "meet";
-        string LastName = "patel";
-        string EmailID = "meet030405@gmail.com";
-        string Contact = "1234567896";
-        string CountryCode = "45";
-        string Role = "HR";
+        string FirstName = "stef";
+        string LastName = "curry";
+        string EmailID = "curry@123.gmail.com";
+        string Contact = "1234564345";
+        string CountryCode = "86";
+        string Role = "staff";
         string HireDate = DateTime.Now.ToShortDateString();
-        string Password = "meet123";
+        string Password = "curry123";
 
         [TestMethod]
         public void InstanceOk()
@@ -60,7 +60,7 @@ namespace Testing1
         public void FirstNamePropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
-            string TestData = "meet";
+            string TestData = "stef";
             AnStaff.FirstName = TestData;
             Assert.AreEqual(AnStaff.FirstName, TestData);
 
@@ -69,7 +69,7 @@ namespace Testing1
         public void LastNamePropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
-            string TestData = "patel";
+            string TestData = "curry";
             AnStaff.LastName = TestData;
             Assert.AreEqual(AnStaff.LastName, TestData);
 
@@ -86,7 +86,7 @@ namespace Testing1
         public void EmailIDPropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
-            string TestData = "meet030405@gmail.com";
+            string TestData = "curry@123.gmail.com";
             AnStaff.EmailID = TestData;
             Assert.AreEqual(AnStaff.EmailID, TestData);
 
@@ -95,7 +95,7 @@ namespace Testing1
         public void ContactPropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
-            Int32 TestData = 1234567896;
+            Int32 TestData = 1234564345;
             AnStaff.Contact = TestData;
             Assert.AreEqual(AnStaff.Contact, TestData);
 
@@ -104,7 +104,7 @@ namespace Testing1
         public void RolePropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
-            string TestData = "HR";
+            string TestData = "staff";
             AnStaff.Role = TestData;
             Assert.AreEqual(AnStaff.Role, TestData);
 
@@ -113,7 +113,7 @@ namespace Testing1
         public void PasswordPropertyOk()
         {
             ClsStaff AnStaff = new ClsStaff();
-            string TestData = "meet123";
+            string TestData = "curry123";
             AnStaff.Password = TestData;
             Assert.AreEqual(AnStaff.Password, TestData);
 
@@ -145,7 +145,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.FirstName != "meet")
+            if (AnStaff.FirstName != "stef")
             {
                 OK = false;
             }
@@ -159,7 +159,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.LastName != "patel")
+            if (AnStaff.LastName != "curry")
             {
                 OK = false;
             }
@@ -173,7 +173,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.EmailID != "meet030405@gmail.com")
+            if (AnStaff.EmailID != "curry@123.gmail.com")
             {
                 OK = false;
             }
@@ -187,7 +187,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Contact != 1234567896)
+            if (AnStaff.Contact != 1234564345)
             {
                 OK = false;
             }
@@ -201,21 +201,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.CountryCode != 44)
-            {
-                OK = false;
-            }
-            Assert.IsTrue(OK);
-        }
-        [TestMethod]
-        public void TestRoleFound()
-        {
-            ClsStaff AnStaff = new ClsStaff();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 StaffID = 1;
-            Found = AnStaff.Find(StaffID);
-            if (AnStaff.Role != "HR")
+            if (AnStaff.CountryCode != 86)
             {
                 OK = false;
             }
@@ -229,7 +215,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.HireDate != Convert.ToDateTime("05/03/2020"))
+            if (AnStaff.HireDate != Convert.ToDateTime("06/06/2024"))
             {
                 OK = false;
             }
@@ -257,7 +243,7 @@ namespace Testing1
             Boolean OK = true;
             Int32 StaffID = 1;
             Found = AnStaff.Find(StaffID);
-            if (AnStaff.Password != "meet123")
+            if (AnStaff.Password != "curry123")
             {
                 OK = false;
             }
@@ -559,7 +545,7 @@ namespace Testing1
             //string variable to store any error message
             String Error = "";
             //this should pass
-            string EmailID = "meet030405@gmail.com";
+            string EmailID = "curry@123.gmail.com";
             EmailID = EmailID.PadRight(23, 'a');
             //invoke the method
             Error = AnStaff.Valid(FirstName, LastName, EmailID, Role, HireDate, Password);

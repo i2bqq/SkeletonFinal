@@ -157,9 +157,6 @@ namespace ClassLibrary
         public string Valid(String FirstName, String LastName, String EmailID, String Role, string HireDate, String Password)
         {
             DateTime DateTemp;
-            int CountryCodeTemp;
-            int ContactTemp;
-
 
             string Error = "";
             if (FirstName.Length == 0)

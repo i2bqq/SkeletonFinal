@@ -29,7 +29,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the name of the primary key
         lstOrderList.DataValueField = "OrderID";
         //set the data field to display
-        lstOrderList.DataTextField = "OrderID";
+        lstOrderList.DataTextField =  "OrderDetails";
         //bind the data to the list
         lstOrderList.DataBind();
     }
@@ -88,7 +88,7 @@ public partial class _1_List : System.Web.UI.Page
         //set the data source from the list of orders in colection
         lstOrderList.DataSource = AnOrder.OrderList;
         lstOrderList.DataValueField = "OrderID";
-        lstOrderList.DataTextField = "CustomerID";
+        lstOrderList.DataTextField = "OrderDetails";
         //blind the data to the list
         lstOrderList.DataBind();
 

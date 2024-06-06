@@ -71,6 +71,14 @@ namespace ClassLibrary
                 mTotalAmount = value;
             }
         }
+        public string OrderDetails
+        {
+            get
+            {
+                return $"OrderID: {OrderID}, CustomerID: {CustomerID}, OrderDate: {OrderDate.ToShortDateString()}, TotalAmount: {TotalAmount:C}";
+            }
+        }
+
 
         //FIND METHOD
         public bool Find(int OrderID)

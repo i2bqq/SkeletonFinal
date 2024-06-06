@@ -18,7 +18,7 @@ namespace Testing1
         public void UserIDpropertyOk()
         {
             ClsStaffUser AnUser = new ClsStaffUser();
-            Int32 TestData = 1;
+            Int32 TestData = 4;
             AnUser.UserID = TestData;
             Assert.AreEqual(AnUser.UserID, TestData);
         }
@@ -28,7 +28,7 @@ namespace Testing1
             //create an instance of the class we want to create
             ClsStaffUser AnUser = new ClsStaffUser();
             //create some test data to assign to the property
-            string TestData = "meet";
+            string TestData = "Meet";
             //assign the data to the property
             AnUser.UserName = TestData;
             //test to see that the two values are the same
@@ -40,7 +40,7 @@ namespace Testing1
             //create an instance of the class we want to create
             ClsStaffUser AnUser = new ClsStaffUser();
             //create some test data to assign to the property
-            string TestData = "1234567896";
+            string TestData = "0611";
             //assign the data to the property
             AnUser.Password = TestData;
             //test to see that the two values are the same
@@ -51,7 +51,7 @@ namespace Testing1
         public void DepartmentPropertyOK()
         {
             ClsStaffUser AnUser = new ClsStaffUser();
-            string TestData = "Staff";
+            string TestData = "staff";
             AnUser.Department = TestData;
             Assert.AreEqual(AnUser.Department, TestData);
         }
@@ -60,20 +60,20 @@ namespace Testing1
         {
             ClsStaffUser AnUser = new ClsStaffUser();
             Boolean Found = false;
-            string UserName = "meet";
-            string Password = "meet123";
+            string UserName = "Meet";
+            string Password = "0611";
             Found = AnUser.FindUser(UserName, Password);
             Assert.IsTrue(Found);
 
         }
         [TestMethod]
-        public void TestUserNameStockFound()
+        public void TestUserNameFound()
         {
             ClsStaffUser AnUser = new ClsStaffUser();
             Boolean Found = false;
             Boolean Ok = true;
-            string UserName = "meet";
-            string Password = "meet123";
+            string UserName = "Meet";
+            string Password = "0611";
             Found = AnUser.FindUser(UserName, Password);
             if (AnUser.UserName != UserName && AnUser.Password != Password)
             {

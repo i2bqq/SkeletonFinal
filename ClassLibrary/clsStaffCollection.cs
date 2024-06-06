@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
 namespace ClassLibrary
 {
     public class clsSatffCollection
@@ -12,7 +11,7 @@ namespace ClassLibrary
             
             
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_Staff_SelelctAll");
+            DB.Execute("sproc_Staff_SelectAll");
             PopulateArray(DB);
             
         }
@@ -61,13 +60,13 @@ namespace ClassLibrary
 
         public int Add()
         {
-           clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@StaffID", ThisStaff.StaffID);
+            clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@FirstName", ThisStaff.FirstName);
             DB.AddParameter("@LastName", ThisStaff.LastName);
             DB.AddParameter("@EmailID", ThisStaff.EmailID);
             DB.AddParameter("@CountryCode", ThisStaff.CountryCode);
             DB.AddParameter("@Contact", ThisStaff.Contact);
+            DB.AddParameter("@HireDate", ThisStaff.HireDate);
             DB.AddParameter("@Role",ThisStaff.Role);
             DB.AddParameter("@IsActive", ThisStaff.IsActive);
             DB.AddParameter("@Password",ThisStaff.Password);
@@ -77,11 +76,12 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB =new clsDataConnection();
-            DB.AddParameter("StaffID", mThisStaff.StaffID);
+            DB.AddParameter("@StaddID", ThisStaff.StaffID);
             DB.AddParameter("FirstName", mThisStaff.FirstName);
             DB.AddParameter("LastName", mThisStaff.LastName);
             DB.AddParameter("EmailID", mThisStaff.EmailID);
             DB.AddParameter("CountryCode", mThisStaff.CountryCode);
+            DB.AddParameter("@HireDate", ThisStaff.HireDate);
             DB.AddParameter("Conatact", mThisStaff.Contact);
             DB.AddParameter("Role", mThisStaff.Role);
             DB.AddParameter("IsActive", mThisStaff.IsActive);
@@ -91,7 +91,7 @@ namespace ClassLibrary
 
         public void Delete()
         {
-            clsDataConnection DB =new clsDataConnection();
+            clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StaffID", mThisStaff.StaffID);
             DB.Execute("sproc_staff_delete");
         }
@@ -104,11 +104,11 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
-        public void ReportByStaffID(string StaffID)
+        public void ReportByStaffName(string FirstName)
         {
             clsDataConnection DB = new clsDataConnection();
-            DB.AddParameter("@StaffID" , StaffID);
-            DB.Execute("sproc_reportbycategoryname");
+            DB.AddParameter("@FirstName" , FirstName);
+            DB.Execute("sproc_reportbystaffName");
             PopulateArray(DB);
         }
         void PopulateArray(clsDataConnection DB)

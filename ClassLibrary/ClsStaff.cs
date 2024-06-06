@@ -4,20 +4,10 @@ namespace ClassLibrary
 {
     public class ClsStaff
     {
-        private bool mIsActive;
-        private DateTime mHireDate;
-        private int mCountryCode;
-        private string mFirstName;
-        private string mLastName;
-        private int mStaffID;
-        private string mEmailID;
-        private int mContact;
-        private string mRole;
-        private string mPassword;
-
         public ClsStaff()
         {
         }
+        private Boolean mIsActive;
         public bool IsActive
         {
             get
@@ -29,6 +19,7 @@ namespace ClassLibrary
                 mIsActive = value;
             }
         }
+        private DateTime mHireDate;
         public DateTime HireDate
         {
             get
@@ -40,6 +31,7 @@ namespace ClassLibrary
                 mHireDate = value;
             }
         }
+        private Int32 mCountryCode;
         public Int32 CountryCode
         {
             get
@@ -51,6 +43,7 @@ namespace ClassLibrary
                 mCountryCode = value;
             }
         }
+        private string mFirstName;
         public string FirstName
         {
             get
@@ -62,6 +55,7 @@ namespace ClassLibrary
                 mFirstName = value;
             }
         }
+        private string mLastName;
         public string LastName
         {
             get
@@ -73,6 +67,7 @@ namespace ClassLibrary
                 mLastName = value;
             }
         }
+        private Int32 mStaffID;
         public Int32 StaffID
         {
             get
@@ -84,6 +79,7 @@ namespace ClassLibrary
                 mStaffID = value;
             }
         }
+        private string mEmailID;
         public string EmailID
         {
             get
@@ -95,7 +91,8 @@ namespace ClassLibrary
                 mEmailID = value;
             }
         }
-        public Int32 Contact
+        private int mContact;
+        public int Contact
         {
             get
             {
@@ -106,6 +103,7 @@ namespace ClassLibrary
                 mContact = value;
             }
         }
+        private string mRole;
         public string Role
         {
             get
@@ -117,6 +115,7 @@ namespace ClassLibrary
                 mRole = value;
             }
         }
+        private string mPassword;
         public string Password
         {
             get
@@ -140,7 +139,7 @@ namespace ClassLibrary
                 mFirstName = Convert.ToString(DB.DataTable.Rows[0]["FirstName"]);
                 mLastName = Convert.ToString(DB.DataTable.Rows[0]["LastName"]);
                 mEmailID = Convert.ToString(DB.DataTable.Rows[0]["EmailID"]);
-                mContact = Convert.ToInt32(DB.DataTable.Rows[0]["Phone"]);
+                mContact = Convert.ToInt32(DB.DataTable.Rows[0]["Contact"]);
                 mRole = Convert.ToString(DB.DataTable.Rows[0]["Role"]);
                 mCountryCode = Convert.ToInt32(DB.DataTable.Rows[0]["CountryCode"]);
                 mIsActive = Convert.ToBoolean(DB.DataTable.Rows[0]["IsActive"]);
@@ -149,29 +148,25 @@ namespace ClassLibrary
                 return true;
 
             }
-           else
+            else
             {
                 return false;
             }
         }
 
-        public string Valid(String FirstName, 
-                            String LastName,
-                            String EmailID, 
-                            String Role,
-                            DateTime HireDate, 
-                            String Password)
+        public string Valid(String FirstName, String LastName, String EmailID, String Role, string HireDate, String Password)
         {
+            DateTime DateTemp;
+            int CountryCodeTemp;
+            int ContactTemp;
+
+
             string Error = "";
-            DateTime  DateTemp;
-            
-            
-            
             if (FirstName.Length == 0)
             {
                 Error = Error + "The First Name may not be blank : ";
             }
-            if(FirstName.Length > 14) 
+            if (FirstName.Length > 14)
             {
                 Error = Error + "The First Name must be less than 13 Characters : ";
             }
@@ -215,24 +210,17 @@ namespace ClassLibrary
                 {
                     Error = Error + "The Date cannot be in the futre ";
                 }
-
                 if (DateTemp < DateTime.Now.Date)
                 {
                     Error = Error + "The Date cannot be in the past ";
                 }
-
             }
-            catch 
+            catch
             {
                 Error = Error + "The Date is not a valid Date";
             }
-
             return Error;
-        }
-
-        public string Valid(object firstName, object lastName, object hireDate, object emailID, object password, object role)
-        {
-            throw new NotImplementedException();
         }
     }
 }
+

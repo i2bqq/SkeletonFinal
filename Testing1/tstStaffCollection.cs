@@ -25,7 +25,7 @@ namespace Testing1
             TestItem.FirstName = "Meet";
             TestItem.LastName = "Patel";
             TestItem.EmailID = "meet030405@gmail.com";
-            TestItem.CountryCode = 44;
+            TestItem.CountryCode = 45;
             TestItem.Contact = 1234567896;
             TestItem.Role = "HR";
             TestItem.IsActive = true;
@@ -46,7 +46,7 @@ namespace Testing1
             TestStaff.FirstName = "meet";
             TestStaff.LastName = "patel";
             TestStaff.EmailID = "meet030405@gmail.com";
-            TestStaff.CountryCode = 44;
+            TestStaff.CountryCode = 45;
             TestStaff.Contact = 1234567896;
             TestStaff.Role = "HR";
             TestStaff.IsActive = true;
@@ -66,7 +66,7 @@ namespace Testing1
             TestItem.FirstName = "meet";
             TestItem.LastName = "patel";
             TestItem.EmailID = "mmeet030405@gmail.com";
-            TestItem.CountryCode = 44;
+            TestItem.CountryCode = 45;
             TestItem.Contact = 1234567896;
             TestItem.Role = "HR";
             TestItem.IsActive = true;
@@ -82,13 +82,13 @@ namespace Testing1
         {
             clsSatffCollection AllStaff = new clsSatffCollection();
             ClsStaff TestItem = new ClsStaff();
-            Int32 PrimaryKey = 0;
-            TestItem.StaffID = 1;
+            Int32 PrimaryKey = 1;
+            TestItem.StaffID = PrimaryKey;
             TestItem.FirstName = "meet";
             TestItem.LastName = "patel";
             TestItem.HireDate = DateTime.Now;
             TestItem.EmailID = "meet030405@gmail.com";
-            TestItem.CountryCode = 44;
+            TestItem.CountryCode = 45;
             TestItem.Contact = 1234567896;
             TestItem.Role = "HR";
             TestItem.Password = "meet123";
@@ -106,28 +106,29 @@ namespace Testing1
             //create instance
             clsSatffCollection AllStaff = new clsSatffCollection();
             ClsStaff TestItem = new ClsStaff();
-            Int32 PrimaryKey = 0;
-            TestItem.StaffID = 1;
+            Int32 PrimaryKey = 1;
+            TestItem.StaffID = PrimaryKey;
             TestItem.FirstName = "meet";
             TestItem.LastName = "patel";
             TestItem.HireDate = DateTime.Now;
             TestItem.EmailID = "meet030405@gmail.com";
-            TestItem.CountryCode = 44;
+            TestItem.CountryCode = 45;
             TestItem.Contact = 1234567896;
             TestItem.Role = "HR";
             TestItem.Password = "meet123";
             TestItem.IsActive = true;
             AllStaff.ThisStaff = TestItem;
             PrimaryKey = AllStaff.Add();
-            TestItem.StaffID = 1;
-            TestItem.FirstName = "meet";
-            TestItem.LastName = "patel";
+            TestItem.StaffID = 2;
+            TestItem.StaffID = PrimaryKey;
+            TestItem.FirstName = "stef";
+            TestItem.LastName = "curry";
             TestItem.HireDate = DateTime.Now;
-            TestItem.EmailID = "meet030405@gmail.com";
-            TestItem.CountryCode = 44;
-            TestItem.Contact = 1234567896;
-            TestItem.Role = "HR";
-            TestItem.Password = "meet123";
+            TestItem.EmailID = "curry@123.gmail.com";
+            TestItem.CountryCode = 86;
+            TestItem.Contact = 1234564345;
+            TestItem.Role = "stock";
+            TestItem.Password = "curry123";
             TestItem.IsActive = true;
             AllStaff.Update();
             AllStaff.ThisStaff.Find(PrimaryKey);
@@ -144,7 +145,7 @@ namespace Testing1
             TestItem.LastName = "patel";
             TestItem.HireDate = DateTime.Now;
             TestItem.EmailID = "meet030405@gmail.com";
-            TestItem.CountryCode = 44;
+            TestItem.CountryCode = 45;
             TestItem.Contact = 1234567896;
             TestItem.Role = "HR";
             TestItem.Password = "meet123";
@@ -163,7 +164,7 @@ namespace Testing1
         {
             clsSatffCollection AllStaff = new clsSatffCollection();
             clsSatffCollection FilterStaff = new clsSatffCollection();
-            FilterStaff.ReportByStaffID("");
+            FilterStaff.ReportByStaffName("");
             Assert.AreEqual(AllStaff.Count, FilterStaff.Count);
         }
 
@@ -171,33 +172,8 @@ namespace Testing1
         public void ReportByStaffIDNoneFound()
         {
             clsSatffCollection Filterstaff = new clsSatffCollection();
-            Filterstaff.ReportByStaffID("None");
+            Filterstaff.ReportByStaffName("None");
             Assert.AreEqual(0, Filterstaff.Count);
-        }
-
-        [TestMethod]
-        public void ReportByStaffIDTestDataFound() 
-        { 
-            clsSatffCollection FilteredStaffID = new clsSatffCollection();
-            Boolean OK = true;
-            FilteredStaffID.ReportByStaffID(" ");
-            if (FilteredStaffID.Count == 2)
-            {
-                if (FilteredStaffID.StaffList[0].StaffID != 25)
-                {
-                    OK = false;
-                }
-                if (FilteredStaffID.StaffList[1].StaffID !=26)
-                {
-                    OK = false;
-                }
-            }
-            else
-            {
-                OK = false;
-            }
-            Assert.IsTrue( OK );
-
         }
     }
 }

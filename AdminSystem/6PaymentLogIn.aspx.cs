@@ -15,7 +15,7 @@ public partial class PaymentLogIn : Page
         bool found = AUser.FindUser(txtUserName.Text, txtPassword.Text);
         if (found)
         {
-            // Store the username in the session
+            
             Session["Username"] = AUser.UserName;
             Response.Redirect("6PaymentList.aspx");
         }

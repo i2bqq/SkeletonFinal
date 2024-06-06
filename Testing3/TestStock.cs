@@ -130,6 +130,7 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
+        // hiii
         [TestMethod]
         public void TestPriceFound()
         {
@@ -138,7 +139,10 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
+
+            if (AnStock.Price != 12.00m)
             if (AnStock.Price != 5.00m)
+
             {
                 OK = false;
             }

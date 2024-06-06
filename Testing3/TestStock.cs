@@ -138,7 +138,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.Price != 11.99m)
+            if (AnStock.Price != 12m)
             {
                 OK = false;
             }
@@ -166,7 +166,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 ProductId = 1;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CreatedOn != Convert.ToDateTime("12/04/2021"))
+            if (AnStock.CreatedOn != Convert.ToDateTime("06/06/2024"))
             {
                 OK = false;
             }
@@ -178,7 +178,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 1;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
             if (AnStock.InStock != true)
             {

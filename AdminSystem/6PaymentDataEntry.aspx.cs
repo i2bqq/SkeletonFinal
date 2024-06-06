@@ -115,8 +115,8 @@ public partial class _1_DataEntry : Page
             }
             catch (Exception ex)
             {
-                // Log the exception
-                // LogError(ex);
+                // Log exception
+             
                 lblError.Text = "An error occurred while processing your request.";
                 lblError.Visible = true;
                 lblSuccess.Visible = false;

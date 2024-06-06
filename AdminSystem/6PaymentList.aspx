@@ -37,6 +37,7 @@
                     <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
                     <asp:GridView ID="gvPayments" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" OnRowCommand="gvPayments_RowCommand" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvPayments_PageIndexChanging" AllowSorting="True" OnSorting="gvPayments_Sorting">
                         <Columns>
+
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:CheckBox ID="chkSelect" runat="server" />

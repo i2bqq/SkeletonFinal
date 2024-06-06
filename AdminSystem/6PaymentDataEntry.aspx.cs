@@ -90,14 +90,41 @@ public partial class _1_DataEntry : Page
             aPayment.Amount = Convert.ToDecimal(amount);
             aPayment.Status = chkStatus.Checked;
             aPayment.CreatedOn = Convert.ToDateTime(createdOn);
-            Session["aPayment"] = aPayment;
-            Response.Redirect("6PaymentViewer.aspx");
+
+            // Create an instance of ClsPaymentCollection
+            clsPaymentCollection paymentCollection = new clsPaymentCollection();
+
+            if (aPayment.PaymentID == 0)
+            {
+                // Add the new payment
+                paymentCollection.ThisPayment = aPayment;
+                paymentCollection.Add();
+            }
+            else
+            {
+                // Update the existing payment
+                paymentCollection.ThisPayment.FindByPaymentID(aPayment.PaymentID);
+                paymentCollection.ThisPayment.OrderID = aPayment.OrderID;
+                paymentCollection.ThisPayment.PaymentDate = aPayment.PaymentDate;
+                paymentCollection.ThisPayment.PaymentMethod = aPayment.PaymentMethod;
+                paymentCollection.ThisPayment.Amount = aPayment.Amount;
+                paymentCollection.ThisPayment.Status = aPayment.Status;
+                paymentCollection.ThisPayment.CreatedOn = aPayment.CreatedOn;
+                paymentCollection.Update();
+            }
+
+            Response.Redirect("6PaymentList.aspx");
         }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-        Response.Redirect("6PaymentList.aspx");
+        txtOrderID.Text = "";
+        txtPaymentDate.Text = "";
+        txtPaymentMethod.Text = "";
+        txtAmount.Text = "";
+        chkStatus.Checked = false;
+        txtCreatedOn.Text = "";
     }
 
     protected void btnReturnToMainMenu_Click(object sender, EventArgs e)

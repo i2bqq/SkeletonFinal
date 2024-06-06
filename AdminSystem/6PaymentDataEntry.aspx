@@ -54,7 +54,7 @@
         <asp:HiddenField ID="hfPaymentID" runat="server" />
         <div class="form-group">
             <label for="txtPaymentID">Payment ID</label>
-            <asp:TextBox ID="txtPaymentID" runat="server" ReadOnly="True"></asp:TextBox>
+            <asp:TextBox ID="txtPaymentID" runat="server" ReadOnly="false"></asp:TextBox>
         </div>
         <div class="form-group">
             <label for="txtOrderID">Order ID</label>

@@ -4,6 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Payment Data Entry</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" />
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -13,85 +14,82 @@
             max-width: 500px;
             margin: 0 auto;
         }
-        .form-group {
-            margin-bottom: 15px;
-        }
         .form-group label {
-            display: block;
-            margin-bottom: 5px;
             font-weight: bold;
-        }
-        .form-group input, .form-group .checkbox-label {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        .form-group .small-input {
-            width: calc(50% - 10px);
-            float: left;
-            margin-right: 10px;
-        }
-        .form-group .small-input:last-child {
-            margin-right: 0;
-        }
-        .buttons {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .buttons input {
-            padding: 10px 20px;
-            margin: 0 10px;
         }
         .error {
             color: red;
             font-weight: bold;
             margin-top: 10px;
         }
+        .success {
+            color: green;
+            font-weight: bold;
+            margin-top: 10px;
+        }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#<%= txtPaymentDate.ClientID %>, #<%= txtCreatedOn.ClientID %>').on('input', function (e) {
+                var input = $(this).val().replace(/[^0-9]/g, '');
+                if (input.length > 2) {
+                    input = input.substring(0, 2) + '/' + input.substring(2);
+                }
+                if (input.length > 5) {
+                    input = input.substring(0, 5) + '/' + input.substring(5);
+                }
+                $(this).val(input);
+            });
+        });
+    </script>
 </head>
 <body>
-    <form id="form1" runat="server" class="container">
-        <asp:HiddenField ID="hfPaymentID" runat="server" />
-        <div class="form-group">
-            <label for="txtPaymentID">Payment ID</label>
-            <asp:TextBox ID="txtPaymentID" runat="server" ReadOnly="false"></asp:TextBox>
-        </div>
-        <div class="form-group">
-            <label for="txtOrderID">Order ID</label>
-            <asp:TextBox ID="txtOrderID" runat="server"></asp:TextBox>
-            <asp:Label ID="lblOrderIDError" runat="server" CssClass="error" Visible="false"></asp:Label>
-        </div>
-        <div class="form-group">
-            <label for="txtPaymentDate">Payment Date</label>
-            <asp:TextBox ID="txtPaymentDate" runat="server" placeholder="dd/mm/yyyy"></asp:TextBox>
-            <asp:Label ID="lblPaymentDateError" runat="server" CssClass="error" Visible="false"></asp:Label>
-        </div>
-        <div class="form-group">
-            <label for="txtPaymentMethod">Payment Method</label>
-            <asp:TextBox ID="txtPaymentMethod" runat="server"></asp:TextBox>
-            <asp:Label ID="lblPaymentMethodError" runat="server" CssClass="error" Visible="false"></asp:Label>
-        </div>
-        <div class="form-group">
-            <label for="txtAmount">Amount</label>
-            <asp:TextBox ID="txtAmount" runat="server"></asp:TextBox>
-            <asp:Label ID="lblAmountError" runat="server" CssClass="error" Visible="false"></asp:Label>
-        </div>
-        <div class="form-group">
-            <label for="chkStatus">Refund</label>
-            <asp:CheckBox ID="chkStatus" runat="server" />
-        </div>
-        <div class="form-group">
-            <label for="txtCreatedOn">Created On</label>
-            <asp:TextBox ID="txtCreatedOn" runat="server"></asp:TextBox>
-            <asp:Label ID="lblCreatedOnError" runat="server" CssClass="error" Visible="false"></asp:Label>
-        </div>
-        <div class="buttons">
-            <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
-            <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click" Text="Find" />
-            <asp:Button ID="btnReturnToPaymentList" runat="server" Text="Return to Payment List" OnClick="btnReturnToPaymentList_Click" />
-            <asp:Label ID="lblError" runat="server" Visible="false"></asp:Label>
-        </div>
-    </form>
+    <div class="container">
+        <form id="form1" runat="server" class="needs-validation" novalidate>
+            <asp:HiddenField ID="hfPaymentID" runat="server" />
+            <div class="form-group">
+                <label for="txtPaymentID">Payment ID</label>
+                <asp:TextBox ID="txtPaymentID" runat="server" ReadOnly="false" CssClass="form-control"></asp:TextBox>
+            </div>
+            <div class="form-group">
+                <label for="txtOrderID">Order ID</label>
+                <asp:TextBox ID="txtOrderID" runat="server" CssClass="form-control" required></asp:TextBox>
+                <asp:Label ID="lblOrderIDError" runat="server" CssClass="error" Visible="false"></asp:Label>
+            </div>
+            <div class="form-group">
+                <label for="txtPaymentDate">Payment Date</label>
+                <asp:TextBox ID="txtPaymentDate" runat="server" CssClass="form-control" placeholder="dd/mm/yyyy" required></asp:TextBox>
+                <asp:Label ID="lblPaymentDateError" runat="server" CssClass="error" Visible="false"></asp:Label>
+            </div>
+            <div class="form-group">
+                <label for="txtPaymentMethod">Payment Method</label>
+                <asp:TextBox ID="txtPaymentMethod" runat="server" CssClass="form-control" required></asp:TextBox>
+                <asp:Label ID="lblPaymentMethodError" runat="server" CssClass="error" Visible="false"></asp:Label>
+            </div>
+            <div class="form-group">
+                <label for="txtAmount">Amount</label>
+                <asp:TextBox ID="txtAmount" runat="server" CssClass="form-control" required></asp:TextBox>
+                <asp:Label ID="lblAmountError" runat="server" CssClass="error" Visible="false"></asp:Label>
+            </div>
+            <div class="form-group form-check">
+                <asp:CheckBox ID="chkStatus" runat="server" CssClass="form-check-input" />
+                <label class="form-check-label" for="chkStatus">Refund</label>
+            </div>
+            <div class="form-group">
+                <label for="txtCreatedOn">Created On</label>
+                <asp:TextBox ID="txtCreatedOn" runat="server" CssClass="form-control" placeholder="dd/mm/yyyy" required></asp:TextBox>
+                <asp:Label ID="lblCreatedOnError" runat="server" CssClass="error" Visible="false"></asp:Label>
+            </div>
+            <div class="buttons text-center">
+                <asp:Button ID="btnOK" runat="server" CssClass="btn btn-primary" OnClick="btnOK_Click" Text="OK" />
+                <asp:Button ID="btnCancel" runat="server" CssClass="btn btn-secondary" OnClick="btnCancel_Click" Text="Cancel" />
+                <asp:Button ID="btnFind" runat="server" CssClass="btn btn-info" OnClick="btnFind_Click" Text="Find" />
+                <asp:Button ID="btnReturnToPaymentList" runat="server" CssClass="btn btn-warning" OnClick="btnReturnToPaymentList_Click" Text="Return to Payment List" />
+                <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
+                <asp:Label ID="lblSuccess" runat="server" CssClass="success" Visible="false"></asp:Label>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

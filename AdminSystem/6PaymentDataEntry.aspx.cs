@@ -63,7 +63,6 @@ public partial class _1_DataEntry : Page
             // Display error messages for each field
             lblOrderIDError.Text = error.Contains("order ID") ? "The order ID must be a valid integer and not blank." : "";
             lblOrderIDError.Visible = lblOrderIDError.Text != "";
-
             lblPaymentDateError.Text = error.Contains("payment date") ? "The payment date must be valid and not in the future." : "";
             lblPaymentDateError.Visible = lblPaymentDateError.Text != "";
 
@@ -79,52 +78,67 @@ public partial class _1_DataEntry : Page
             // Display a general error message
             lblError.Text = "There were errors in your input.";
             lblError.Visible = true;
+            lblSuccess.Visible = false;
         }
         else
         {
-            // No errors, proceed with processing
-            aPayment.PaymentID = string.IsNullOrEmpty(hfPaymentID.Value) ? 0 : Convert.ToInt32(hfPaymentID.Value);
-            aPayment.OrderID = Convert.ToInt32(orderID);
-            aPayment.PaymentDate = Convert.ToDateTime(paymentDate);
-            aPayment.PaymentMethod = paymentMethod;
-            aPayment.Amount = Convert.ToDecimal(amount);
-            aPayment.Status = chkStatus.Checked;
-            aPayment.CreatedOn = Convert.ToDateTime(createdOn);
-
-            // Create an instance of ClsPaymentCollection
-            clsPaymentCollection paymentCollection = new clsPaymentCollection();
-
-            if (aPayment.PaymentID == 0)
+            try
             {
-                // Add the new payment
-                paymentCollection.ThisPayment = aPayment;
-                paymentCollection.Add();
-            }
-            else
-            {
-                // Update the existing payment
-                paymentCollection.ThisPayment.FindByPaymentID(aPayment.PaymentID);
-                paymentCollection.ThisPayment.OrderID = aPayment.OrderID;
-                paymentCollection.ThisPayment.PaymentDate = aPayment.PaymentDate;
-                paymentCollection.ThisPayment.PaymentMethod = aPayment.PaymentMethod;
-                paymentCollection.ThisPayment.Amount = aPayment.Amount;
-                paymentCollection.ThisPayment.Status = aPayment.Status;
-                paymentCollection.ThisPayment.CreatedOn = aPayment.CreatedOn;
-                paymentCollection.Update();
-            }
+                // No errors, proceed with processing
+                aPayment.PaymentID = string.IsNullOrEmpty(hfPaymentID.Value) ? 0 : Convert.ToInt32(hfPaymentID.Value);
+                aPayment.OrderID = Convert.ToInt32(orderID);
+                aPayment.PaymentDate = Convert.ToDateTime(paymentDate);
+                aPayment.PaymentMethod = paymentMethod;
+                aPayment.Amount = Convert.ToDecimal(amount);
+                aPayment.Status = chkStatus.Checked;
+                aPayment.CreatedOn = Convert.ToDateTime(createdOn);
 
-            Response.Redirect("6PaymentList.aspx");
+                clsPaymentCollection paymentCollection = new clsPaymentCollection();
+                if (aPayment.PaymentID == 0)
+                {
+                    // Add new record
+                    paymentCollection.ThisPayment = aPayment;
+                    paymentCollection.Add();
+                    lblSuccess.Text = "Payment added successfully.";
+                }
+                else
+                {
+                    // Update existing record
+                    paymentCollection.ThisPayment = aPayment;
+                    paymentCollection.Update();
+                    lblSuccess.Text = "Payment updated successfully.";
+                }
+                lblSuccess.Visible = true;
+                lblError.Visible = false;
+                ClearForm();
+            }
+            catch (Exception ex)
+            {
+                // Log the exception
+                // LogError(ex);
+                lblError.Text = "An error occurred while processing your request.";
+                lblError.Visible = true;
+                lblSuccess.Visible = false;
+            }
         }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        ClearForm();
+    }
+
+    private void ClearForm()
+    {
+        txtPaymentID.Text = "";
         txtOrderID.Text = "";
         txtPaymentDate.Text = "";
         txtPaymentMethod.Text = "";
         txtAmount.Text = "";
         chkStatus.Checked = false;
         txtCreatedOn.Text = "";
+        lblError.Visible = false;
+        lblSuccess.Visible = false;
     }
 
     protected void btnReturnToMainMenu_Click(object sender, EventArgs e)
@@ -156,6 +170,7 @@ public partial class _1_DataEntry : Page
             // Display an error message
             lblError.Text = "Payment not found or invalid Payment ID.";
             lblError.Visible = true;
+            lblSuccess.Visible = false;
         }
     }
 
@@ -164,3 +179,4 @@ public partial class _1_DataEntry : Page
         Response.Redirect("6PaymentList.aspx");
     }
 }
+

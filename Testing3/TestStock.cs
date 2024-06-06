@@ -130,6 +130,7 @@ namespace Testing3
             }
             Assert.IsTrue(OK);
         }
+        // hiii
         [TestMethod]
         public void TestPriceFound()
         {

@@ -10,6 +10,7 @@ public partial class PaymentList : Page
         if (!IsPostBack)
         {
             DisplayPayments();
+            DisplayUsername();
         }
     }
 
@@ -18,6 +19,19 @@ public partial class PaymentList : Page
         clsPaymentCollection Payments = new clsPaymentCollection();
         gvPayments.DataSource = Payments.PaymentList;
         gvPayments.DataBind();
+    }
+
+    void DisplayUsername()
+    {
+        // Assume the username is stored in a session variable
+        if (Session["Username"] != null)
+        {
+            lblUser.Text = "Logged in as: " + Session["Username"].ToString();
+        }
+        else
+        {
+            lblUser.Text = "User not logged in.";
+        }
     }
 
     protected void gvPayments_PageIndexChanging(object sender, GridViewPageEventArgs e)

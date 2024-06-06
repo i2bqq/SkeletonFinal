@@ -179,4 +179,4 @@ public partial class _1_DataEntry : Page
         Response.Redirect("6PaymentList.aspx");
     }
 }
-
+// success message does not show 

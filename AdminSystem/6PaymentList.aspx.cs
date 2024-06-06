@@ -5,6 +5,18 @@ using ClassLibrary;
 
 public partial class PaymentList : Page
 {
+    private string SortColumn
+    {
+        get { return ViewState["SortColumn"] as string ?? "PaymentID"; }
+        set { ViewState["SortColumn"] = value; }
+    }
+
+    private string SortDirection
+    {
+        get { return ViewState["SortDirection"] as string ?? "ASC"; }
+        set { ViewState["SortDirection"] = value; }
+    }
+
     protected void Page_Load(object sender, EventArgs e)
     {
         if (!IsPostBack)
@@ -16,14 +28,13 @@ public partial class PaymentList : Page
 
     void DisplayPayments()
     {
-        clsPaymentCollection Payments = new clsPaymentCollection();
+        clsPaymentCollection Payments = new clsPaymentCollection(SortColumn, SortDirection);
         gvPayments.DataSource = Payments.PaymentList;
         gvPayments.DataBind();
     }
 
     void DisplayUsername()
     {
-        // Assume the username is stored in a session variable
         if (Session["Username"] != null)
         {
             lblUser.Text = "Logged in as: " + Session["Username"].ToString();
@@ -46,9 +57,23 @@ public partial class PaymentList : Page
         {
             int rowIndex = Convert.ToInt32(e.CommandArgument);
             GridViewRow row = gvPayments.Rows[rowIndex];
-            string paymentID = row.Cells[1].Text; // Adjust index to account for CheckBox column
+            string paymentID = row.Cells[1].Text;
             Response.Redirect("6PaymentDataEntry.aspx?PaymentID=" + paymentID);
         }
+    }
+
+    protected void gvPayments_Sorting(object sender, GridViewSortEventArgs e)
+    {
+        if (SortColumn == e.SortExpression)
+        {
+            SortDirection = SortDirection == "ASC" ? "DESC" : "ASC";
+        }
+        else
+        {
+            SortColumn = e.SortExpression;
+            SortDirection = "ASC";
+        }
+        DisplayPayments();
     }
 
     protected void btnAdd_Click(object sender, EventArgs e)
@@ -65,7 +90,7 @@ public partial class PaymentList : Page
             CheckBox chkSelect = (CheckBox)row.FindControl("chkSelect");
             if (chkSelect != null && chkSelect.Checked)
             {
-                int paymentID = Convert.ToInt32(row.Cells[1].Text); // Adjust index to account for CheckBox column
+                int paymentID = Convert.ToInt32(row.Cells[1].Text);
                 DeletePayment(paymentID);
                 selected = true;
             }

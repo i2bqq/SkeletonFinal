@@ -35,20 +35,20 @@
                     <asp:Button ID="btnDeleteSelected" runat="server" Text="Delete Selected" CssClass="btn btn-danger my-2" OnClick="btnDeleteSelected_Click" OnClientClick="return confirmDelete();" />
                     <asp:Button ID="btnReturnToMainMenu" runat="server" Text="Return to Main Menu" CssClass="btn btn-info my-2" OnClick="btnReturnToMainMenu_Click" />
                     <asp:Label ID="lblError" runat="server" CssClass="error" Visible="false"></asp:Label>
-                    <asp:GridView ID="gvPayments" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" OnRowCommand="gvPayments_RowCommand" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvPayments_PageIndexChanging">
+                    <asp:GridView ID="gvPayments" runat="server" AutoGenerateColumns="False" CssClass="table table-striped table-bordered" OnRowCommand="gvPayments_RowCommand" AllowPaging="True" PageSize="10" OnPageIndexChanging="gvPayments_PageIndexChanging" AllowSorting="True" OnSorting="gvPayments_Sorting">
                         <Columns>
                             <asp:TemplateField>
                                 <ItemTemplate>
                                     <asp:CheckBox ID="chkSelect" runat="server" />
                                 </ItemTemplate>
                             </asp:TemplateField>
-                            <asp:BoundField DataField="PaymentID" HeaderText="Payment ID" />
-                            <asp:BoundField DataField="OrderID" HeaderText="Order ID" />
-                            <asp:BoundField DataField="PaymentDate" HeaderText="Payment Date" DataFormatString="{0:dd/MM/yyyy}" />
-                            <asp:BoundField DataField="PaymentMethod" HeaderText="Payment Method" />
-                            <asp:BoundField DataField="Amount" HeaderText="Amount" DataFormatString="{0:C}" />
-                            <asp:CheckBoxField DataField="Status" HeaderText="Refund" />
-                            <asp:BoundField DataField="CreatedOn" HeaderText="Created On" DataFormatString="{0:dd/MM/yyyy}" />
+                            <asp:BoundField DataField="PaymentID" HeaderText="Payment ID" SortExpression="PaymentID" />
+                            <asp:BoundField DataField="OrderID" HeaderText="Order ID" SortExpression="OrderID" />
+                            <asp:BoundField DataField="PaymentDate" HeaderText="Payment Date" DataFormatString="{0:dd/MM/yyyy}" SortExpression="PaymentDate" />
+                            <asp:BoundField DataField="PaymentMethod" HeaderText="Payment Method" SortExpression="PaymentMethod" />
+                            <asp:BoundField DataField="Amount" HeaderText="Amount" DataFormatString="{0:C}" SortExpression="Amount" />
+                            <asp:CheckBoxField DataField="Status" HeaderText="Refund" SortExpression="Status" />
+                            <asp:BoundField DataField="CreatedOn" HeaderText="Created On" DataFormatString="{0:dd/MM/yyyy}" SortExpression="CreatedOn" />
                             <asp:ButtonField ButtonType="Link" CommandName="EditPayment" Text="Edit" />
                         </Columns>
                     </asp:GridView>

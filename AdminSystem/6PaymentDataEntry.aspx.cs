@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Data.SqlClient;
 using System.Web.UI;
 using ClassLibrary;
@@ -180,3 +181,9 @@ public partial class _1_DataEntry : Page
     }
 }
 // success message does not show 
+// CREATE PROCEDURE sp_GetAllPayments
+//AS
+//BEGIN
+   // SELECT PaymentID, OrderID, PaymentDate, PaymentMethod, Amount, Status, CreatedOn
+  //  FROM Payment;
+//END

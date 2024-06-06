@@ -37,6 +37,15 @@ namespace ClassLibrary
             PopulateArray(DB);
         }
 
+        public clsPaymentCollection(string sortColumn, string sortDirection)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@SortColumn", sortColumn);
+            DB.AddParameter("@SortDirection", sortDirection);
+            DB.Execute("sp_GetAllPayments");
+            PopulateArray(DB);
+        }
+
         public int Add()
         {
             clsDataConnection DB = new clsDataConnection();

@@ -72,7 +72,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnApplyFilter_Click(object sender, EventArgs e)
     {
         clsSatffCollection AnStaff = new clsSatffCollection();
-        AnStaff.ReportByStaffID(txtEnterStaffID.Text);
+        AnStaff.ReportByStaffName(txtEnterStaffID.Text);
         lstStaffList.DataSource = AnStaff.StaffList;
         lstStaffList.DataTextField = "StaffID";
         lstStaffList.DataTextField = "FirstName";
@@ -82,7 +82,7 @@ public partial class _1_List : System.Web.UI.Page
     protected void btnClearFilter_Click(object sender, EventArgs e)
     {
         clsSatffCollection AnStaff = new clsSatffCollection();
-        AnStaff.ReportByStaffID("");
+        AnStaff.ReportByStaffName("");
         txtEnterStaffID.Text = "";
         lstStaffList.DataSource = AnStaff.StaffList;
         lstStaffList.DataTextField = "StaffID";

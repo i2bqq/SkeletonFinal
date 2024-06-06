@@ -76,16 +76,16 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB =new clsDataConnection();
-            DB.AddParameter("@StaddID", ThisStaff.StaffID);
-            DB.AddParameter("FirstName", mThisStaff.FirstName);
-            DB.AddParameter("LastName", mThisStaff.LastName);
-            DB.AddParameter("EmailID", mThisStaff.EmailID);
-            DB.AddParameter("CountryCode", mThisStaff.CountryCode);
+            DB.AddParameter("@StaffID", ThisStaff.StaffID);
+            DB.AddParameter("@FirstName", mThisStaff.FirstName);
+            DB.AddParameter("@LastName", mThisStaff.LastName);
+            DB.AddParameter("@EmailID", mThisStaff.EmailID);
+            DB.AddParameter("@CountryCode", mThisStaff.CountryCode);
             DB.AddParameter("@HireDate", ThisStaff.HireDate);
-            DB.AddParameter("Conatact", mThisStaff.Contact);
-            DB.AddParameter("Role", mThisStaff.Role);
-            DB.AddParameter("IsActive", mThisStaff.IsActive);
-            DB.AddParameter("Password", mThisStaff.Password);
+            DB.AddParameter("@Contact", mThisStaff.Contact);
+            DB.AddParameter("@Role", mThisStaff.Role);
+            DB.AddParameter("@IsActive", mThisStaff.IsActive);
+            DB.AddParameter("@Password", mThisStaff.Password);
             DB.Execute("sproc_Staff_update");
         }
 

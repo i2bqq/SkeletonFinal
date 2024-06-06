@@ -35,7 +35,7 @@ public partial class StaffLogInPage : System.Web.UI.Page
             }
             else if (Found == true)
             {
-                Response.Redirect("3StockList.aspx");
+                Response.Redirect("1StaffList.aspx");
             }
             else if (Found == false)
             {

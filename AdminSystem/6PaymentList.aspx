@@ -26,6 +26,7 @@
         <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
         <div class="container">
             <h2>Payment List</h2>
+            <asp:Label ID="lblUser" runat="server" CssClass="text-info" />
             <asp:UpdatePanel ID="UpdatePanel1" runat="server">
                 <ContentTemplate>
                     <asp:TextBox ID="txtFilter" runat="server" CssClass="form-control" placeholder="Filter by Payment Method" AutoPostBack="true" OnTextChanged="txtFilter_TextChanged" />

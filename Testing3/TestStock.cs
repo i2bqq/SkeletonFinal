@@ -89,7 +89,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
 
-            Int32 ProductID = 1;
+            Int32 ProductID = 7;
             Found = AnStock.Find(ProductID);
             Assert.IsTrue(Found);
         }
@@ -99,7 +99,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 1;
+            Int32 ProductID = 7;
             Found = AnStock.Find(ProductID);
         }
         [TestMethod]
@@ -108,9 +108,9 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductID = 1;
+            Int32 ProductID = 7;
             Found = AnStock.Find(ProductID);
-            if (AnStock.ProductName != "Revlon ColorStay Foundation")
+            if (AnStock.ProductName != "Rimmel Natural Bronzer")
             {
                 OK = false;
             }
@@ -122,9 +122,9 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 1;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
-            if (AnStock.CategoryName != "Foundation")
+            if (AnStock.CategoryName != "Bronzer")
             {
                 OK = false;
             }
@@ -137,9 +137,12 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 1;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
-            if (AnStock.Price != 12m)
+
+            if (AnStock.Price != 12.00m)
+            if (AnStock.Price != 5.00m)
+
             {
                 OK = false;
             }
@@ -151,9 +154,9 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 1;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
-            if (AnStock.StockQuantity != 20)
+            if (AnStock.StockQuantity != 72)
             {
                 OK = false;
             }
@@ -165,7 +168,7 @@ namespace Testing3
             ClsStock AnStock = new ClsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 ProductId = 1;
+            Int32 ProductId = 7;
             Found = AnStock.Find(ProductId);
             if (AnStock.CreatedOn != Convert.ToDateTime("06/06/2024"))
             {

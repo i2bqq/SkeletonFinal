@@ -88,6 +88,7 @@
             <div class="form-actions">
                 <asp:Button ID="btnOk" runat="server" Text="Ok" OnClick="BtnOk_Click" />
                 <asp:Button ID="btnCancel" runat="server" Text="Cancel" OnClick="BtnCancel_Click" CssClass="cancel" />
+                <asp:Button ID="BtnMenu" runat="server" OnClick="BtnMenu_Click" Text="Return To Main Menu" />
             </div>
             <asp:Label ID="lblError" runat="server" CssClass="error"></asp:Label>
         </div>

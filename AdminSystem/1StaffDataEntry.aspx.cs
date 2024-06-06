@@ -52,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //variable to store an error
         string Error = "";
         //validate the data
-        Error = AnStaff.Valid(txtFirstName, txtLastName, txtHireDate, txtEmailID, txtPassword, txtRole);
+        Error = AnStaff.Valid(FirstName, LastName, HireDate, EmailID, Password, Role);
         if (Error == "")
         {
             AnStaff.StaffID = StaffID;

@@ -179,5 +179,37 @@ namespace Testing6
             bool found = aPayment.Find(9999); 
             Assert.IsFalse(found);
         }
+
+        // Additional Tests
+
+        [TestMethod]
+        public void EmptyPaymentList()
+        {
+            clsPaymentCollection AllPayments = new clsPaymentCollection();
+            List<ClsPayment> TestList = new List<ClsPayment>();
+            AllPayments.PaymentList = TestList;
+            Assert.AreEqual(AllPayments.PaymentList.Count, 0);
+        }
+
+        [TestMethod]
+        public void PaymentListMultipleItems()
+        {
+            clsPaymentCollection AllPayments = new clsPaymentCollection();
+            List<ClsPayment> TestList = new List<ClsPayment>();
+            for (int i = 0; i < 10; i++)
+            {
+                ClsPayment TestItem = new ClsPayment();
+                TestItem.PaymentID = i + 1;
+                TestItem.OrderID = i + 2;
+                TestItem.PaymentDate = DateTime.Now;
+                TestItem.PaymentMethod = "Card";
+                TestItem.Amount = 10.00m;
+                TestItem.Status = true;
+                TestItem.CreatedOn = DateTime.Now;
+                TestList.Add(TestItem);
+            }
+            AllPayments.PaymentList = TestList;
+            Assert.AreEqual(AllPayments.PaymentList.Count, 10);
+        }
     }
 }
